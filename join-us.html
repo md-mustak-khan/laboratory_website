@@ -53,14 +53,14 @@
       </div>
     </section>
 
-    <!-- Application form only: embedded Google Form -->
-    <section class="section">
+    <!-- Application form: Custom form connected to Google Sheets -->
+    <section class="section" id="application-form-section">
       <div class="container">
         <div class="join-hero-card reveal">
           <div class="join-hero-copy">
             <span class="eyebrow">Apply online</span>
             <h2>Submit your application</h2>
-            <p>Use the form below to apply. If the embedded form does not load, <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNE4zsrkTrwn5hqu2LAGRwewS93IVvd7mKZvzeJ6e7TDEDzw/viewform" target="_blank" rel="noopener">open the form in a new tab</a>.</p>
+            <p>Please fill out the form below to apply for a research or graduate position at CNAB. Your information will be sent directly to our database.</p>
           </div>
           <div class="join-hero-actions">
             <a class="btn btn-primary" href="#apply">How to apply</a>
@@ -68,16 +68,56 @@
           </div>
         </div>
 
-        <div class="join-form-shell reveal">
-          <div class="join-form-callout">
-            <div>
-              <span class="eyebrow">Open the application form</span>
-              <h3>Fill out the CNAB application form</h3>
-              <p>Click the button below to open the Google Form directly in a new tab and complete your application.</p>
+        <div class="contact-form-card reveal" style="max-width: 850px; margin: 0 auto;">
+          <form id="application-form" class="contact-form">
+            <div class="grid grid-2" style="gap: var(--space-4);">
+              <div class="form-group">
+                <label for="app-email">Email *</label>
+                <input type="email" id="app-email" name="email" required placeholder="Your email address">
+              </div>
+              <div class="form-group">
+                <label for="app-name">Full Name *</label>
+                <input type="text" id="app-name" name="name" required placeholder="Your full name">
+              </div>
             </div>
-            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeNE4zsrkTrwn5hqu2LAGRwewS93IVvd7mKZvzeJ6e7TDEDzw/viewform" target="_blank" rel="noopener">Open Google Form</a>
-          </div>
-          <p class="join-form-url">Direct link: <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNE4zsrkTrwn5hqu2LAGRwewS93IVvd7mKZvzeJ6e7TDEDzw/viewform" target="_blank" rel="noopener">https://docs.google.com/forms/d/e/1FAIpQLSeNE4zsrkTrwn5hqu2LAGRwewS93IVvd7mKZvzeJ6e7TDEDzw/viewform</a></p>
+
+            <div class="grid grid-2" style="gap: var(--space-4);">
+              <div class="form-group">
+                <label for="app-roll">Student Roll Number *</label>
+                <input type="text" id="app-roll" name="rollNumber" required placeholder="e.g. 2023-1234">
+              </div>
+              <div class="form-group">
+                <label for="app-session">Academic Session *</label>
+                <input type="text" id="app-session" name="academicSession" required placeholder="e.g. 2023-2024">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="app-address">Present Address *</label>
+              <textarea id="app-address" name="presentAddress" required placeholder="Your present address"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="app-whatsapp">WhatsApp Number *</label>
+              <input type="tel" id="app-whatsapp" name="whatsappNumber" required placeholder="+880 1XXXXXXXXX">
+            </div>
+
+            <div class="grid grid-2" style="gap: var(--space-4);">
+              <div class="form-group">
+                <label for="app-marksheets">Upload Consolidated Marksheets (All Years) * <small>Upload 1 supported file. Max 100 MB.</small></label>
+                <input type="file" id="app-marksheets" name="marksheets" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required>
+              </div>
+              <div class="form-group">
+                <label for="app-cv">Upload Curriculum Vitae (CV) * <small>Upload 1 supported file. Max 100 MB.</small></label>
+                <input type="file" id="app-cv" name="cv" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required>
+              </div>
+            </div>
+
+            <div class="form-footer" style="margin-top: var(--space-4); display: flex; align-items: center; gap: var(--space-4);">
+              <button type="submit" class="btn btn-primary" id="submit-btn">Submit Application</button>
+              <p id="form-status" style="margin: 0; font-size: 0.92rem; font-weight: 500;"></p>
+            </div>
+          </form>
         </div>
       </div>
     </section>
@@ -165,15 +205,112 @@
 
   <script src="./js/main.js"></script>
   <script>
-    /* Join form — front-end only. Replace with real submission handler (Formspree / Google Forms / mailto). */
+    (function () {
+      const appForm = document.getElementById('application-form');
+      const status = document.getElementById('form-status');
+      const submitBtn = document.getElementById('submit-btn');
+
+      // Published Google Apps Script Web App URL.
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx02sH_9nWIaIWfGrAa6XbNZ5PXNhco103B8_PC5HkxSJY4VmtuyAp0o1ww-vZqCLUFgQ/exec';
+
+      if (!appForm || !status || !submitBtn) return;
+
+      const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+      });
+
+      appForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        submitBtn.disabled = true;
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.textContent = 'Processing...';
+        status.textContent = 'Uploading files and submitting application...';
+        status.style.color = 'var(--primary-light)';
+
+        const formData = new FormData(appForm);
+        const data = {
+          name: String(formData.get('name') || '').trim(),
+          email: String(formData.get('email') || '').trim(),
+          rollNumber: String(formData.get('rollNumber') || '').trim(),
+          academicSession: String(formData.get('academicSession') || '').trim(),
+          presentAddress: String(formData.get('presentAddress') || '').trim(),
+          whatsappNumber: String(formData.get('whatsappNumber') || '').trim()
+        };
+
+        try {
+          const marksheetsFile = formData.get('marksheets');
+          const cvFile = formData.get('cv');
+
+          if (!(marksheetsFile instanceof File) || marksheetsFile.size === 0) {
+            throw new Error('Please upload your consolidated marksheets file.');
+          }
+
+          if (!(cvFile instanceof File) || cvFile.size === 0) {
+            throw new Error('Please upload your Curriculum Vitae (CV) file.');
+          }
+
+          if (marksheetsFile.size > 100 * 1024 * 1024) {
+            throw new Error('Marksheets file must be under 100 MB.');
+          }
+
+          if (cvFile.size > 100 * 1024 * 1024) {
+            throw new Error('CV file must be under 100 MB.');
+          }
+
+          data.marksheetsFile = await toBase64(marksheetsFile);
+          data.marksheetsFileName = `Marksheets_${data.name.replace(/\s+/g, '_') || 'Applicant'}_${Date.now()}`;
+
+          data.cvFile = await toBase64(cvFile);
+          data.cvFileName = `CV_${data.name.replace(/\s+/g, '_') || 'Applicant'}_${Date.now()}`;
+
+          const response = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+
+          const responseText = await response.text();
+          let responseJson = {};
+
+          try {
+            responseJson = JSON.parse(responseText);
+          } catch (parseError) {
+            responseJson = {};
+          }
+
+          if (!response.ok || responseJson.ok === false) {
+            throw new Error(responseJson.message || 'Unable to submit your application.');
+          }
+
+          status.textContent = '✓ Application submitted successfully. We will contact you soon.';
+          status.style.color = 'var(--lab2-accent-dark)';
+          appForm.reset();
+        } catch (error) {
+          console.error('Error:', error);
+          status.textContent = error.message || 'An error occurred. Please try again or email us directly.';
+          status.style.color = 'red';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        }
+      });
+    })();
+
     (function () {
       const form = document.getElementById('join-form');
       const status = document.getElementById('join-form-status');
-      if (!form) return;
+
+      if (!form || !status) return;
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        // TODO: wire up to real submission endpoint.
-        status.textContent = 'Thank you — this is a placeholder form. In production, this would send your enquiry.';
+        status.textContent = 'Thank you — this enquiry form is currently a placeholder. Wire it to a real endpoint when you are ready.';
         status.style.color = 'var(--lab2-accent-dark)';
         form.reset();
       });

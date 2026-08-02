@@ -78,6 +78,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+::selection {
+  background: rgba(10, 37, 64, 0.18);
+  color: var(--primary);
+}
+
+::-moz-selection {
+  background: rgba(10, 37, 64, 0.18);
+  color: var(--primary);
+}
+
 img, svg { max-width: 100%; display: block; }
 a { color: var(--primary-light); text-decoration: none; transition: color .2s var(--ease); }
 a:hover, a:focus { color: var(--primary); text-decoration: underline; }
@@ -1304,13 +1314,14 @@ body.resources-page .page-banner {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    /* neutral high-contrast segments (white + near-black) so rotation is visible on any background */
-    background: conic-gradient(from 0deg, rgba(255,255,255,0.95) 0deg 140deg, rgba(0,0,0,0.86) 140deg 320deg, rgba(255,255,255,0.95) 320deg 360deg);
-    border: 2px solid rgba(255,255,255,0.95);
-    box-shadow: 0 16px 32px rgba(0,0,0,0.35), 0 2px 0 rgba(255,255,255,0.06) inset;
-    transition: transform .12s var(--ease), background .18s var(--ease), border-color .18s var(--ease), box-shadow .18s var(--ease);
+    /* semi-transparent ring so underlying text remains visible while the cursor stays legible */
+    background: conic-gradient(from 0deg, rgba(255,255,255,0.72) 0deg 140deg, rgba(0,0,0,0.56) 140deg 320deg, rgba(255,255,255,0.72) 320deg 360deg);
+    border: 2px solid rgba(255,255,255,0.9);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.25), 0 2px 0 rgba(255,255,255,0.06) inset;
+    transition: transform .12s var(--ease), background .18s var(--ease), border-color .18s var(--ease), box-shadow .18s var(--ease), opacity .18s var(--ease);
     animation: cursor-rotate 3.6s linear infinite;
     mix-blend-mode: normal;
+    opacity: 0.88;
   }
 
   .custom-cursor .ring::before {
@@ -1340,9 +1351,10 @@ body.resources-page .page-banner {
   .custom-cursor.interact .ring {
     transform: scale(0.58);
     border-color: rgba(0,0,0,0.9);
-    /* invert the ring contrast slightly when interacting to remain visible */
-    background: conic-gradient(from 0deg, rgba(0,0,0,0.9) 0deg 140deg, rgba(255,255,255,0.95) 140deg 320deg, rgba(0,0,0,0.9) 320deg 360deg);
-    box-shadow: 0 10px 22px rgba(0,0,0,0.36), 0 1px 0 rgba(255,255,255,0.04) inset;
+    /* keep the ring readable while still letting the page text show through */
+    background: conic-gradient(from 0deg, rgba(0,0,0,0.52) 0deg 140deg, rgba(255,255,255,0.78) 140deg 320deg, rgba(0,0,0,0.52) 320deg 360deg);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.24), 0 1px 0 rgba(255,255,255,0.04) inset;
+    opacity: 0.95;
   }
   .custom-cursor.interact .dot {
     transform: scale(1.05);
@@ -1380,6 +1392,7 @@ body.resources-page .page-banner {
   border-radius: var(--radius-sm);
   background: var(--white);
   color: var(--text);
+  caret-color: var(--primary);
   transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
 }
 .form-group input:focus,
@@ -1489,16 +1502,48 @@ body.resources-page .page-banner {
 .contact-block.lab2 { border-top: 4px solid var(--lab2-accent); }
 .contact-block h3 { margin-bottom: var(--space-3); }
 .contact-block .pi-name { font-weight: 600; color: var(--primary); margin-bottom: var(--space-3); }
-.contact-block ul { list-style: none; padding: 0; margin: 0; }
-.contact-block li {
+.contact-block .contact-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+.contact-block .contact-detail-item {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-3);
-  padding: var(--space-2) 0;
-  font-size: 0.92rem;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.98), rgba(240, 246, 250, 0.96));
+  border: 1px solid rgba(10, 37, 64, 0.08);
+  border-radius: 14px;
+}
+.contact-block .contact-detail-item.wide {
+  grid-column: 1 / -1;
+}
+.contact-block .contact-detail-item svg {
+  flex: 0 0 auto;
+  display: block;
+  color: var(--primary);
+  margin-top: 2px;
+}
+.contact-block .contact-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.contact-block .contact-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.contact-block .contact-value {
+  line-height: 1.55;
   color: var(--text-muted);
 }
-.contact-block li svg { flex-shrink: 0; color: var(--primary); margin-top: 2px; }
+.contact-block .contact-detail-item a {
+  line-height: 1.55;
+}
 
 /* ---------- Map and location card ---------- */
 .map-embed {
@@ -1711,12 +1756,17 @@ body.resources-page .page-banner {
 .footer-links a { font-size: 0.9rem; }
 .footer-contact li {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-2);
   margin-bottom: var(--space-3);
   font-size: 0.88rem;
 }
-.footer-contact svg { flex-shrink: 0; margin-top: 3px; color: var(--lab2-accent); }
+.footer-contact svg {
+  flex: 0 0 auto;
+  display: block;
+  margin-top: 0;
+  color: var(--lab2-accent);
+}
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.1);
   padding-top: var(--space-5);
@@ -1727,6 +1777,12 @@ body.resources-page .page-banner {
   gap: var(--space-4);
   font-size: 0.85rem;
   color: rgba(255,255,255,0.6);
+}
+.footer-credit {
+  text-align: right;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.72);
+  white-space: nowrap;
 }
 .social-links {
   display: flex;
@@ -1743,6 +1799,17 @@ body.resources-page .page-banner {
   transition: background .2s var(--ease), color .2s var(--ease);
 }
 .social-links a:hover { background: var(--lab2-accent); color: var(--white); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-credit {
+    text-align: left;
+    white-space: normal;
+  }
+}
 
 /* ---------- Animations ---------- */
 .reveal {

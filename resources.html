@@ -28,24 +28,43 @@
 
       <nav class="primary-nav" id="primary-nav" aria-label="Primary">
         <ul class="nav-list">
-          <li class="nav-item"><a href="./index.html">Home</a></li>
-          <li class="nav-item"><a href="./about.html">About</a></li>
-          <li class="nav-item has-dropdown">
-            <button class="nav-link" aria-haspopup="true" aria-expanded="false">Laboratories</button>
-            <ul class="dropdown" role="menu">
-              <li><a href="./lab-food-nutraceutical.html" class="lab1" role="menuitem"><span class="dot"></span><span><strong>Food Science &amp; Nutraceutical</strong><small>Prof. Dwaipayan Sikdar</small></span></a></li>
-              <li><a href="./lab-applied-biosciences.html" class="lab2" role="menuitem"><span class="dot"></span><span><strong>Applied Biosciences</strong><small>Assoc. Prof. Suman Mojumder</small></span></a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a href="./research.html">Research</a></li>
-          <li class="nav-item"><a href="./publications.html">Publications</a></li>
-          <li class="nav-item"><a href="./people.html">People</a></li>
-          <li class="nav-item"><a href="./facilities.html">Facilities</a></li>
-          <li class="nav-item"><a href="./gallery.html">Gallery</a></li>
-          <li class="nav-item"><a href="./collaborations.html">Collaborations</a></li>
-          <li class="nav-item"><a href="./join-us.html">Join Us</a></li>
-          <li class="nav-item"><a href="./resources.html">Resources</a></li>
-          <li class="nav-item"><a href="./contact.html">Contact</a></li>
+        <li class="nav-item"><a href="./index.html">Home</a></li>
+        <li class="nav-item"><a href="./about.html">About</a></li>
+        <li class="nav-item has-dropdown">
+          <button class="nav-link" aria-haspopup="true" aria-expanded="false">
+            Laboratories
+          </button>
+          <ul class="dropdown" role="menu">
+            <li>
+              <a href="./lab-food-nutraceutical.html" class="lab1" role="menuitem">
+                <span class="dot"></span>
+                <span>
+                  <strong>Food Science &amp; Nutraceutical</strong>
+                  <small>Prof. dr. Dwaipayan Sikdar</small>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="./lab-applied-biosciences.html" class="lab2" role="menuitem">
+                <span class="dot"></span>
+                <span>
+                  <strong>Applied Biosciences</strong>
+                  <small>Assoc. Prof. Dr. Suman Mojumder</small>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="./research.html">Research</a></li>
+        <li class="nav-item"><a href="./publications.html">Publications</a></li>
+        <li class="nav-item"><a href="./people.html">People</a></li>
+        <li class="nav-item"><a href="./lab-protocols.html">Lab Protocols</a></li>
+        <li class="nav-item"><a href="./resources.html">Resources</a></li>
+        <li class="nav-item"><a href="./facilities.html">Facilities</a></li>
+        <li class="nav-item"><a href="./gallery.html">Gallery</a></li>
+        <li class="nav-item"><a href="./collaborations.html">Collaborations</a></li>
+        <li class="nav-item"><a href="./join-us.html">Join Us</a></li>
+        <li class="nav-item"><a href="./contact.html">Contact</a></li>
         </ul>
       </nav>
       <div class="nav-backdrop" aria-hidden="true"></div>
@@ -65,26 +84,36 @@
     <!-- Resources Content -->
     <section class="resources-content">
       <div class="container">
-        <div class="resources-intro">
-          <h2><i class="fas fa-toolbox"></i> Research Toolkit</h2>
+        <div class="resources-card card">
+          <div class="resources-intro">
+            <h2><i class="fas fa-toolbox"></i> Research Toolkit</h2>
             <p>Explore a curated collection of resources and tools to enhance your research journey. From literature review aids to bioinformatics platforms, these resources are designed to support researchers in various stages of their work.</p>
-        <div class="protocol-categories">
-          <h3><i class="fas fa-filter"></i> Filter by Category</h3>
-          <div class="category-filters">
-            <button class="category-btn active" data-category="all">All Resources</button>
-            <button class="category-btn" data-category="literature">Literature Review</button>
-            <button class="category-btn" data-category="journals">Journal Tools</button>
-            <button class="category-btn" data-category="courses">Free Courses</button>
-            <button class="category-btn" data-category="bioinformatics">Bioinformatics</button>
-            <button class="category-btn" data-category="c-elegans">C. elegans</button>
-            <button class="category-btn" data-category="illustrations">Illustration Tools</button>
           </div>
-        </div>
 
-        <div class="resources-list">
+          <div class="protocol-grid">
+            <aside class="protocol-sidebar card reveal" aria-label="Resources overview">
+              <h3>Resources in this guide</h3>
+              <ul class="protocol-nav">
+                <li><a href="#literature">Literature Review Tools</a></li>
+                <li><a href="#journals">Journal Finder Tools</a></li>
+                <li><a href="#courses">Research & Publishing Courses</a></li>
+                <li><a href="#rcourses">R Programming Courses</a></li>
+                <li><a href="#python-courses">Python & Data Science Courses</a></li>
+                <li><a href="#bioinformatics">Bioinformatics Tools</a></li>
+                <li><a href="#bioinformatics-courses">Bioinformatics Courses</a></li>
+                <li><a href="#celegans">C. elegans Resources</a></li>
+                <li><a href="#illustrations">Illustration Tools</a></li>
+              </ul>
+              <div class="protocol-note">
+                <h4>Quick guide</h4>
+                <p>Use this sidebar to jump directly to each resource category while browsing.</p>
+              </div>
+            </aside>
+            <div class="protocol-content">
+              <div class="resources-list">
         
                 <!-- Literature Review Tools -->
-                <section class="section resource-group literature" aria-labelledby="literature-title">
+                <section id="literature" class="section resource-group protocol-card card literature" aria-labelledby="literature-title">
                     <h3 id="literature-title"><i class="fas fa-book-reader"></i> Literature Review Tools <i class="fas fa-chevron-up"></i></h3>
                     <div class="resource-details">
                         <div class="tool-item">
@@ -131,7 +160,7 @@
                 </section>
 
                 <!-- Journal Tools -->
-                <section class="section resource-group journals" aria-labelledby="journals-title">
+                <section id="journals" class="section resource-group protocol-card card journals" aria-labelledby="journals-title">
                     <h3 id="journals-title"><i class="fas fa-newspaper"></i> Journal Finder Tools <i class="fas fa-chevron-up"></i></h3>
                     <div class="resource-details">
                         <div class="tool-item">
@@ -193,7 +222,7 @@
                 </section>
 
                 <!-- Free Courses -->
-                <section class="section resource-group courses" aria-labelledby="courses-title">
+                <section id="courses" class="section resource-group protocol-card card courses" aria-labelledby="courses-title">
                     <h3 id="courses-title"><i class="fas fa-graduation-cap"></i> Free Courses on Research Methods, Manuscript Writing, and Publishing <i class="fas fa-chevron-up"></i></h3>
                     <div class="resource-details">
                         <div class="tool-item">
@@ -225,7 +254,7 @@
                 </section>
 
                 <!-- R Programming Courses -->
-                <section class="section resource-group courses" aria-labelledby="rcourses-title">
+                <section id="rcourses" class="section resource-group protocol-card card courses" aria-labelledby="rcourses-title">
                     <h3 id="rcourses-title"><i class="fab fa-r-project"></i> Free Courses and Tutorials for R Programming <i class="fas fa-chevron-up"></i></h3>
                     <div class="resource-details">
                         <div class="tool-item">
@@ -257,7 +286,7 @@
                 </section>
 
                 <!-- Python Courses -->
-                <section class="section resource-group courses" aria-labelledby="python-courses-title">
+                <section id="python-courses" class="section resource-group protocol-card card courses" aria-labelledby="python-courses-title">
                     <h3 id="python-courses-title"><i class="fab fa-python"></i> Free Courses and Tutorials for Python and Data Science <i class="fas fa-chevron-up"></i></h3>
                     <div class="resource-details">
                         <div class="tool-item">
@@ -284,7 +313,7 @@
                 </section>
 
                 <!-- Bioinformatics Tools -->
-                <section class="section resource-group bioinformatics" id="bioinformatics" aria-labelledby="bioinformatics-title">
+                <section class="section resource-group protocol-card card bioinformatics" id="bioinformatics" aria-labelledby="bioinformatics-title">
                     <h3 id="bioinformatics-title"><i class="fas fa-dna"></i> Comprehensive Bioinformatics, Structural Biology, Drug Discovery & Vaccine Design Tools <i class="fas fa-chevron-up"></i></h3>
                     <div class="resource-details">
                         <h4>1. Sequence Retrieval, Alignment & Motif Analysis</h4>
@@ -659,7 +688,7 @@
                 </section>
 
                 <!-- Bioinformatics Courses -->
-                <section class="section resource-group courses" aria-labelledby="bioinformatics-courses-title">
+                <section id="bioinformatics-courses" class="section resource-group protocol-card card courses" aria-labelledby="bioinformatics-courses-title">
                     <h3 id="bioinformatics-courses-title"><i class="fas fa-dna"></i> Free Courses and Tutorials for Bioinformatics <i class="fas fa-chevron-up"></i></h3>
                     <div class="resource-details">
                         <div class="tool-item">
@@ -686,7 +715,7 @@
                 </section>
 
                 <!-- C. elegans Resources -->
-                <section class="section resource-group c-elegans" aria-labelledby="celegans-title">
+                <section id="celegans" class="section resource-group protocol-card card c-elegans" aria-labelledby="celegans-title">
                     <h3 id="celegans-title"><i class="fas fa-worm"></i> C. elegans Databases & Resources <i class="fas fa-chevron-up"></i></h3>
                     <div class="resource-details">
                         <div class="tool-item">
@@ -728,8 +757,7 @@
                 </section>
 
                 <!-- Biological Illustration Tools -->
-                <section class="section resource-group illustrations" aria-labelledby="illustrations-title">
-                    <h3 id="illustrations-title"><i class="fas fa-paint-brush"></i> Biological Illustration Tools <i class="fas fa-chevron-up"></i></h3>
+                <section id="illustrations" class="section resource-group protocol-card card illustrations" aria-labelledby="illustrations-title">
                     <div class="resource-details">
                         <div class="tool-item">
                             <h4>BioArt</h4>
@@ -763,8 +791,11 @@
                         </div>
                     </div>
                 </section>
+            </div>
+          </div>
         </div>
-        </section>
+      </div>
+    </section>
 
   </main>
 

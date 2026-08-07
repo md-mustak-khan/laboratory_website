@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab Protocols — CNAB</title>
+  <meta name="description" content="Step-by-step laboratory protocols and methods used in the CNAB laboratories, including preparation of growth media and seeding NGM plates." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
+</head>
+<body class="protocols-page">
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="./index.html" class="logo" aria-label="CNAB home">
+        <span class="logo-mark" aria-hidden="true">CN</span>
+        <span class="logo-text">
+          <strong>CNAB</strong>
+          <small>Centre for Nutraceutical &amp; Applied Biosciences</small>
+        </span>
+      </a>
+
+      <button type="button" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+        <li class="nav-item"><a href="./index.html">Home</a></li>
+        <li class="nav-item"><a href="./about.html">About</a></li>
+        <li class="nav-item has-dropdown">
+          <button class="nav-link" aria-haspopup="true" aria-expanded="false">
+            Laboratories
+          </button>
+          <ul class="dropdown" role="menu">
+            <li>
+              <a href="./lab-food-nutraceutical.html" class="lab1" role="menuitem">
+                <span class="dot"></span>
+                <span>
+                  <strong>Food Science &amp; Nutraceutical</strong>
+                  <small>Prof. dr. Dwaipayan Sikdar</small>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="./lab-applied-biosciences.html" class="lab2" role="menuitem">
+                <span class="dot"></span>
+                <span>
+                  <strong>Applied Biosciences</strong>
+                  <small>Assoc. Prof. Dr. Suman Mojumder</small>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="./research.html">Research</a></li>
+        <li class="nav-item"><a href="./publications.html">Publications</a></li>
+        <li class="nav-item"><a href="./people.html">People</a></li>
+        <li class="nav-item"><a href="./lab-protocols.html">Lab Protocols</a></li>
+        <li class="nav-item"><a href="./resources.html">Resources</a></li>
+        <li class="nav-item"><a href="./facilities.html">Facilities</a></li>
+        <li class="nav-item"><a href="./gallery.html">Gallery</a></li>
+        <li class="nav-item"><a href="./collaborations.html">Collaborations</a></li>
+        <li class="nav-item"><a href="./join-us.html">Join Us</a></li>
+        <li class="nav-item"><a href="./contact.html">Contact</a></li>
+      </ul>
+      </nav>
+      <div class="nav-backdrop" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-banner" aria-labelledby="page-title" data-bg-url="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+      <div class="container">
+        <div class="breadcrumbs"><a href="./index.html">Home</a><span>/</span>Lab Protocols</div>
+        <h1 id="page-title">Lab Protocols</h1>
+        <p>Step-by-step laboratory methods for maintaining C. elegans, preparing growth media, and setting up nematode plates for routine experiments.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="protocol-hero card reveal">
+          <div class="protocol-hero-content">
+            <span class="eyebrow">Interactive laboratory guide</span>
+            <h2>Follow each protocol carefully</h2>
+            <p>Use the checklist to track your progress and expand each step to read the full method. These protocols are written as practical, reproducible procedures for routine C. elegans culture and plate preparation.</p>
+          </div>
+          <div class="progress-card" aria-live="polite">
+            <div class="progress-label">Progress</div>
+            <div class="progress-meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="progress-text" id="progress-text">0 of 13 steps completed</div>
+          </div>
+        </div>
+
+        <div class="protocol-grid">
+          <aside class="protocol-sidebar card reveal" aria-label="Protocol overview">
+            <h3>Protocols in this guide</h3>
+            <ul class="protocol-nav">
+              <li><a href="#growth-media">1. Growth Media Preparation</a></li>
+              <li><a href="#ngm-plates">2. NGM Petri Plates</a></li>
+              <li><a href="#seed-plates">3. Seeding NGM Plates</a></li>
+              <li><a href="#culturing-c-elegans">4. Culturing C. elegans on Petri Plates</a></li>
+              <li><a href="#bleach-sync">5. Bleach Synchronization</a></li>
+              <li><a href="#egg-hatching">6. Egg Hatching Assay</a></li>
+              <li><a href="#lifespan-assay">7. Lifespan Assay</a></li>
+              <li><a href="#cadd">8. Computer-Aided Drug Design</a></li>
+              <li><a href="#network-pharma">9. Network Pharmacology</a></li>
+            </ul>
+            <div class="protocol-note">
+              <h4>Good practice</h4>
+              <p>Use sterile technique throughout. Keep plates dry and contamination-free, and label each batch clearly with date and contents.</p>
+            </div>
+          </aside>
+
+          <div class="protocol-content">
+            <article class="protocol-card card reveal" id="growth-media">
+              <div class="protocol-card-header">
+                <span class="badge">Protocol 1</span>
+                <h3>Preparation of Growth Media</h3>
+                <p>Although C. elegans can be maintained axenically, this method is difficult and often slows growth. In most laboratories, nematodes are maintained monoxenically using E. coli strain OP50 as a food source.</p>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 1:</strong> Prepare a starter culture of E. coli OP50.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Obtain the starter culture from the Caenorhabditis Genetics Center (CGC) or recover it from an existing worm plate.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 2:</strong> Streak the culture onto an LB agar plate.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Use a single colony to start the culture. Incubate overnight at 37 °C.</p>
+                  <h4>LB agar composition (per liter)</h4>
+                  <ul>
+                    <li>10 g Bacto-tryptone</li>
+                    <li>5 g Bacto-yeast extract</li>
+                    <li>5 g NaCl</li>
+                    <li>15 g agar</li>
+                  </ul>
+                  <p>Adjust the pH to 7.5 with NaOH before pouring and autoclaving.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 3:</strong> Inoculate LB broth with a single colony.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <h4>LB broth composition (per liter)</h4>
+                  <ul>
+                    <li>10 g Bacto-tryptone</li>
+                    <li>5 g Bacto-yeast extract</li>
+                    <li>5 g NaCl</li>
+                  </ul>
+                  <p>Adjust the pH to 7.0 with 1 M NaOH. Dispense 100 ml into 250 ml screw-cap bottles, autoclave, and store at room temperature for several months.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 4:</strong> Incubate the inoculated broth overnight.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Incubate at 37 °C overnight. The resulting E. coli OP50 culture is ready for seeding NGM plates.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 5:</strong> Store the bacterial cultures correctly.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Store both streak plates and liquid cultures at 4 °C. They remain usable for several months.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="ngm-plates">
+              <div class="protocol-card-header">
+                <span class="badge">Protocol 2</span>
+                <h3>Preparation of NGM Petri Plates</h3>
+                <p>Caenorhabditis elegans is routinely maintained on Nematode Growth Medium (NGM) agar poured aseptically into sterile Petri plates.</p>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 1:</strong> Choose the right plate size.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Use different plate sizes depending on the application:</p>
+                  <ul>
+                    <li><strong>35 mm:</strong> matings or assays using costly reagents</li>
+                    <li><strong>60 mm:</strong> general strain maintenance</li>
+                    <li><strong>100 mm:</strong> large cultures or mutant screens</li>
+                  </ul>
+                  <p>A peristaltic pump such as the Wheaton Unispense is recommended for even dispensing and uniform agar thickness.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 2:</strong> Prepare the NGM medium ingredients.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <h4>Equipment and reagents</h4>
+                  <ul>
+                    <li>NaCl</li>
+                    <li>Agar</li>
+                    <li>Peptone</li>
+                    <li>5 mg/ml cholesterol in ethanol (do not autoclave)</li>
+                    <li>1 M KPO₄ buffer, pH 6.0</li>
+                    <li>108.3 g KH₂PO₄</li>
+                    <li>35.6 g K₂HPO₄</li>
+                    <li>H₂O to 1 L</li>
+                    <li>1 M MgSO₄</li>
+                    <li>1 M CaCl₂</li>
+                    <li>Petri plates</li>
+                    <li>Peristaltic pump</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 3:</strong> Combine the base ingredients in a 2 L flask.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Combine the following into a 2 L Erlenmeyer flask:</p>
+                  <ul>
+                    <li>3 g NaCl</li>
+                    <li>17 g agar</li>
+                    <li>2.5 g peptone</li>
+                    <li>975 ml distilled H₂O</li>
+                  </ul>
+                  <p>Cover the flask with aluminum foil and autoclave for 50 minutes.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 4:</strong> Cool the flask and add sterile supplements.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Cool the flask in a 55 °C water bath for 15 minutes. Then add the sterile reagents:</p>
+                  <ul>
+                    <li>1 ml 1 M CaCl₂</li>
+                    <li>1 ml 5 mg/ml cholesterol</li>
+                    <li>1 ml 1 M MgSO₄</li>
+                    <li>25 ml 1 M KPO₄ buffer</li>
+                  </ul>
+                  <p>Swirl gently to mix.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 5:</strong> Pour plates aseptically.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Dispense aseptically into Petri plates using the peristaltic pump, filling each plate about two-thirds full.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 6:</strong> Allow the plates to dry and check contamination.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Leave the plates at room temperature for 2–3 days to detect contamination and allow excess moisture to evaporate.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 7:</strong> Store the plates properly.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Store plates in an airtight container at room temperature. They remain usable for several weeks.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="seed-plates">
+              <div class="protocol-card-header">
+                <span class="badge">Protocol 3</span>
+                <h3>Seeding NGM Plates</h3>
+                <p>Use sterile technique to add E. coli OP50 to solidified NGM plates so that worms can feed and grow efficiently.</p>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 1:</strong> Pipette the bacterial culture onto the plate.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Use 0.05 ml for small or medium plates or 0.1 ml for large plates.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 2:</strong> Spread the bacterial lawn evenly.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Optionally spread the drop with a pipette tip or sterile glass rod, keeping the lawn centered to prevent the worms from crawling up the sides and drying out.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 3:</strong> Allow the plates to dry.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Leave the seeded plates at room temperature overnight or incubate them at 37 °C for 8 hours, then cool before use.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 4:</strong> Store the seeded plates.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Store seeded plates in an airtight container. They remain usable for 2–3 weeks.</p>
+                </div>
+              </div>
+
+              <div class="protocol-reference">
+                <h4>Reference</h4>
+                <p>WormBook: The Online Review of C. elegans Biology. <a href="http://www.wormbook.org/" target="_blank" rel="noopener noreferrer">Visit WormBook</a></p>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="culturing-c-elegans">
+              <div class="protocol-card-header">
+                <span class="badge">Protocol 4</span>
+                <h3>Culturing C. elegans on Petri Plates</h3>
+                <p>Use precise transfer or chunking methods to move worms between NGM plates while keeping stocks healthy and contamination-free.</p>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 1:</strong> Prepare a worm picker.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Use a 1-inch piece of 32-gauge platinum wire mounted in a Pasteur pipette or loop holder. Flatten or slightly bend the tip into a small hook and avoid sharp points.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 2:</strong> Pick individual worms carefully.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Gently touch the side of the worm with the wire tip and lift. Alternatively, pick up a small blob of E. coli OP50 first and let the worm stick to the bacteria.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 3:</strong> Transfer worms to a fresh plate.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Touch the picker lightly to the new plate surface and wait for the worm to crawl off. This method is ideal for precision transfers and maintaining genetic stocks.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 4:</strong> Use the chunking method for many worms.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Use a sterilized scalpel or spatula to cut and move a small chunk of agar containing worms to a fresh NGM plate. The worms will crawl out and spread onto the bacterial lawn. This is convenient for homozygous stocks or starved plates, but not for heterozygous or mating stocks.</p>
+                </div>
+              </div>
+
+              <div class="protocol-reference">
+                <h4>Reference</h4>
+                <p>WormBook: The Online Review of C. elegans Biology. <a href="http://www.wormbook.org/" target="_blank" rel="noopener noreferrer">Visit WormBook</a></p>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="bleach-sync">
+              <div class="protocol-card-header">
+                <span class="badge">Protocol 5</span>
+                <h3>Bleach Synchronization Protocol for Synchronous L1 Cultures</h3>
+                <p>Use alkaline bleach to dissolve gravid adults while leaving embryos intact so that all animals hatch together at the L1 stage.</p>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 1:</strong> Collect gravid adults from well-seeded NGM plates.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Wash worms from 3–6 plates into a 15 ml conical tube with M9 buffer, adjusting the volume to 10–15 ml while avoiding large agar chunks or thick bacterial clumps.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 2:</strong> Pellet the worms and remove the supernatant.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Centrifuge at 1500–2000 rpm for 1–2 minutes, then aspirate the supernatant, leaving about 0.5–1 ml above the pellet without disturbing it.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 3:</strong> Add bleach solution and incubate briefly.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Prepare fresh bleaching solution, for example 2 parts household bleach, 1 part 5 N NaOH, and 2 parts ddH₂O. Add 5–8 ml to the pellet and invert gently on a rocker for 5–10 minutes until adult bodies dissolve but eggs remain intact.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 4:</strong> Wash the eggs thoroughly to remove bleach.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Pellet the eggs by centrifuging, aspirate the bleach solution, add sterile M9, resuspend, and wash 2–3 times until all traces of bleach are removed.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 5:</strong> Hatch embryos without food to arrest at L1.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Resuspend the eggs in 5–10 ml sterile M9 or S medium in a vented tube and incubate at 20 °C with gentle shaking for 12–24 h without food.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 6:</strong> Transfer synchronized L1 larvae to fresh plates.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Estimate concentration by counting in a small aliquot and transfer the desired number of L1 larvae to OP50-seeded NGM plates or liquid cultures.</p>
+                </div>
+              </div>
+
+              <div class="protocol-reference">
+                <h4>References</h4>
+                <p>Stiernagle, T. Maintenance of C. elegans. WormBook (2006). <a href="https://www.ncbi.nlm.nih.gov/books/NBK19649/" target="_blank" rel="noopener noreferrer">NCBI Bookshelf</a></p>
+                <p>Porta de la Riva, M. et al. Basic Caenorhabditis elegans methods: Synchronization and observation. J. Vis. Exp. 64, e4019 (2012). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3607348/" target="_blank" rel="noopener noreferrer">PMC Article</a></p>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="egg-hatching">
+              <div class="protocol-card-header">
+                <span class="badge">Protocol 6</span>
+                <h3>Egg Hatching Assay for Evaluating Anthelmintic Activity</h3>
+                <p>This assay measures how well compounds inhibit C. elegans egg hatching and is useful for medium-throughput anthelmintic screening.</p>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 1:</strong> Prepare healthy gravid worms and suitable strains.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Use N2 Bristol or other relevant strains maintained on NGM agar plates seeded with E. coli OP50 at 18–25 °C. Transfer worms regularly to keep healthy gravid adults available for egg isolation.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 2:</strong> Prepare assay plates and controls.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Prepare agar-only plates (for example 1.7 g agar in 100 ml water) in 35 mm dishes, dry them for 12–24 h, and mark the bottom into four quadrants. Prepare fresh compound stocks in M9 or sterile water with identical solvent percentages across all conditions.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 3:</strong> Obtain eggs and make a homogeneous egg stock.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Collect gravid adults, wash them to remove bacteria, expose them to brief alkaline hypochlorite treatment, wash the released eggs thoroughly, and adjust the suspension to roughly 100–140 eggs per 100 µl.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 4:</strong> Expose eggs to drug or control solutions.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Transfer 500 µl egg stock and 500 µl test solution to each tube, mix gently, and incubate for 4–8 h at 18–22 °C. Keep solvent and exposure time constant across conditions.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 5:</strong> Recover the eggs and transfer them to agar plates.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Pellet eggs by centrifugation, wash them with M9, resuspend in 240 µl M9, and dispense 80 µl onto each of three pre-labelled plates so that eggs are evenly distributed.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 6:</strong> Image and count hatched versus unhatched embryos.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Incubate plates at 16–18 °C for 24 h, image each quadrant with a stereomicroscope and digital camera, and count unhatched eggs and L1 larvae using ImageJ or similar software.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 7:</strong> Analyze the data and estimate potency.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Calculate the fraction of unhatched eggs, pool data from at least three independent experiments, and fit a sigmoidal concentration-response curve to estimate EC50 or EC90 values.</p>
+                </div>
+              </div>
+
+              <div class="protocol-reference">
+                <h4>Reference</h4>
+                <p>Hernando G, Bouzat C. Evaluating anthelmintic activity through Caenorhabditis elegans egg hatching assay. MethodsX. 2024;12:102743. doi:10.1016/j.mex.2024.102743. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11126527/" target="_blank" rel="noopener noreferrer">PMC Article</a></p>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="lifespan-assay">
+              <div class="protocol-card-header">
+                <span class="badge">Protocol 7</span>
+                <h3>C. elegans Lifespan Assay on Solid Media</h3>
+                <p>This assay tracks survival over time to assess the effects of drugs, diet, or genetic interventions on nematode longevity.</p>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 1:</strong> Prepare lifespan assay plates.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Prepare standard NGM plates and seed them with E. coli OP50. For lifespan assays, supplement with FUDR and ampicillin before pouring, and store Amp/FUDR plates at 4 °C until needed.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 2:</strong> Obtain age-synchronized worms.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Use a timed egg-laying procedure or another synchronization method to produce a population of healthy, well-fed L4 larvae at 20 °C.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 3:</strong> Set up the assay and define day zero.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Transfer synchronized L4 larvae onto OP50-seeded Amp/FUDR plates, with about 25–30 worms per plate and at least two to three replicate plates per condition. Designate the transfer day as Adult Day 0.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 4:</strong> Monitor plate quality and transfer worms as needed.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Inspect plates every 24 h and then every 2–3 days thereafter. Transfer worms to fresh Amp/FUDR plates when bacterial lawns deplete, contamination appears, or progeny become excessive.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 5:</strong> Score survival at each observation point.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Tap the plate gently and observe movement. Worms that respond are scored as alive; those that do not respond and fail to move after gentle stimulation are scored as dead.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 6:</strong> Record and analyze lifespan data.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Record live, dead, and censored worms on each scoring day, then generate Kaplan–Meier curves and compare survival distributions with the log-rank test.</p>
+                </div>
+              </div>
+
+              <div class="protocol-reference">
+                <h4>Reference</h4>
+                <p>Smith, E. D. et al. Measuring Caenorhabditis elegans Life Span on Solid Media. JoVE, 2008. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2794294/" target="_blank" rel="noopener noreferrer">PMC Article</a></p>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="cadd">
+              <div class="protocol-card-header">
+                <span class="badge">Protocol 8</span>
+                <h3>Computer-Aided Drug Design (CADD) Protocol</h3>
+                <p>This workflow uses computational techniques to identify, refine, and prioritize drug candidates for biological targets.</p>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 1:</strong> Identify and validate a target.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Select disease-associated targets from UniProt or PDB and assess druggability of binding pockets using CASTp or Q-SiteFinder.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 2:</strong> Prepare the protein structure.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Retrieve or model 3D structures with SWISS-MODEL or AlphaFold, then refine them with GROMACS molecular dynamics.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 3:</strong> Identify binding sites and prepare ligands.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Locate active sites using CASTp, fpocket, or conservation analysis. Gather compounds from ZINC, PubChem, or ChEMBL and filter with Lipinski's Rule of Five in SwissADME.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 4:</strong> Perform virtual screening and docking.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Screen libraries with AutoDock Vina or Glide, then perform more precise docking on the best hits and analyze using PyMOL.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 5:</strong> Optimize leads and predict ADMET properties.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Improve leads with QSAR or pharmacophore modeling, and evaluate drug-likeness and safety with pkCSM or admetSAR.</p>
+                </div>
+              </div>
+
+              <div class="protocol-reference">
+                <h4>Reference</h4>
+                <p>Pinzi, L.; Rastelli, G. Molecular Docking: Shifting Paradigms in Drug Discovery. Int. J. Mol. Sci. 2019, 20, 4331. <a href="https://microbenotes.com/computer-aided-drug-design-cadd/" target="_blank" rel="noopener noreferrer">Microbe Notes</a></p>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="network-pharma">
+              <div class="protocol-card-header">
+                <span class="badge">Protocol 9</span>
+                <h3>Network Pharmacology Protocol</h3>
+                <p>Use systems biology and bioinformatics to uncover multi-target mechanisms for drug compounds and pathways.</p>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 1:</strong> Collect disease targets and drug candidates.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Gather disease-related genes from DisGeNET, OMIM, GeneCards, or CTD, and retrieve compounds from TCMSP, PubChem, ChEMBL, or DrugBank. Filter compounds for drug-likeness with Lipinski's Rule of Five or SwissADME.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 2:</strong> Predict compound-target interactions.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Use SEA, STITCH, SwissTargetPrediction, or PharmMapper to predict targets and cross-reference them with disease-associated targets.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 3:</strong> Build and analyze interaction networks.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Construct compound-target and protein-protein interaction networks in STRING or Cytoscape, and analyze hubs or key nodes using degree, betweenness, and closeness metrics.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 4:</strong> Enrich pathways and visualize modules.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Perform GO, KEGG, or Reactome enrichment with DAVID, Metascape, or g:Profiler, then visualize the network in Cytoscape or Gephi to identify functional modules.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-head">
+                  <label class="step-label">
+                    <input class="step-checkbox" type="checkbox" />
+                    <span><strong>Step 5:</strong> Validate mechanisms experimentally.</span>
+                  </label>
+                  <button class="step-toggle" type="button" aria-expanded="false">Show details</button>
+                </div>
+                <div class="step-content">
+                  <p>Prioritize key compounds and targets for experimental validation using qPCR, Western blotting, enzyme assays, or phenotypic assays.</p>
+                </div>
+              </div>
+
+              <div class="protocol-reference">
+                <h4>References</h4>
+                <p>Hopkins, A. L. Network pharmacology: the next paradigm in drug discovery. Nat. Chem. Biol. 2008, 4, 682–690.</p>
+                <p>Li, S.; Zhang, B. Traditional Chinese medicine network pharmacology: theory, methodology and application. Chin. J. Nat. Med. 2013, 11, 110–120.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>CNAB</h4>
+          <p>The Centre for Nutraceutical and Applied Biosciences (CNAB) is a joint academic research centre within the Department of Biochemistry and Molecular Biology, University of Chittagong, Bangladesh.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./research.html">Research</a></li>
+            <li><a href="./publications.html">Publications</a></li>
+            <li><a href="./people.html">People</a></li>
+            <li><a href="./join-us.html">Join Us</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links footer-contact">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span><strong>Prof. Dr. Dwaipayan Sikdar</strong><br/>dsikdar@cu.ac.bd</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span><strong>Assoc. Prof. Dr. Suman Mojumder</strong><br/>msumanbmb@cu.ac.bd</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s-8-7.58-8-13a8 8 0 1116 0c0 5.42-8 13-8 13z"/><circle cx="12" cy="9" r="3"/></svg>
+              <span>Department of Biochemistry &amp; Molecular Biology, University of Chittagong, Chattogram-4331, Bangladesh</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© <span id="current-year"></span> Centre for Nutraceutical and Applied Biosciences (CNAB), University of Chittagong.</div>
+        <div class="footer-credit">Website design and development by <a href="https://md-mustak-khan.github.io/" target="_blank" rel="noopener noreferrer">Md. Mustak Khan</a>.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+  <script src="./js/main.js"></script>
+  <script>
+    const stepItems = Array.from(document.querySelectorAll('.step-item'));
+    const stepCheckboxes = Array.from(document.querySelectorAll('.step-checkbox'));
+    const stepToggles = Array.from(document.querySelectorAll('.step-toggle'));
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+
+    function updateProgress() {
+      const completed = stepCheckboxes.filter((input) => input.checked).length;
+      const total = stepCheckboxes.length;
+      const percent = Math.round((completed / total) * 100);
+      progressBar.style.width = `${percent}%`;
+      progressText.textContent = `${completed} of ${total} steps completed`;
+      progressBar.parentElement.setAttribute('aria-valuenow', String(percent));
+    }
+
+    stepCheckboxes.forEach((checkbox) => {
+      checkbox.addEventListener('change', () => {
+        checkbox.closest('.step-item').classList.toggle('completed', checkbox.checked);
+        updateProgress();
+      });
+    });
+
+    stepToggles.forEach((button) => {
+      button.addEventListener('click', () => {
+        const stepItem = button.closest('.step-item');
+        const isOpen = stepItem.classList.toggle('open');
+        button.setAttribute('aria-expanded', String(isOpen));
+        button.textContent = isOpen ? 'Hide details' : 'Show details';
+      });
+    });
+
+    updateProgress();
+  </script>
+</body>
+</html>

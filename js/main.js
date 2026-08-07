@@ -22,7 +22,9 @@
     initBackgroundImages();
     initFooterYear();
     initSmoothScroll();
+    initProtocolNavActiveState();
     initRevealAnimations();
+    initCounters();
     initDropdowns();
   }
 
@@ -316,6 +318,25 @@
     });
   }
 
+  /* ---------- Active protocol nav link ---------- */
+  function initProtocolNavActiveState() {
+    const sections = document.querySelectorAll('.protocol-content [id], .resource-group[id]');
+    if (!sections.length) return;
+    const navLinks = document.querySelectorAll('.protocol-nav a');
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        const id = entry.target.id;
+        const link = document.querySelector('.protocol-nav a[href="#' + id + '"]');
+        if (!link) return;
+        if (entry.isIntersecting) {
+          navLinks.forEach(function (other) { other.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (section) { observer.observe(section); });
+  }
+
   /* ---------- Reveal animations ---------- */
   function initRevealAnimations() {
     const items = document.querySelectorAll('.reveal');
@@ -333,6 +354,46 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     items.forEach(function (el) { observer.observe(el); });
+  }
+
+  /* ---------- Stats number counters ---------- */
+  function initCounters() {
+    const statsBar = document.querySelector('.stats-bar');
+    if (!statsBar) return;
+    const numbers = statsBar.querySelectorAll('.stat-number[data-target]');
+    if (!numbers.length) return;
+
+    function animateNumber(el) {
+      const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+      const duration = parseInt(el.getAttribute('data-duration'), 10) || 2000;
+      const suffix = el.getAttribute('data-suffix') || '';
+      const start = performance.now();
+
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const value = Math.floor(progress * target);
+        el.textContent = value + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = target + suffix;
+      }
+      requestAnimationFrame(tick);
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      numbers.forEach(animateNumber);
+      return;
+    }
+
+    const obs = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateNumber(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.35 });
+
+    numbers.forEach(function (n) { obs.observe(n); });
   }
 
   /* ---------- Dropdowns (desktop hover + mobile toggle + keyboard) ---------- */

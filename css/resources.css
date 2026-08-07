@@ -66,29 +66,34 @@
 .resources-list{margin-top:6px}
 .resource-group{
   position:relative;
-  background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,255,0.95));
-  border:1px solid var(--card-border);
-  border-radius:var(--radius);
-  padding:16px;
-  margin-bottom:18px;
-  box-shadow:var(--card-elev);
-  transition:transform .18s ease,box-shadow .18s ease;
+  margin-bottom: var(--space-5);
+}
+.resource-group.card{
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+}
+.resource-group.card:hover{
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
 }
 .resource-group::before{
-  content:'';
-  position:absolute;
-  left:0;
-  top:0;
-  bottom:0;
-  width:6px;
-  border-top-left-radius:var(--radius);
-  border-bottom-left-radius:var(--radius);
-  background:linear-gradient(180deg,var(--gradient-start),var(--gradient-end));
+  display:none;
 }
-.resource-group:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(12,18,35,0.08)}
-.resource-group h3{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:1.05rem;margin:0 0 8px 12px}
+.resource-group h3{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-size:1.25rem;
+  margin:0 0 var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+}
 .resource-group h3 i.fa-chevron-up{opacity:0.65}
-.resource-details{overflow:visible;max-height:none;padding-top:6px;margin-left:12px}
+.resource-details{overflow:visible;max-height:none;padding-top:0;margin-left:0}
 
 /* subsection headings and descriptions inside resource details */
 .resource-details > h4{

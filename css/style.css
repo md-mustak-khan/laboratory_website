@@ -5405,26 +5405,52 @@ body.protocols-page .page-banner {
   gap: 0.3rem;
 }
 
-.student-email-link {
+.student-links-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  width: 100%;
+}
+
+.student-email-link,
+.student-social-link {
   font-size: 0.8rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.3rem 0.75rem;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
   background: var(--bg-alt);
   border: 1px solid var(--border);
   border-radius: 6px;
   color: var(--text);
   text-decoration: none;
-  font-weight: 500;
-  margin-top: auto;
+  font-weight: 600;
   transition: all 0.2s var(--ease);
+  line-height: 1.2;
+}
+
+.student-email-link {
+  color: var(--primary-dark);
 }
 
 .student-email-link:hover {
   background: var(--primary);
   color: var(--white);
   border-color: var(--primary);
+}
+
+.student-linkedin-link {
+  color: #0A66C2;
+}
+
+.student-linkedin-link:hover {
+  background: #0A66C2;
+  color: var(--white);
+  border-color: #0A66C2;
 }
 
 /* Dark Theme Adjustments for Students */
@@ -5448,10 +5474,30 @@ body.protocols-page .page-banner {
   color: #93C5FD !important;
 }
 
-[data-theme="dark"] .student-email-link {
+[data-theme="dark"] .student-email-link,
+[data-theme="dark"] .student-social-link {
   background: #1E293B !important;
   border-color: var(--border) !important;
-  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .student-email-link {
+  color: #93C5FD !important;
+}
+
+[data-theme="dark"] .student-linkedin-link {
+  color: #60A5FA !important;
+}
+
+[data-theme="dark"] .student-email-link:hover {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  border-color: var(--primary) !important;
+}
+
+[data-theme="dark"] .student-linkedin-link:hover {
+  background: #0A66C2 !important;
+  color: #ffffff !important;
+  border-color: #0A66C2 !important;
 }
 
 @media (max-width: 768px) {

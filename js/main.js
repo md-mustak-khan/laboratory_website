@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CNAB main.js
+   Laboratory of Food Science and Nutraceuticals (LFSN) main.js
    - Mobile nav toggle (with backdrop)
    - Sticky header scroll effect
    - Active nav link highlighting (based on current filename)
@@ -7,6 +7,10 @@
    - Smooth scroll for in-page anchors
    - IntersectionObserver reveal animations
    - Dropdown keyboard/accessibility support
+   - Metric counter animations
+   - Molarity & Dilution Calculator (Protocols)
+   - FAQ Accordion (Join Us)
+   - Contact / Enquiry Form validation
    ========================================================================== */
 
 (function () {
@@ -15,9 +19,9 @@
   document.addEventListener('DOMContentLoaded', init);
 
   function init() {
+    initThemeToggle();
     initMobileNav();
     initStickyHeader();
-    initMoreNav();
     initActiveLink();
     initBackgroundImages();
     initFooterYear();
@@ -26,6 +30,13 @@
     initRevealAnimations();
     initCounters();
     initDropdowns();
+    initProtocolCalculators();
+    initFaqAccordion();
+    initForms();
+    initPublicationAbstracts();
+    initResourceFilter();
+    initAlumniFeatures();
+    initFacilitiesFilter();
   }
 
   /* ---------- Background images from HTML ---------- */
@@ -82,80 +93,35 @@
     const backdrop = document.querySelector('.nav-backdrop');
     if (!toggle || !nav) return;
 
-    // Debug: expose a small nav state logger if console available
-    function logNavState(prefix) {
-      try {
-        const vw = window.innerWidth;
-        const items = Array.from(nav.querySelectorAll('.nav-list > .nav-item'));
-        const visible = items.filter(i => (i.style.display !== 'none'));
-        console.debug('[nav-debug]', prefix, { vw: vw, navScroll: nav.scrollTop, itemsTotal: items.length, itemsVisible: visible.length, moreExists: !!nav.querySelector('.more-nav') });
-      } catch (e) { /* ignore */ }
-    }
-
     function setNavState(isOpen) {
-      // update aria and open class, let CSS handle positioning and transitions
       toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       nav.classList.toggle('open', isOpen);
       if (backdrop) backdrop.classList.toggle('open', isOpen);
       document.body.style.overflow = isOpen ? 'hidden' : '';
-      // ensure mobile close button is visible when open
       const navClose = nav.querySelector('.nav-close');
       if (navClose) navClose.style.display = isOpen ? 'flex' : 'none';
-      logNavState(isOpen ? 'open-after-class' : 'closed-after-class');
     }
 
     function openNav() {
-      logNavState('open-before');
       setNavState(true);
-      // keep the menu anchored at the top so the full page list can be scrolled smoothly on mobile
-      function doTopAndFocus() {
-        try {
-          try { if (document.activeElement && typeof document.activeElement.blur === 'function') document.activeElement.blur(); } catch (e) {}
-          try {
-            const inner = nav.querySelector('.nav-list');
-            if (inner && 'scrollTop' in inner) {
-              inner.style.scrollBehavior = 'auto';
-              inner.scrollTop = 0;
-              inner.style.scrollBehavior = '';
-            }
-            if ('scrollTop' in nav) {
-              nav.style.scrollBehavior = 'auto';
-              nav.scrollTop = 0;
-              nav.style.scrollBehavior = '';
-            }
-          } catch (err) { /* ignore */ }
-        } catch (e) { /* ignore */ }
-      }
-
-      // fallback timer in case transitionend doesn't fire
-      const fallback = setTimeout(doTopAndFocus, 140);
-      function onTransition(e) {
-        // only run when the nav's position changed (left)
-        if (e.propertyName && e.propertyName.indexOf('left') === -1 && e.propertyName.indexOf('transform') === -1) return;
-        clearTimeout(fallback);
-        doTopAndFocus();
-      }
-      nav.addEventListener('transitionend', function (e) { onTransition(e); logNavState('open-after-transition'); }, { once: true });
     }
     function closeNav() {
       setNavState(false);
     }
 
-    // ensure a mobile-only nav close button exists; add/remove on resize
     (function ensureNavClose() {
       function createClose() {
-        if (nav.querySelector('.nav-close')) return;
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'nav-close';
-        btn.setAttribute('aria-label', 'Close navigation');
-        btn.innerHTML = '&times;';
-        btn.style.display = 'none';
-        btn.addEventListener('click', closeNav);
-        nav.insertBefore(btn, nav.firstChild);
+        if (nav.querySelector('.nav-header-bar')) return;
+        const bar = document.createElement('div');
+        bar.className = 'nav-header-bar';
+        bar.innerHTML = '<div class="nav-header-title"><span>LFSN</span> Navigation</div>' +
+          '<button type="button" class="nav-close" aria-label="Close navigation">&times;</button>';
+        const closeBtn = bar.querySelector('.nav-close');
+        if (closeBtn) closeBtn.addEventListener('click', closeNav);
+        nav.insertBefore(bar, nav.firstChild);
       }
       function removeClose() {
-        const existing = nav.querySelector('.nav-close');
+        const existing = nav.querySelector('.nav-header-bar') || nav.querySelector('.nav-close');
         if (existing) existing.remove();
       }
 
@@ -175,19 +141,16 @@
       backdrop.addEventListener('click', closeNav);
     }
 
-    // Close nav when a link is clicked (mobile)
     nav.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         if (window.innerWidth < 960) closeNav();
       });
     });
 
-    // Close on Escape
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && nav.classList.contains('open')) closeNav();
     });
 
-    // Reset on resize
     window.addEventListener('resize', function () {
       if (window.innerWidth >= 960) {
         closeNav();
@@ -209,72 +172,6 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  /* ---------- Compact desktop navigation ---------- */
-  function initMoreNav() {
-    const navList = document.querySelector('.nav-list');
-    if (!navList) return;
-
-    const items = Array.from(navList.querySelectorAll(':scope > .nav-item'));
-    // Use matchMedia for reliable breakpoint checks and don't collapse on mobile
-    const isDesktop = window.matchMedia('(min-width: 960px)').matches;
-    const visibleCount = isDesktop ? 5 : 999;
-    const existingMore = navList.querySelector('.more-nav');
-
-    function resetNav() {
-      if (existingMore) existingMore.remove();
-      items.forEach(function (item) {
-        if (item.classList.contains('more-nav')) return;
-        item.style.display = '';
-      });
-    }
-
-    if (window.innerWidth < 960 || items.length <= visibleCount) {
-      resetNav();
-      return;
-    }
-
-    const hiddenItems = items.slice(visibleCount);
-    hiddenItems.forEach(function (item) {
-      item.style.display = 'none';
-    });
-
-    if (existingMore) {
-      const dropdown = existingMore.querySelector('.dropdown');
-      if (dropdown) {
-        dropdown.innerHTML = '';
-        hiddenItems.forEach(function (item) {
-          const clone = item.cloneNode(true);
-          clone.style.display = '';
-          dropdown.appendChild(clone);
-        });
-      }
-      return;
-    }
-
-    const moreItem = document.createElement('li');
-    moreItem.className = 'nav-item has-dropdown more-nav';
-    moreItem.innerHTML = '<button class="nav-link" aria-haspopup="true" aria-expanded="false">More</button><ul class="dropdown" role="menu"></ul>';
-    const dropdown = moreItem.querySelector('.dropdown');
-    hiddenItems.forEach(function (item) {
-      const clone = item.cloneNode(true);
-      clone.style.display = '';
-      dropdown.appendChild(clone);
-    });
-
-    const insertAfter = items[visibleCount - 1];
-    if (insertAfter && insertAfter.parentNode === navList) {
-      insertAfter.insertAdjacentElement('afterend', moreItem);
-    } else {
-      navList.appendChild(moreItem);
-    }
-
-    // add a single resize listener to recompute nav behaviour
-    if (!initMoreNav._listening) {
-      window.addEventListener('resize', initMoreNav);
-      initMoreNav._listening = true;
-    }
-  }
-
   /* ---------- Active nav link ---------- */
   function initActiveLink() {
     const path = window.location.pathname;
@@ -286,7 +183,6 @@
       const linkFile = href.substring(href.lastIndexOf('/') + 1);
       if (linkFile === file) {
         link.classList.add('active');
-        // Also mark parent dropdown trigger if any
         const parentItem = link.closest('.nav-item.has-dropdown');
         if (parentItem) {
           const trigger = parentItem.querySelector(':scope > .nav-link');
@@ -352,26 +248,33 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.01, rootMargin: '0px 0px 100px 0px' });
     items.forEach(function (el) { observer.observe(el); });
+
+    // Automatically make hash targets visible immediately
+    if (window.location.hash) {
+      try {
+        const hashEl = document.querySelector(window.location.hash);
+        if (hashEl) hashEl.classList.add('visible');
+      } catch (e) {}
+    }
   }
 
-  /* ---------- Stats number counters ---------- */
+  /* ---------- Stats / Metric Counters ---------- */
   function initCounters() {
-    const statsBar = document.querySelector('.stats-bar');
-    if (!statsBar) return;
-    const numbers = statsBar.querySelectorAll('.stat-number[data-target]');
-    if (!numbers.length) return;
+    const counterElements = document.querySelectorAll('[data-counter-target]');
+    if (!counterElements.length) return;
 
     function animateNumber(el) {
-      const target = parseInt(el.getAttribute('data-target'), 10) || 0;
-      const duration = parseInt(el.getAttribute('data-duration'), 10) || 2000;
-      const suffix = el.getAttribute('data-suffix') || '';
+      const target = parseInt(el.getAttribute('data-counter-target'), 10) || 0;
+      const suffix = el.getAttribute('data-counter-suffix') || '';
+      const duration = 1800;
       const start = performance.now();
 
       function tick(now) {
         const progress = Math.min((now - start) / duration, 1);
-        const value = Math.floor(progress * target);
+        const easeOutQuad = 1 - (1 - progress) * (1 - progress);
+        const value = Math.floor(easeOutQuad * target);
         el.textContent = value + suffix;
         if (progress < 1) requestAnimationFrame(tick);
         else el.textContent = target + suffix;
@@ -380,7 +283,7 @@
     }
 
     if (!('IntersectionObserver' in window)) {
-      numbers.forEach(animateNumber);
+      counterElements.forEach(animateNumber);
       return;
     }
 
@@ -393,28 +296,25 @@
       });
     }, { threshold: 0.35 });
 
-    numbers.forEach(function (n) { obs.observe(n); });
+    counterElements.forEach(function (n) { obs.observe(n); });
   }
 
-  /* ---------- Dropdowns (desktop hover + mobile toggle + keyboard) ---------- */
+  /* ---------- Dropdowns (Desktop hover + Mobile click + Keyboard) ---------- */
   function initDropdowns() {
     const dropdowns = document.querySelectorAll('.nav-item.has-dropdown');
     dropdowns.forEach(function (item) {
       const trigger = item.querySelector(':scope > .nav-link');
       if (!trigger) return;
 
-      // Mobile: toggle on click
       trigger.addEventListener('click', function (e) {
         if (window.innerWidth < 960) {
           e.preventDefault();
           const isOpen = item.classList.contains('open');
-          // close others
           dropdowns.forEach(function (d) { d.classList.remove('open'); });
           if (!isOpen) item.classList.add('open');
         }
       });
 
-      // Keyboard: Enter/Space to open, Escape to close
       trigger.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') {
           if (window.innerWidth >= 960) {
@@ -430,12 +330,477 @@
       });
     });
 
-    // Close dropdowns when clicking outside (desktop)
     document.addEventListener('click', function (e) {
       if (window.innerWidth >= 960) return;
       if (!e.target.closest('.nav-item.has-dropdown')) {
         dropdowns.forEach(function (d) { d.classList.remove('open'); });
       }
+    });
+  }
+
+  /* ---------- Molarity & Dilution Calculator (Protocols) ---------- */
+  function initProtocolCalculators() {
+    const molWeight = document.getElementById('calc-mw');
+    const molConc = document.getElementById('calc-conc');
+    const molVol = document.getElementById('calc-vol');
+    const molResult = document.getElementById('calc-mass-result');
+
+    function calculateMolarity() {
+      if (!molWeight || !molConc || !molVol || !molResult) return;
+      const mw = parseFloat(molWeight.value) || 0;
+      const conc = parseFloat(molConc.value) || 0; // Molar
+      const vol = parseFloat(molVol.value) || 0;   // mL
+      if (mw > 0 && conc > 0 && vol > 0) {
+        const grams = (mw * conc * vol) / 1000;
+        molResult.textContent = grams >= 1 ? grams.toFixed(3) + ' g' : (grams * 1000).toFixed(2) + ' mg';
+      } else {
+        molResult.textContent = '0.00 g';
+      }
+    }
+
+    if (molWeight && molConc && molVol) {
+      [molWeight, molConc, molVol].forEach(function (input) {
+        input.addEventListener('input', calculateMolarity);
+      });
+    }
+
+    // Dilution calculator: C1 * V1 = C2 * V2
+    const c1 = document.getElementById('calc-c1');
+    const v1Result = document.getElementById('calc-v1-result');
+    const c2 = document.getElementById('calc-c2');
+    const v2 = document.getElementById('calc-v2');
+
+    function calculateDilution() {
+      if (!c1 || !v1Result || !c2 || !v2) return;
+      const stockC1 = parseFloat(c1.value) || 0;
+      const targetC2 = parseFloat(c2.value) || 0;
+      const targetV2 = parseFloat(v2.value) || 0;
+
+      if (stockC1 > 0 && targetC2 > 0 && targetV2 > 0 && targetC2 <= stockC1) {
+        const reqV1 = (targetC2 * targetV2) / stockC1;
+        v1Result.textContent = reqV1 >= 1 ? reqV1.toFixed(2) + ' mL' : (reqV1 * 1000).toFixed(1) + ' µL';
+      } else if (targetC2 > stockC1) {
+        v1Result.textContent = 'Error: Target C2 > Stock C1';
+      } else {
+        v1Result.textContent = '0.00 mL';
+      }
+    }
+
+    if (c1 && c2 && v2) {
+      [c1, c2, v2].forEach(function (input) {
+        input.addEventListener('input', calculateDilution);
+      });
+    }
+  }
+
+  /* ---------- FAQ Accordion (Join Us) ---------- */
+  function initFaqAccordion() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(function (item) {
+      const trigger = item.querySelector('.faq-trigger');
+      if (!trigger) return;
+      trigger.addEventListener('click', function () {
+        const isOpen = item.classList.contains('open');
+        faqItems.forEach(function (f) { f.classList.remove('open'); });
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  }
+
+  /* ---------- Form Submissions & Application Handling ---------- */
+  function initForms() {
+    const contactForm = document.getElementById('contact-form');
+    const undergradAppForm = document.getElementById('undergrad-app-form');
+
+    // Generic contact form handler
+    if (contactForm) {
+      const status = document.getElementById('contact-form-status');
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = (contactForm.querySelector('[name="name"]') || {}).value || '';
+        const email = (contactForm.querySelector('[name="email"]') || {}).value || '';
+        const msg = (contactForm.querySelector('[name="message"]') || {}).value || '';
+
+        if (!name || !email || !msg) {
+          if (status) {
+            status.textContent = 'Please fill in all required fields.';
+            status.style.color = '#ef4444';
+          }
+          return;
+        }
+
+        const mailtoUrl = 'mailto:dsikdar@cu.ac.bd?subject=' + encodeURIComponent('LFSN Website Contact Inquiry') +
+          '&body=' + encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + msg);
+
+        if (status) {
+          status.textContent = 'Opening your email client to send your message to dsikdar@cu.ac.bd...';
+          status.style.color = 'var(--lab2-accent-dark)';
+        }
+
+        window.location.href = mailtoUrl;
+        contactForm.reset();
+      });
+    }
+
+    // Undergraduate Laboratory Application Form
+    if (undergradAppForm) {
+      // Configuration: Deployed Google Apps Script Web App URL
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyquZcBTwNlyN-vsNM9J-AONaiPs4gj_c0Dw9QMbMJms9scGAAFlnk-kwKQguzIIFw/exec';
+
+      const appStatus = document.getElementById('app-form-status');
+      const submitBtn = document.getElementById('app-submit-btn');
+      const successBox = document.getElementById('app-success-box');
+      const confName = document.getElementById('conf-applicant-name');
+      const confEmail = document.getElementById('conf-applicant-email');
+      const submitAnotherBtn = document.getElementById('app-submit-another-btn');
+
+      // Helper to convert File to Base64 object
+      function fileToBase64(file) {
+        return new Promise(function (resolve, reject) {
+          if (!file) return resolve(null);
+          const reader = new FileReader();
+          reader.onload = function () {
+            resolve({
+              name: file.name,
+              type: file.type,
+              size: file.size,
+              data: reader.result
+            });
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+
+      undergradAppForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const email = (document.getElementById('app-email') || {}).value || '';
+        const name = (document.getElementById('app-name') || {}).value || '';
+        const roll = (document.getElementById('app-roll') || {}).value || '';
+        const session = (document.getElementById('app-session') || {}).value || '';
+        const address = (document.getElementById('app-address') || {}).value || '';
+        const whatsapp = (document.getElementById('app-whatsapp') || {}).value || '';
+
+        const marksheetsInput = document.getElementById('app-marksheets');
+        const cvInput = document.getElementById('app-cv');
+        const sopInput = document.getElementById('app-sop');
+
+        const MAX_SIZE = 10 * 1024 * 1024; // 10 MB
+
+        function getFile(input) {
+          return input && input.files && input.files[0] ? input.files[0] : null;
+        }
+
+        const marksheetsFile = getFile(marksheetsInput);
+        const cvFile = getFile(cvInput);
+        const sopFile = getFile(sopInput);
+
+        if (!email || !name || !roll || !session || !address || !whatsapp) {
+          showAppError('Please complete all required text fields.');
+          return;
+        }
+
+        if (!marksheetsFile || !cvFile || !sopFile) {
+          showAppError('Please attach all 3 required files (Marksheets, CV, and SOP).');
+          return;
+        }
+
+        if (marksheetsFile.size > MAX_SIZE) {
+          showAppError('Marksheets file exceeds 10 MB limit. Please compress and re-upload.');
+          return;
+        }
+        if (cvFile.size > MAX_SIZE) {
+          showAppError('CV file exceeds 10 MB limit. Please compress and re-upload.');
+          return;
+        }
+        if (sopFile.size > MAX_SIZE) {
+          showAppError('SOP file exceeds 10 MB limit. Please compress and re-upload.');
+          return;
+        }
+
+        // Show loading state on button
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span>Uploading Documents &amp; Submitting...</span>';
+        }
+
+        if (appStatus) {
+          appStatus.style.display = 'none';
+        }
+
+        try {
+          // Encode files to Base64
+          const [marksheetsBase64, cvBase64, sopBase64] = await Promise.all([
+            fileToBase64(marksheetsFile),
+            fileToBase64(cvFile),
+            fileToBase64(sopFile)
+          ]);
+
+          const payload = {
+            email: email,
+            name: name,
+            roll_number: roll,
+            academic_session: session,
+            present_address: address,
+            whatsapp_number: whatsapp,
+            marksheets: marksheetsBase64,
+            cv: cvBase64,
+            sop: sopBase64
+          };
+
+          // If Google Apps Script Web App URL is provided, send to Google Cloud backend
+          if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.startsWith('http')) {
+            await fetch(GOOGLE_SCRIPT_URL, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+          }
+
+          // Show confirmation screen
+          if (confName) confName.textContent = name;
+          if (confEmail) confEmail.textContent = email;
+
+          undergradAppForm.style.display = 'none';
+          if (successBox) {
+            successBox.style.display = 'block';
+          }
+
+          // Smooth scroll to top of confirmation card
+          const formCard = document.getElementById('app-form-card');
+          if (formCard) {
+            formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+
+        } catch (err) {
+          console.error('Submission error:', err);
+          showAppError('An error occurred during submission. Please try again or contact the lab administrator.');
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Submit Application</span>';
+          }
+        }
+      });
+
+      function showAppError(msg) {
+        if (appStatus) {
+          appStatus.style.display = 'block';
+          appStatus.style.background = '#fef2f2';
+          appStatus.style.color = '#dc2626';
+          appStatus.style.border = '1px solid #fca5a5';
+          appStatus.textContent = msg;
+        }
+      }
+
+      if (submitAnotherBtn) {
+        submitAnotherBtn.addEventListener('click', function () {
+          undergradAppForm.reset();
+          undergradAppForm.style.display = 'block';
+          if (successBox) successBox.style.display = 'none';
+          if (appStatus) appStatus.style.display = 'none';
+        });
+      }
+    }
+  }
+
+  /* ---------- Dark Theme Toggle ---------- */
+  function initThemeToggle() {
+    const savedTheme = localStorage.getItem('lfsn-theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+
+    const headerInner = document.querySelector('.header-inner');
+    if (!headerInner) return;
+
+    let toggleBtn = document.querySelector('.theme-toggle-btn');
+    if (!toggleBtn) {
+      toggleBtn = document.createElement('button');
+      toggleBtn.type = 'button';
+      toggleBtn.className = 'theme-toggle-btn';
+      toggleBtn.setAttribute('aria-label', 'Toggle dark mode');
+      updateThemeIcon(toggleBtn);
+      
+      const navToggle = document.querySelector('.nav-toggle');
+      if (navToggle) {
+        headerInner.insertBefore(toggleBtn, navToggle);
+      } else {
+        headerInner.appendChild(toggleBtn);
+      }
+    }
+
+    toggleBtn.addEventListener('click', function () {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('lfsn-theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('lfsn-theme', 'dark');
+      }
+      updateThemeIcon(toggleBtn);
+    });
+
+    function updateThemeIcon(btn) {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      btn.innerHTML = isDark
+        ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
+        : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      btn.title = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+    }
+  }
+
+  /* ---------- Publication Abstract Toggle ---------- */
+  function initPublicationAbstracts() {
+    document.querySelectorAll('.btn-abstract-toggle').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const pubItem = btn.closest('.pub-item, .featured-pub-card');
+        if (!pubItem) return;
+        const abstract = pubItem.querySelector('.pub-abstract');
+        if (!abstract) return;
+
+        const isShown = abstract.classList.contains('is-visible');
+        if (isShown) {
+          abstract.classList.remove('is-visible');
+          btn.innerHTML = 'Show Abstract <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>';
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          abstract.classList.add('is-visible');
+          btn.innerHTML = 'Hide Abstract <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+
+  /* ---------- Resources Instant Search & Filtering ---------- */
+  function initResourceFilter() {
+    const searchInput = document.getElementById('resource-search') || document.getElementById('resource-search-box-input');
+    if (!searchInput) return;
+
+    const toolCards = document.querySelectorAll('.tool-card');
+    const subheaders = document.querySelectorAll('.subcategory-header');
+
+    searchInput.addEventListener('input', function () {
+      const query = searchInput.value.toLowerCase().trim();
+
+      toolCards.forEach(function (card) {
+        const text = (card.textContent || '').toLowerCase();
+        const matches = !query || text.includes(query);
+        card.style.display = matches ? 'flex' : 'none';
+      });
+
+      // Hide or show subheaders based on remaining visible cards in their sections
+      subheaders.forEach(function (header) {
+        let sibling = header.nextElementSibling;
+        let hasVisible = false;
+        while (sibling && !sibling.classList.contains('subcategory-header')) {
+          if (sibling.classList.contains('tool-card') && sibling.style.display !== 'none') {
+            hasVisible = true;
+            break;
+          }
+          if (sibling.classList.contains('tools-grid')) {
+            const visibleInGrid = sibling.querySelectorAll('.tool-card:not([style*="display: none"])');
+            if (visibleInGrid.length > 0) {
+              hasVisible = true;
+              break;
+            }
+          }
+          sibling = sibling.nextElementSibling;
+        }
+        header.style.display = (!query || hasVisible) ? 'block' : 'none';
+      });
+    });
+  }
+
+  /* ---------- Alumni Filter & Search ---------- */
+  function initAlumniFeatures() {
+    const searchInput = document.getElementById('alumni-search');
+    const filterBtns = document.querySelectorAll('.alumni-filter-btn');
+    const cards = document.querySelectorAll('.alumni-card');
+    const toggleTableBtn = document.getElementById('toggle-alumni-table-btn');
+    const tableContainer = document.getElementById('alumni-table-container');
+    const toggleLabel = document.getElementById('toggle-table-label');
+
+    if (toggleTableBtn && tableContainer) {
+      toggleTableBtn.addEventListener('click', function () {
+        const isHidden = tableContainer.style.display === 'none' || !tableContainer.style.display;
+        tableContainer.style.display = isHidden ? 'block' : 'none';
+        toggleTableBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+        if (toggleLabel) {
+          toggleLabel.textContent = isHidden ? 'Hide Compact Alumni Directory Table' : 'View Compact Alumni Directory Table';
+        }
+      });
+    }
+
+    if (!cards.length) return;
+
+    let activeFilter = 'all';
+    let searchQuery = '';
+
+    function filterAlumni() {
+      cards.forEach(function (card) {
+        const categories = (card.getAttribute('data-category') || '').toLowerCase();
+        const textContent = card.textContent.toLowerCase();
+
+        const matchesFilter = activeFilter === 'all' || categories.includes(activeFilter);
+        const matchesSearch = !searchQuery || textContent.includes(searchQuery);
+
+        if (matchesFilter && matchesSearch) {
+          card.style.display = 'grid';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+          card.style.opacity = '0';
+        }
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', function (e) {
+        searchQuery = e.target.value.trim().toLowerCase();
+        filterAlumni();
+      });
+    }
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        filterBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        activeFilter = btn.getAttribute('data-filter') || 'all';
+        filterAlumni();
+      });
+    });
+  }
+
+  /* ---------- Facilities & Equipment Filtering ---------- */
+  function initFacilitiesFilter() {
+    const filterBtns = document.querySelectorAll('.facility-filter-btn');
+    const cards = document.querySelectorAll('.facility-item-card');
+    if (!filterBtns.length || !cards.length) return;
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        filterBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        const filter = (btn.getAttribute('data-filter') || 'all').toLowerCase();
+
+        cards.forEach(function (card) {
+          const category = (card.getAttribute('data-category') || '').toLowerCase();
+          if (filter === 'all' || category.includes(filter)) {
+            card.style.display = 'flex';
+            card.style.opacity = '1';
+          } else {
+            card.style.display = 'none';
+            card.style.opacity = '0';
+          }
+        });
+      });
     });
   }
 
@@ -481,7 +846,7 @@
       document.addEventListener('mouseleave', function () { cursor.classList.add('hidden'); });
       document.addEventListener('mouseenter', function () { cursor.classList.remove('hidden'); cursor.style.opacity = ''; });
 
-      const interactiveSelector = 'a, button, input, textarea, select, .btn, .gallery-item';
+      const interactiveSelector = 'a, button, input, textarea, select, .btn, .gallery-item, .faq-trigger';
       document.addEventListener('mouseover', function (e) {
         if (e.target.closest(interactiveSelector)) cursor.classList.add('interact');
       });
@@ -493,6 +858,5 @@
     }
   }
 
-  // initialize cursor after other inits
   if (typeof initCustomCursor === 'function') initCustomCursor();
 })();

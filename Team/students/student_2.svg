@@ -1,0 +1,19 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2A9D8F" />
+      <stop offset="100%" stop-color="#38B2AC" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.15" />
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" rx="32" fill="url(#grad)" />
+  <circle cx="150" cy="115" r="48" fill="#ffffff" fill-opacity="0.25" />
+  <path d="M75,245 C75,195 110,180 150,180 C190,180 225,195 225,245" fill="#ffffff" fill-opacity="0.25" />
+  <circle cx="150" cy="115" r="42" fill="#ffffff" fill-opacity="0.9" />
+  <path d="M85,245 C85,205 115,192 150,192 C185,192 215,205 215,245" fill="#ffffff" fill-opacity="0.9" />
+  <text x="150" y="125" font-family="'Inter', -apple-system, sans-serif" font-size="28" font-weight="700" fill="#2A9D8F" text-anchor="middle" dominant-baseline="middle">UG 2</text>
+  <rect x="40" y="258" width="220" height="26" rx="13" fill="#ffffff" fill-opacity="0.2" />
+  <text x="150" y="275" font-family="'Inter', -apple-system, sans-serif" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">4TH YEAR RESEARCHER</text>
+</svg>

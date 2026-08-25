@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lab Protocols — CNAB</title>
-  <meta name="description" content="Step-by-step laboratory protocols and methods used in the CNAB laboratories, including preparation of growth media and seeding NGM plates." />
+  <title>Lab Protocols — Laboratory of Food Science and Nutraceuticals</title>
+  <meta name="description" content="Step-by-step laboratory protocols and methods used in the Laboratory of Food Science and Nutraceuticals, including preparation of growth media and seeding NGM plates." />
+  <meta property="og:title" content="Lab Protocols — Laboratory of Food Science and Nutraceuticals" />
+  <meta property="og:description" content="Step-by-step benchtop procedures for maintaining C. elegans, preparing sterile NGM growth media, synchronization, and bioactivity assays." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./Gallery/C%20elegans%20under%20Fluorescent%20Microscope.jpg" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
@@ -12,14 +17,15 @@
   <link rel="stylesheet" href="./css/responsive.css" />
 </head>
 <body class="protocols-page">
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <a href="./index.html" class="logo" aria-label="CNAB home">
-        <span class="logo-mark" aria-hidden="true">CN</span>
+      <a href="./index.html" class="logo" aria-label="Laboratory of Food Science and Nutraceuticals home">
+        <span class="logo-mark" aria-hidden="true">LFSN</span>
         <span class="logo-text">
-          <strong>CNAB</strong>
-          <small>Centre for Nutraceutical &amp; Applied Biosciences</small>
+          <strong>LFSN</strong>
+          <small>Laboratory of Food Science &amp; Nutraceuticals</small>
         </span>
       </a>
 
@@ -29,44 +35,24 @@
 
       <nav class="primary-nav" id="primary-nav" aria-label="Primary">
         <ul class="nav-list">
-        <li class="nav-item"><a href="./index.html">Home</a></li>
-        <li class="nav-item"><a href="./about.html">About</a></li>
-        <li class="nav-item has-dropdown">
-          <button class="nav-link" aria-haspopup="true" aria-expanded="false">
-            Laboratories
-          </button>
-          <ul class="dropdown" role="menu">
-            <li>
-              <a href="./lab-food-nutraceutical.html" class="lab1" role="menuitem">
-                <span class="dot"></span>
-                <span>
-                  <strong>Food Science &amp; Nutraceutical</strong>
-                  <small>Prof. dr. Dwaipayan Sikdar</small>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="./lab-applied-biosciences.html" class="lab2" role="menuitem">
-                <span class="dot"></span>
-                <span>
-                  <strong>Applied Biosciences</strong>
-                  <small>Assoc. Prof. Dr. Suman Mojumder</small>
-                </span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item"><a href="./research.html">Research</a></li>
-        <li class="nav-item"><a href="./publications.html">Publications</a></li>
-        <li class="nav-item"><a href="./people.html">People</a></li>
-        <li class="nav-item"><a href="./lab-protocols.html">Lab Protocols</a></li>
-        <li class="nav-item"><a href="./resources.html">Resources</a></li>
-        <li class="nav-item"><a href="./facilities.html">Facilities</a></li>
-        <li class="nav-item"><a href="./gallery.html">Gallery</a></li>
-        <li class="nav-item"><a href="./collaborations.html">Collaborations</a></li>
-        <li class="nav-item"><a href="./join-us.html">Join Us</a></li>
-        <li class="nav-item"><a href="./contact.html">Contact</a></li>
-      </ul>
+          <li class="nav-item"><a href="./index.html">Home</a></li>
+          <li class="nav-item"><a href="./about.html">About</a></li>
+          <li class="nav-item"><a href="./research.html">Research</a></li>
+          <li class="nav-item"><a href="./publications.html">Publications</a></li>
+          <li class="nav-item"><a href="./people.html">People</a></li>
+          <li class="nav-item"><a href="./lab-protocols.html" class="active">Lab Protocols</a></li>
+          <li class="nav-item"><a href="./resources.html">Resources</a></li>
+          <li class="nav-item has-dropdown">
+            <button type="button" class="nav-link" aria-haspopup="true" aria-expanded="false">More</button>
+            <ul class="dropdown" role="menu">
+              <li><a href="./facilities.html">Facilities</a></li>
+              <li><a href="./gallery.html">Gallery</a></li>
+              <li><a href="./collaborations.html">Collaborations</a></li>
+              <li><a href="./join-us.html">Join Us</a></li>
+              <li><a href="./contact.html">Contact</a></li>
+            </ul>
+          </li>
+        </ul>
       </nav>
       <div class="nav-backdrop" aria-hidden="true"></div>
     </div>
@@ -76,8 +62,14 @@
     <section class="page-banner" aria-labelledby="page-title" data-bg-url="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
       <div class="container">
         <div class="breadcrumbs"><a href="./index.html">Home</a><span>/</span>Lab Protocols</div>
-        <h1 id="page-title">Lab Protocols</h1>
-        <p>Step-by-step laboratory methods for maintaining C. elegans, preparing growth media, and setting up nematode plates for routine experiments.</p>
+        <h1 id="page-title">Laboratory Protocols &amp; Standard Methods</h1>
+        <p>Step-by-step benchtop procedures for maintaining C. elegans, preparing sterile NGM growth media, synchronization, and bioactivity assays.</p>
+        <div style="margin-top: var(--space-4);">
+          <button type="button" class="btn btn-primary btn-print-protocol" onclick="window.print()" style="font-size: 0.88rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print Protocols for Bench Use (PDF)
+          </button>
+        </div>
       </div>
     </section>
 
@@ -100,21 +92,31 @@
 
         <div class="protocol-grid">
           <aside class="protocol-sidebar card reveal" aria-label="Protocol overview">
-            <h3>Protocols in this guide</h3>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: var(--space-3);">
+              <div class="icon-box icon-box-xs icon-box-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31M14 2v7.31M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/></svg>
+              </div>
+              <h3 style="margin: 0; font-size: 1.1rem;">Protocols in this guide</h3>
+            </div>
             <ul class="protocol-nav">
-              <li><a href="#growth-media">1. Growth Media Preparation</a></li>
-              <li><a href="#ngm-plates">2. NGM Petri Plates</a></li>
-              <li><a href="#seed-plates">3. Seeding NGM Plates</a></li>
-              <li><a href="#culturing-c-elegans">4. Culturing C. elegans on Petri Plates</a></li>
-              <li><a href="#bleach-sync">5. Bleach Synchronization</a></li>
-              <li><a href="#egg-hatching">6. Egg Hatching Assay</a></li>
-              <li><a href="#lifespan-assay">7. Lifespan Assay</a></li>
-              <li><a href="#cadd">8. Computer-Aided Drug Design</a></li>
-              <li><a href="#network-pharma">9. Network Pharmacology</a></li>
+              <li><a href="#growth-media"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>1. Growth Media Preparation</a></li>
+              <li><a href="#ngm-plates"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>2. NGM Petri Plates</a></li>
+              <li><a href="#seed-plates"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>3. Seeding NGM Plates</a></li>
+              <li><a href="#culturing-c-elegans"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>4. Culturing C. elegans on Petri Plates</a></li>
+              <li><a href="#bleach-sync"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>5. Bleach Synchronization</a></li>
+              <li><a href="#egg-hatching"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>6. Egg Hatching Assay</a></li>
+              <li><a href="#lifespan-assay"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>7. Lifespan Assay</a></li>
+              <li><a href="#cadd"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>8. Computer-Aided Drug Design</a></li>
+              <li><a href="#network-pharma"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>9. Network Pharmacology</a></li>
             </ul>
-            <div class="protocol-note">
-              <h4>Good practice</h4>
-              <p>Use sterile technique throughout. Keep plates dry and contamination-free, and label each batch clearly with date and contents.</p>
+            <div class="callout-box callout-tip" style="margin-top: var(--space-4);">
+              <div class="callout-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              </div>
+              <div>
+                <strong style="display: block; margin-bottom: 0.2rem; color: #047857;">Aseptic Practice</strong>
+                <p style="margin: 0; font-size: 0.85rem; line-height: 1.5; color: #065f46;">Use sterile technique throughout. Keep plates dry and contamination-free, and label each batch clearly with date and contents.</p>
+              </div>
             </div>
           </aside>
 
@@ -912,6 +914,61 @@
                 <p>Li, S.; Zhang, B. Traditional Chinese medicine network pharmacology: theory, methodology and application. Chin. J. Nat. Med. 2013, 11, 110–120.</p>
               </div>
             </article>
+
+            <!-- ============ INTERACTIVE BENCH CALCULATOR ============ -->
+            <div class="calculator-card reveal">
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: var(--space-2);">
+                <div class="icon-box icon-box-xs icon-box-primary">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"/></svg>
+                </div>
+                <span class="badge" style="background: #1e3a5f; color: var(--white);">Benchtop Tool</span>
+              </div>
+              <h3 style="margin: 0 0 var(--space-2); color: var(--primary);">Interactive Molarity &amp; Dilution Calculator</h3>
+              <p style="color: var(--text-muted); font-size: 0.92rem;">Use this quick calculator at the wet bench to determine required mass for solutions or calculate dilution ratios (C1V1 = C2V2).</p>
+
+              <!-- Calculator 1: Molarity to Mass -->
+              <h4 style="margin: var(--space-4) 0 var(--space-2); font-size: 1rem; color: var(--primary);">1. Molar Mass to Grams (Mass = MW &times; Molarity &times; Volume)</h4>
+              <div class="calc-grid">
+                <div class="calc-input-group">
+                  <label for="calc-mw">Molecular Weight (g/mol)</label>
+                  <input type="number" id="calc-mw" placeholder="e.g. 58.44 (NaCl)" step="any" />
+                </div>
+                <div class="calc-input-group">
+                  <label for="calc-conc">Target Concentration (Molar / M)</label>
+                  <input type="number" id="calc-conc" placeholder="e.g. 0.5" step="any" />
+                </div>
+                <div class="calc-input-group">
+                  <label for="calc-vol">Final Volume (mL)</label>
+                  <input type="number" id="calc-vol" placeholder="e.g. 250" step="any" />
+                </div>
+              </div>
+              <div class="calc-result-box">
+                <span>Required Chemical Mass:</span>
+                <strong id="calc-mass-result">0.00 g</strong>
+              </div>
+
+              <!-- Calculator 2: Dilution C1V1 = C2V2 -->
+              <h4 style="margin: var(--space-5) 0 var(--space-2); font-size: 1rem; color: var(--primary);">2. Solution Dilution (C1 &times; V1 = C2 &times; V2)</h4>
+              <div class="calc-grid">
+                <div class="calc-input-group">
+                  <label for="calc-c1">Stock Concentration (C1)</label>
+                  <input type="number" id="calc-c1" placeholder="e.g. 10 M or 100 mg/mL" step="any" />
+                </div>
+                <div class="calc-input-group">
+                  <label for="calc-c2">Target Concentration (C2)</label>
+                  <input type="number" id="calc-c2" placeholder="e.g. 1 M or 10 mg/mL" step="any" />
+                </div>
+                <div class="calc-input-group">
+                  <label for="calc-v2">Target Final Volume (V2 in mL)</label>
+                  <input type="number" id="calc-v2" placeholder="e.g. 100" step="any" />
+                </div>
+              </div>
+              <div class="calc-result-box">
+                <span>Required Stock Volume (V1):</span>
+                <strong id="calc-v1-result">0.00 mL</strong>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -922,16 +979,18 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h4>CNAB</h4>
-          <p>The Centre for Nutraceutical and Applied Biosciences (CNAB) is a joint academic research centre within the Department of Biochemistry and Molecular Biology, University of Chittagong, Bangladesh.</p>
+          <h4>Laboratory of Food Science and Nutraceuticals</h4>
+          <p>The Laboratory of Food Science and Nutraceuticals (LFSN) is an academic research laboratory within the Department of Biochemistry and Molecular Biology, University of Chittagong, Bangladesh, jointly led by Prof. Dr. Dwaipayan Sikdar and Assoc. Prof. Dr. Suman Mojumder.</p>
         </div>
         <div>
           <h4>Quick Links</h4>
           <ul class="footer-links">
-            <li><a href="./about.html">About</a></li>
-            <li><a href="./research.html">Research</a></li>
+            <li><a href="./about.html">About LFSN</a></li>
+            <li><a href="./research.html">Research Themes</a></li>
             <li><a href="./publications.html">Publications</a></li>
-            <li><a href="./people.html">People</a></li>
+            <li><a href="./people.html">People &amp; Leadership</a></li>
+            <li><a href="./lab-protocols.html">Lab Protocols</a></li>
+            <li><a href="./facilities.html">Facilities &amp; Instruments</a></li>
             <li><a href="./join-us.html">Join Us</a></li>
             <li><a href="./contact.html">Contact</a></li>
           </ul>
@@ -941,11 +1000,11 @@
           <ul class="footer-links footer-contact">
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              <span><strong>Prof. Dr. Dwaipayan Sikdar</strong><br/>dsikdar@cu.ac.bd</span>
+              <span><strong>Prof. Dr. Dwaipayan Sikdar</strong><br/><a href="mailto:dsikdar@cu.ac.bd" style="color: rgba(255,255,255,0.85);">dsikdar@cu.ac.bd</a></span>
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              <span><strong>Assoc. Prof. Dr. Suman Mojumder</strong><br/>msumanbmb@cu.ac.bd</span>
+              <span><strong>Assoc. Prof. Dr. Suman Mojumder</strong><br/><a href="mailto:msumanbmb@cu.ac.bd" style="color: rgba(255,255,255,0.85);">msumanbmb@cu.ac.bd</a></span>
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s-8-7.58-8-13a8 8 0 1116 0c0 5.42-8 13-8 13z"/><circle cx="12" cy="9" r="3"/></svg>
@@ -955,7 +1014,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <div>© <span id="current-year"></span> Centre for Nutraceutical and Applied Biosciences (CNAB), University of Chittagong.</div>
+        <div>© <span id="current-year"></span> Laboratory of Food Science and Nutraceuticals, University of Chittagong.</div>
         <div class="footer-credit">Website design and development by <a href="https://md-mustak-khan.github.io/" target="_blank" rel="noopener noreferrer">Md. Mustak Khan</a>.</div>
       </div>
     </div>

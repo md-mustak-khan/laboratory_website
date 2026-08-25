@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="lfsn-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A2540"/>
+      <stop offset="50%" stop-color="#1E3A5F"/>
+      <stop offset="100%" stop-color="#2A9D8F"/>
+    </linearGradient>
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F39C12"/>
+      <stop offset="100%" stop-color="#C8902E"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#lfsn-grad)"/>
+  <!-- Central Flask & Molecule design -->
+  <path d="M28 14 h8 v10 l10 18 a6 6 0 0 1 -5 9 h-18 a6 6 0 0 1 -5 -9 l10 -18 z" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- Bubbles & leaf motif inside flask -->
+  <path d="M24 45 q8 -6 16 0" stroke="url(#gold-grad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <circle cx="30" cy="38" r="2.5" fill="#A3E635"/>
+  <circle cx="36" cy="34" r="2" fill="url(#gold-grad)"/>
+  <circle cx="28" cy="30" r="1.5" fill="#FFFFFF"/>
+</svg>

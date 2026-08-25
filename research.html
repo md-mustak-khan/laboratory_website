@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Research — CNAB</title>
-  <meta name="description" content="Combined research themes, projects, and grants across CNAB's two laboratories." />
-  <meta property="og:title" content="Research — CNAB" />
-  <meta property="og:description" content="Research themes and active projects at CNAB." />
+  <title>Research — Laboratory of Food Science and Nutraceuticals</title>
+  <meta name="description" content="Research themes, active projects, and grants at the Laboratory of Food Science and Nutraceuticals, University of Chittagong." />
+  <meta property="og:title" content="Research — Laboratory of Food Science and Nutraceuticals" />
+  <meta property="og:description" content="Research themes and active projects at the Laboratory of Food Science and Nutraceuticals." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="./Gallery/C%20elegans%20under%20Fluorescent%20Microscope.jpg" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
@@ -15,50 +17,42 @@
   <link rel="stylesheet" href="./css/responsive.css" />
 </head>
 <body class="research-page">
+  <a href="#main" class="skip-link">Skip to main content</a>
 
+  <!-- ============ HEADER ============ -->
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <a href="./index.html" class="logo" aria-label="CNAB home"><span class="logo-mark" aria-hidden="true">CN</span><span class="logo-text"><strong>CNAB</strong><small>Centre for Nutraceutical &amp; Applied Biosciences</small></span></a>
-      <button type="button" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span><span></span></button>
+      <a href="./index.html" class="logo" aria-label="Laboratory of Food Science and Nutraceuticals home">
+        <span class="logo-mark" aria-hidden="true">LFSN</span>
+        <span class="logo-text">
+          <strong>LFSN</strong>
+          <small>Laboratory of Food Science &amp; Nutraceuticals</small>
+        </span>
+      </a>
+
+      <button type="button" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+
       <nav class="primary-nav" id="primary-nav" aria-label="Primary">
         <ul class="nav-list">
-        <li class="nav-item"><a href="./index.html">Home</a></li>
-        <li class="nav-item"><a href="./about.html">About</a></li>
-        <li class="nav-item has-dropdown">
-          <button class="nav-link" aria-haspopup="true" aria-expanded="false">
-            Laboratories
-          </button>
-          <ul class="dropdown" role="menu">
-            <li>
-              <a href="./lab-food-nutraceutical.html" class="lab1" role="menuitem">
-                <span class="dot"></span>
-                <span>
-                  <strong>Food Science &amp; Nutraceutical</strong>
-                  <small>Prof. dr. Dwaipayan Sikdar</small>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="./lab-applied-biosciences.html" class="lab2" role="menuitem">
-                <span class="dot"></span>
-                <span>
-                  <strong>Applied Biosciences</strong>
-                  <small>Assoc. Prof. Dr. Suman Mojumder</small>
-                </span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item"><a href="./research.html">Research</a></li>
-        <li class="nav-item"><a href="./publications.html">Publications</a></li>
-        <li class="nav-item"><a href="./people.html">People</a></li>
-        <li class="nav-item"><a href="./lab-protocols.html">Lab Protocols</a></li>
-        <li class="nav-item"><a href="./resources.html">Resources</a></li>
-        <li class="nav-item"><a href="./facilities.html">Facilities</a></li>
-        <li class="nav-item"><a href="./gallery.html">Gallery</a></li>
-        <li class="nav-item"><a href="./collaborations.html">Collaborations</a></li>
-        <li class="nav-item"><a href="./join-us.html">Join Us</a></li>
-        <li class="nav-item"><a href="./contact.html">Contact</a></li>
+          <li class="nav-item"><a href="./index.html">Home</a></li>
+          <li class="nav-item"><a href="./about.html">About</a></li>
+          <li class="nav-item"><a href="./research.html" class="active">Research</a></li>
+          <li class="nav-item"><a href="./publications.html">Publications</a></li>
+          <li class="nav-item"><a href="./people.html">People</a></li>
+          <li class="nav-item"><a href="./lab-protocols.html">Lab Protocols</a></li>
+          <li class="nav-item"><a href="./resources.html">Resources</a></li>
+          <li class="nav-item has-dropdown">
+            <button type="button" class="nav-link" aria-haspopup="true" aria-expanded="false">More</button>
+            <ul class="dropdown" role="menu">
+              <li><a href="./facilities.html">Facilities</a></li>
+              <li><a href="./gallery.html">Gallery</a></li>
+              <li><a href="./collaborations.html">Collaborations</a></li>
+              <li><a href="./join-us.html">Join Us</a></li>
+              <li><a href="./contact.html">Contact</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <div class="nav-backdrop" aria-hidden="true"></div>
@@ -66,132 +60,372 @@
   </header>
 
   <main id="main">
-    <section class="page-banner" aria-labelledby="page-title" data-bg-url=" https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    <!-- ============ PAGE BANNER ============ -->
+    <section class="page-banner" aria-labelledby="page-title" data-bg-url="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
       <div class="container">
         <div class="breadcrumbs"><a href="./index.html">Home</a><span>/</span>Research</div>
-        <h1 id="page-title">Research</h1>
-        <p>Combined research themes, active projects, and funded grants across CNAB's two laboratories.</p>
+        <h1 id="page-title">Research Themes &amp; Projects</h1>
+        <p>Investigating natural product bioactives, molecular mechanisms, microbial enzymology, and in-vivo pharmacology at the University of Chittagong.</p>
       </div>
     </section>
 
-    <!-- PLACEHOLDER: replace with real overview -->
+    <!-- ============ OVERVIEW ============ -->
     <section class="section">
-      <div class="container" style="max-width: 820px;">
+      <div class="container" style="max-width: 860px;">
         <span class="eyebrow">Overview</span>
-        <h2>A shared research agenda</h2>
-        <p>CNAB's research spans the full spectrum from field and bench work in food chemistry and phytochemistry to computational analyses of genomes and microbial systems. What unites our work is a commitment to rigorous methodology, open science, and research questions with tangible relevance to human health and the environment in Bangladesh and the wider region.</p>
+        <h2>A Unified Scientific Agenda</h2>
+        <p>Our research spans the spectrum from benchtop food chemistry and botanical extraction to computational simulations and in-vivo genetic assays. What unites our work is an insistence on rigorous empirical methodology, reproducible protocols, and research questions directly relevant to nutrition, public health, and biotechnology in Bangladesh.</p>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container" style="max-width: 1100px;">
-        <span class="eyebrow">Research themes</span>
-        <h2>Core research areas</h2>
-        <p>Our research is organized around six interconnected themes that bridge phytochemistry, nutrition, molecular biology, bioinformatics, microbiology, and in vivo functional studies.</p>
+    <!-- ============ RESEARCH THEMES ============ -->
+    <section class="section" style="background: var(--bg-alt);">
+      <div class="container">
+        <span class="eyebrow">Core Scientific Scope</span>
+        <h2>Our Six Research Themes</h2>
+        <p style="color: var(--text-muted); margin-bottom: var(--space-6);">Each theme is led by specialized methodologies and dedicated laboratory equipment.</p>
 
         <div class="grid grid-2">
-          <article class="card reveal">
-            <img src="https://img.magnific.com/premium-photo/biology-laboratory-nature-science-plants-with-biochemistry-structure-chemical-formula-green-background_1033579-172153.jpg?w=1060" alt="Phytochemistry and nutraceutical research in the laboratory" />
-            <h3>1. Phytochemistry and Nutraceutical Research</h3>
-            <p>We focus on the isolation, characterization, and quantification of phytochemicals from natural sources, with an emphasis on identifying bioactive compounds with nutraceutical potential and developing functional foods and plant-derived health-promoting products.</p>
+          <!-- Theme 1 -->
+          <article class="card reveal theme-feature-card" id="theme-1">
+            <div class="theme-card-media-wrapper">
+              <img src="https://img.magnific.com/premium-photo/biology-laboratory-nature-science-plants-with-biochemistry-structure-chemical-formula-green-background_1033579-172153.jpg?w=1060" alt="Phytochemistry research" />
+              <div class="theme-pill-floating">
+                <span class="theme-pill-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </span>
+                <span class="theme-pill-label">Theme 01</span>
+              </div>
+            </div>
+            <div class="theme-card-body">
+              <div class="card-meta" style="margin-bottom: var(--space-2);">
+                <span class="badge badge-primary">Phytochemistry &amp; Extraction</span>
+              </div>
+              <h3 class="theme-card-title">Phytochemistry &amp; Nutraceutical Discovery</h3>
+              <p>Isolation, characterization, and quantification of bioactive secondary metabolites from native Bangladeshi fruits, wild palms, vegetables, and coastal macroalgae (such as <em>Ulva lactuca</em>). We focus on identifying functional components with potential health-promoting and disease-preventive applications.</p>
+              <div class="specialty-chips" style="margin-top: auto;">
+                <span class="specialty-chip blue">Solvent Fractionation</span>
+                <span class="specialty-chip blue">Lyophilization</span>
+                <span class="specialty-chip blue">TLC / Phenolic Profiling</span>
+              </div>
+            </div>
           </article>
 
-          <article class="card reveal">
-            <img src="https://t3.ftcdn.net/jpg/17/75/04/78/360_F_1775047812_cZyBigJxqrFaPR1QmomP5ysIJN8I2VVL.jpg" alt="Antioxidant and phytochemical analysis in a lab setting" />
-            <h3>2. Antioxidant and Phytochemical Analysis</h3>
-            <p>Our work includes both qualitative and quantitative profiling of phytochemicals, along with evaluation of antioxidant capacity using biochemical and chemical assays to understand the relationship between phytochemical composition and biological activity.</p>
+          <!-- Theme 2 -->
+          <article class="card reveal theme-feature-card" id="theme-2">
+            <div class="theme-card-media-wrapper">
+              <img src="https://t3.ftcdn.net/jpg/17/75/04/78/360_F_1775047812_cZyBigJxqrFaPR1QmomP5ysIJN8I2VVL.jpg" alt="Antioxidant analysis" />
+              <div class="theme-pill-floating">
+                <span class="theme-pill-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </span>
+                <span class="theme-pill-label">Theme 02</span>
+              </div>
+            </div>
+            <div class="theme-card-body">
+              <div class="card-meta" style="margin-bottom: var(--space-2);">
+                <span class="badge badge-primary">Antioxidant Biochemistry</span>
+              </div>
+              <h3 class="theme-card-title">Antioxidant Capacity &amp; Bioactivity Assays</h3>
+              <p>Qualitative and quantitative characterization of total phenolics, total flavonoids, reducing power, and free-radical scavenging capacity across varying solvent polarities using biochemical and spectrophotometric assays.</p>
+              <div class="specialty-chips" style="margin-top: auto;">
+                <span class="specialty-chip blue">DPPH Radical Scavenging</span>
+                <span class="specialty-chip blue">FRAP &amp; ABTS Assays</span>
+                <span class="specialty-chip blue">Anti-amylase Activity</span>
+              </div>
+            </div>
           </article>
 
-          <article class="card reveal">
-            <img src="https://media.licdn.com/dms/image/v2/D4D12AQEnEdpFwelC1w/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1707317476718?e=1785974400&v=beta&t=_ZVMUrbzMl1a4PkJfAhyPQFqNEyTBEmRhNqV2WFF9HU" alt="Bioinformatics and computational drug discovery research" />
-            <h3>3. Bioinformatics and Computational Drug Discovery</h3>
-            <p>We apply computer-aided drug design, network pharmacology, molecular docking, virtual screening, and in silico pharmacokinetic analyses to identify promising bioactive compounds and elucidate their molecular targets and mechanisms of action.</p>
+          <!-- Theme 3 -->
+          <article class="card reveal theme-feature-card" id="theme-3">
+            <div class="theme-card-media-wrapper">
+              <img src="Gallery/Others/Bioinformatics_Research.png" alt="Computational drug discovery" />
+              <div class="theme-pill-floating">
+                <span class="theme-pill-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </span>
+                <span class="theme-pill-label">Theme 03</span>
+              </div>
+            </div>
+            <div class="theme-card-body">
+              <div class="card-meta" style="margin-bottom: var(--space-2);">
+                <span class="badge badge-primary">Computational Biology</span>
+              </div>
+              <h3 class="theme-card-title">Bioinformatics &amp; In-Silico Drug Discovery</h3>
+              <p>Computer-aided drug design (CADD), molecular docking, network pharmacology, target prediction, and in-silico ADMET (Absorption, Distribution, Metabolism, Excretion, and Toxicity) profiling to elucidate molecular mechanisms of candidate natural compounds.</p>
+              <div class="specialty-chips" style="margin-top: auto;">
+                <span class="specialty-chip blue">AutoDock Vina</span>
+                <span class="specialty-chip blue">PyMOL / Discovery Studio</span>
+                <span class="specialty-chip blue">Network Pharmacology</span>
+              </div>
+            </div>
           </article>
 
-          <article class="card reveal">
-            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=900&q=80" alt="Molecular biology and functional genomics research" />
-            <h3>4. Molecular Biology and Functional Genomics</h3>
-            <p>Our laboratory investigates gene expression and molecular mechanisms underlying responses to natural products, with particular interest in stress response, metabolism, and disease-related pathways.</p>
+          <!-- Theme 4 -->
+          <article class="card reveal theme-feature-card" id="theme-4">
+            <div class="theme-card-media-wrapper">
+              <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=900&q=80" alt="Molecular biology" />
+              <div class="theme-pill-floating">
+                <span class="theme-pill-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </span>
+                <span class="theme-pill-label">Theme 04</span>
+              </div>
+            </div>
+            <div class="theme-card-body">
+              <div class="card-meta" style="margin-bottom: var(--space-2);">
+                <span class="badge badge-primary">Molecular Biology</span>
+              </div>
+              <h3 class="theme-card-title">Molecular Biology &amp; Functional Genomics</h3>
+              <p>Investigation of gene expression modulation, cellular stress responses, and metabolic pathways affected by dietary nutraceuticals, with applications in diabetes, neurodegeneration, and inflammatory models.</p>
+              <div class="specialty-chips" style="margin-top: auto;">
+                <span class="specialty-chip green">DNA/RNA Extraction</span>
+                <span class="specialty-chip green">Gene Expression</span>
+                <span class="specialty-chip green">Stress Pathways</span>
+              </div>
+            </div>
           </article>
 
-          <article class="card reveal">
-            <img src="https://img.magnific.com/free-photo/micro-organism-magnified-reveal-molecular-structure-generated-by-ai_188544-9722.jpg?t=st=1783878826~exp=1783882426~hmac=a913ca3a9643c6abb6becf8bc14a91e97f3d1810955301bcd6752aa912fa401b&w=1060" alt="Insect gut microbiology and enzymology research" />
-            <h3>5. Insect Gut Microbiology and Enzymology</h3>
-            <p>We characterize microbial communities associated with insect gut ecosystems and study digestive and metabolic enzyme activities through microbiological and molecular approaches.</p>
+          <!-- Theme 5 -->
+          <article class="card reveal theme-feature-card" id="theme-5">
+            <div class="theme-card-media-wrapper">
+              <img src="https://img.magnific.com/free-photo/micro-organism-magnified-reveal-molecular-structure-generated-by-ai_188544-9722.jpg?w=1060" alt="Insect gut microbiology" />
+              <div class="theme-pill-floating">
+                <span class="theme-pill-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31M14 2v7.31M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/></svg>
+                </span>
+                <span class="theme-pill-label">Theme 05</span>
+              </div>
+            </div>
+            <div class="theme-card-body">
+              <div class="card-meta" style="margin-bottom: var(--space-2);">
+                <span class="badge badge-primary">Microbial Enzymology</span>
+              </div>
+              <h3 class="theme-card-title">Insect Gut Microbiology &amp; Enzymology</h3>
+              <p>Culturing and molecular characterization of symbiotic gut bacterial flora in phytophagous insects (grasshoppers, defoliating beetles) to isolate high-efficiency cellulases, xylanases, and endoglucanases for industrial and bioenergy applications.</p>
+              <div class="specialty-chips" style="margin-top: auto;">
+                <span class="specialty-chip green">Bacterial Isolation</span>
+                <span class="specialty-chip green">Endo-β-glucanase Assays</span>
+                <span class="specialty-chip green">16S rRNA Profiling</span>
+              </div>
+            </div>
           </article>
 
-          <article class="card reveal">
-            <img src="Gallery/TG-100 _Day5.gif" alt="In vivo functional studies using Caenorhabditis elegans" />
-            <h3>6. In Vivo Functional Studies</h3>
-            <p>Using <em>Caenorhabditis elegans</em> as a model organism, we evaluate the biological activity of antioxidant and bioactive compounds by examining oxidative stress responses, lifespan, and stress-resistance mechanisms.</p>
+          <!-- Theme 6 -->
+          <article class="card reveal theme-feature-card" id="theme-6">
+            <div class="theme-card-media-wrapper">
+              <img src="Gallery/TG-100 _Day5.gif" alt="C. elegans in vivo model" />
+              <div class="theme-pill-floating">
+                <span class="theme-pill-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/></svg>
+                </span>
+                <span class="theme-pill-label">Theme 06</span>
+              </div>
+            </div>
+            <div class="theme-card-body">
+              <div class="card-meta" style="margin-bottom: var(--space-2);">
+                <span class="badge badge-primary">In-Vivo Pharmacology</span>
+              </div>
+              <h3 class="theme-card-title">In-Vivo Functional Studies in C. elegans</h3>
+              <p>Using <em>Caenorhabditis elegans</em> as a transparent, genetically tractable multicellular model organism to evaluate oxidative stress tolerance, longevity extension, motility, and in-vivo safety of natural plant extracts.</p>
+              <div class="specialty-chips" style="margin-top: auto;">
+                <span class="specialty-chip green">Lifespan &amp; Aging Assays</span>
+                <span class="specialty-chip green">Juglone/H2O2 Stress Assays</span>
+                <span class="specialty-chip green">Fluorescent Microscopy</span>
+              </div>
+            </div>
           </article>
+        </div>
+
+        <!-- ============ C. ELEGANS MODEL SPOTLIGHT ============ -->
+        <div class="celegans-spotlight-card reveal">
+          <div>
+            <span class="badge" style="background: rgba(255,255,255,0.2); color: var(--white); margin-bottom: var(--space-2);">Core Facility Highlight</span>
+            <h3>The C. elegans In-Vivo Research System</h3>
+            <p><em>Caenorhabditis elegans</em> serves as an internationally recognized model organism sharing ~60–80% gene homology with human disease pathways. At our Chittagong facility, we maintain synchronized nematode cultures on NGM plates seeded with <em>E. coli</em> OP50 to test bioactive extracts in living systems.</p>
+            <div style="margin-top: var(--space-4);">
+              <a href="./lab-protocols.html" class="btn btn-primary" style="font-size: 0.85rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31M14 2v7.31M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/></svg>
+                View C. elegans Protocols &rarr;
+              </a>
+              <a href="./gallery.html" class="btn btn-outline" style="font-size: 0.85rem; margin-left: 0.5rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                See Microscopy Media &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="celegans-media">
+            <img src="Gallery/C elegans under Fluorescent Microscope.jpg" alt="C. elegans under microscope" />
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- PLACEHOLDER: replace with real grants/projects -->
-    <section class="section">
+    <!-- ============ FUNDED GRANTS & PROJECTS ============ -->
+    <section class="section" aria-labelledby="grants-title">
       <div class="container">
-        <span class="eyebrow">Funded &amp; ongoing</span>
-        <h2>Grants &amp; projects</h2>
+        <span class="eyebrow">Funded &amp; Ongoing</span>
+        <h2 id="grants-title">Research Projects &amp; Grants</h2>
+        <p style="color: var(--text-muted); margin-bottom: var(--space-5);">Overview of active and recently completed investigations in our laboratory.</p>
+
         <div class="grid grid-2">
+          <!-- Project 1 -->
           <article class="card reveal">
-            <div class="card-meta"><span class="badge badge-lab1">Food Science &amp; Nutraceutical</span> · 2024–2026</div>
-            <h3>Project title placeholder A</h3>
-            <p>Brief description of the funded project, its objectives, and expected outputs. Funding agency and grant number would appear here in the final version.</p>
+            <div class="card-meta" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <span class="badge badge-primary">Marine Macroalgae</span>
+              <span class="status-pill-pulse"><span class="status-dot-pulse"></span> Active Grant (2024–2026)</span>
+            </div>
+            <h3 style="margin-top: var(--space-2);">Nutritional and Antioxidant Evaluation of Marine Algae (<em>Ulva lactuca</em>) from Coastal Bangladesh</h3>
+            <p>Investigating post-harvest processing methods (sun-drying, oven drying, lyophilization) and solvent polarity on phenolic composition, antioxidant capacity, and proximate nutritional quality of marine macroalgae from St. Martin's Island.</p>
+            <div style="font-size: 0.85rem; color: var(--primary); font-weight: 600; margin-top: auto;">Principal Investigators: Prof. Dr. Dwaipayan Sikdar &amp; Assoc. Prof. Dr. Suman Mojumder</div>
           </article>
+
+          <!-- Project 2 -->
           <article class="card reveal">
-            <div class="card-meta"><span class="badge badge-lab2">Applied Biosciences</span> · 2023–2025</div>
-            <h3>Project title placeholder B</h3>
-            <p>Brief description of the funded project, its objectives, and expected outputs. Funding agency and grant number would appear here in the final version.</p>
+            <div class="card-meta" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <span class="badge badge-primary">In-Vivo Stress &amp; Longevity</span>
+              <span class="status-pill-pulse"><span class="status-dot-pulse"></span> Active Grant (2024–2026)</span>
+            </div>
+            <h3 style="margin-top: var(--space-2);">In-Vivo Evaluation of Dietary Polyphenols on Oxidative Stress Resistance and Longevity in <em>C. elegans</em></h3>
+            <p>Assessing the cytoprotective mechanisms of fruit and botanical extracts against thermal, chemical (juglone/paraquat), and age-dependent oxidative degradation in wild-type and mutant <em>Caenorhabditis elegans</em>.</p>
+            <div style="font-size: 0.85rem; color: var(--primary); font-weight: 600; margin-top: auto;">Principal Investigator: Assoc. Prof. Dr. Suman Mojumder</div>
           </article>
+
+          <!-- Project 3 -->
           <article class="card reveal">
-            <div class="card-meta"><span class="badge">Joint</span> · 2025–2027</div>
-            <h3>Project title placeholder C</h3>
-            <p>Brief description of a joint project spanning both laboratories, including its interdisciplinary approach.</p>
+            <div class="card-meta" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <span class="badge badge-primary">Wild Botanical Screening</span>
+              <span class="badge" style="background: #F1F5F9; color: #475569;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
+                Completed
+              </span>
+            </div>
+            <h3 style="margin-top: var(--space-2);">Phytochemical Profiling and Anti-Amylase Activity of Underutilized Bangladeshi Wild Fruits</h3>
+            <p>Comprehensive extraction and solvent-partitioning of wild date palm (<em>Phoenix sylvestris</em>), <em>Artocarpus chaplasha</em>, and <em>Carissa carandas</em> to evaluate antioxidant capacities and enzyme inhibition related to postprandial glucose control.</p>
+            <div style="font-size: 0.85rem; color: var(--primary); font-weight: 600; margin-top: auto;">Principal Investigator: Prof. Dr. Dwaipayan Sikdar</div>
           </article>
+
+          <!-- Project 4 -->
           <article class="card reveal">
-            <div class="card-meta"><span class="badge badge-lab2">Applied Biosciences</span> · 2024–2026</div>
-            <h3>Project title placeholder D</h3>
-            <p>Brief description of the funded project, its objectives, and expected outputs. Funding agency and grant number would appear here in the final version.</p>
+            <div class="card-meta" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <span class="badge badge-primary">Microbial Enzymology</span>
+              <span class="badge" style="background: #F1F5F9; color: #475569;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
+                Completed
+              </span>
+            </div>
+            <h3 style="margin-top: var(--space-2);">Isolation and Characterization of Novel Cellulolytic Gut Bacteria from Phytophagous Insects</h3>
+            <p>Screening and identifying gut-associated microorganisms from <em>Oxya velox</em> and defoliating beetles capable of producing endo-β-1,4-glucanases for biomass conversion and industrial biotechnology applications.</p>
+            <div style="font-size: 0.85rem; color: var(--primary); font-weight: 600; margin-top: auto;">Principal Investigators: Assoc. Prof. Dr. Suman Mojumder &amp; Prof. Dr. Dwaipayan Sikdar</div>
           </article>
+        </div>
+
+        <!-- Illustrated Research Pipeline Flow -->
+        <div class="card reveal" style="margin-top: var(--space-6); background: var(--bg-alt); padding: var(--space-6); border-radius: var(--radius-lg);">
+          <span class="eyebrow">Methodology Flow</span>
+          <h3 style="margin-top: 0;">Our Integrated Research Pipeline</h3>
+          <p style="color: var(--text-muted); font-size: 0.94rem; margin-bottom: var(--space-4);">From indigenous botanical collection to target validation and in-vivo physiological outcomes.</p>
+          
+          <div class="pipeline-flow">
+            <!-- Step 1 -->
+            <div class="pipeline-step-card">
+              <div class="pipeline-step-header">
+                <div class="icon-box icon-box-sm icon-box-primary">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <span class="pipeline-step-num">Step 01</span>
+              </div>
+              <strong style="display: block; color: var(--primary); margin-bottom: 0.25rem; font-size: 0.98rem;">Sample &amp; Extraction</strong>
+              <small style="color: var(--text-muted); line-height: 1.5;">Botanical sampling, freeze-drying (-50°C), and polarity-guided solvent extraction.</small>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="pipeline-step-card">
+              <div class="pipeline-step-header">
+                <div class="icon-box icon-box-sm icon-box-teal">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <span class="pipeline-step-num">Step 02</span>
+              </div>
+              <strong style="display: block; color: var(--primary); margin-bottom: 0.25rem; font-size: 0.98rem;">Chemical Profiling</strong>
+              <small style="color: var(--text-muted); line-height: 1.5;">Quantification of total phenolics, flavonoids, DPPH, FRAP, and enzyme inhibition.</small>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="pipeline-step-card">
+              <div class="pipeline-step-header">
+                <div class="icon-box icon-box-sm icon-box-primary">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <span class="pipeline-step-num">Step 03</span>
+              </div>
+              <strong style="display: block; color: var(--primary); margin-bottom: 0.25rem; font-size: 0.98rem;">In-Silico Docking</strong>
+              <small style="color: var(--text-muted); line-height: 1.5;">AutoDock Vina, PyMOL visualization, molecular dynamics, ADMET, and network pharmacology.</small>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="pipeline-step-card">
+              <div class="pipeline-step-header">
+                <div class="icon-box icon-box-sm icon-box-teal">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/></svg>
+                </div>
+                <span class="pipeline-step-num">Step 04</span>
+              </div>
+              <strong style="display: block; color: var(--primary); margin-bottom: 0.25rem; font-size: 0.98rem;">In-Vivo Validation</strong>
+              <small style="color: var(--text-muted); line-height: 1.5;">Lifespan curves, motility scoring, and juglone/H2O2 oxidative stress survival in <em>C. elegans</em>.</small>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- ============ FOOTER ============ -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
-        <div><h4>CNAB</h4><p>The Centre for Nutraceutical and Applied Biosciences (CNAB) is a joint academic research centre within the Department of Biochemistry and Molecular Biology, University of Chittagong, Bangladesh.</p></div>
-        <div><h4>Quick Links</h4><ul class="footer-links"><li><a href="./about.html">About</a></li><li><a href="./research.html">Research</a></li><li><a href="./publications.html">Publications</a></li><li><a href="./people.html">People</a></li><li><a href="./join-us.html">Join Us</a></li><li><a href="./contact.html">Contact</a></li></ul></div>
-        <div><h4>Contact</h4><ul class="footer-links footer-contact">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><span><strong>Prof. Dr. Dwaipayan Sikdar</strong><br/>dsikdar@cu.ac.bd</span></li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><span><strong>Assoc. Prof. Dr. Suman Mojumder</strong><br/>msumanbmb@cu.ac.bd</span></li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s-8-7.58-8-13a8 8 0 1116 0c0 5.42-8 13-8 13z"/><circle cx="12" cy="9" r="3"/></svg><span>Department of Biochemistry &amp; Molecular Biology, University of Chittagong, Chattogram-4331, Bangladesh</span></li>
-        </ul></div>
+        <div>
+          <h4>Laboratory of Food Science and Nutraceuticals</h4>
+          <p>The Laboratory of Food Science and Nutraceuticals (LFSN) is an academic research laboratory within the Department of Biochemistry and Molecular Biology, University of Chittagong, Bangladesh, jointly led by Prof. Dr. Dwaipayan Sikdar and Assoc. Prof. Dr. Suman Mojumder.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="./about.html">About LFSN</a></li>
+            <li><a href="./research.html">Research Themes</a></li>
+            <li><a href="./publications.html">Publications</a></li>
+            <li><a href="./people.html">People &amp; Leadership</a></li>
+            <li><a href="./lab-protocols.html">Lab Protocols</a></li>
+            <li><a href="./facilities.html">Facilities &amp; Instruments</a></li>
+            <li><a href="./join-us.html">Join Us</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links footer-contact">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span><strong>Prof. Dr. Dwaipayan Sikdar</strong><br/><a href="mailto:dsikdar@cu.ac.bd" style="color: rgba(255,255,255,0.85);">dsikdar@cu.ac.bd</a></span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span><strong>Assoc. Prof. Dr. Suman Mojumder</strong><br/><a href="mailto:msumanbmb@cu.ac.bd" style="color: rgba(255,255,255,0.85);">msumanbmb@cu.ac.bd</a></span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s-8-7.58-8-13a8 8 0 1116 0c0 5.42-8 13-8 13z"/><circle cx="12" cy="9" r="3"/></svg>
+              <span>Department of Biochemistry &amp; Molecular Biology, University of Chittagong, Chattogram-4331, Bangladesh</span>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="footer-bottom">
-        <div>© <span id="current-year"></span> Centre for Nutraceutical and Applied Biosciences (CNAB), University of Chittagong.</div>
+        <div>© <span id="current-year"></span> Laboratory of Food Science and Nutraceuticals, University of Chittagong.</div>
         <div class="footer-credit">Website design and development by <a href="https://md-mustak-khan.github.io/" target="_blank" rel="noopener noreferrer">Md. Mustak Khan</a>.</div>
       </div>
     </div>
   </footer>
 
   <script src="./js/main.js"></script>
-  <script>
-    /* Research page tabs */
-    (function () {
-      const btns = document.querySelectorAll('.tab-btn');
-      const panels = document.querySelectorAll('.tab-panel');
-      btns.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          const target = btn.dataset.tab;
-          btns.forEach(function (b) { b.classList.toggle('active', b === btn); b.setAttribute('aria-selected', b === btn ? 'true' : 'false'); });
-          panels.forEach(function (p) { p.classList.toggle('active', p.dataset.panel === target); });
-        });
-      });
-    })();
-  </script>
 </body>
 </html>

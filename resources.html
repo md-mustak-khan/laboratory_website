@@ -3,23 +3,176 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resources — CNAB</title>
-  <meta name="description" content="Curated resources and tools for research" />
+  <title>Resources &amp; Research Tools — Laboratory of Food Science and Nutraceuticals</title>
+  <meta name="description" content="Curated bioinformatics tools, chemical databases, literature search engines, and molecular biology software for researchers." />
+  <meta property="og:title" content="Resources &amp; Research Tools — Laboratory of Food Science and Nutraceuticals" />
+  <meta property="og:description" content="Comprehensive computational biology databases, cheminformatics tools, and life science resources." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./Gallery/C%20elegans%20under%20Fluorescent%20Microscope.jpg" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/responsive.css" />
-    <link rel="stylesheet" href="./css/resources.css" />
+  <style>
+    /* Synchronized Resources Page Styles matching Lab Protocols layout */
+    .protocol-card {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+    }
+    .subcategory-header {
+      grid-column: 1 / -1;
+      margin-top: var(--space-5);
+      margin-bottom: var(--space-2);
+      padding: var(--space-3) var(--space-4);
+      background: linear-gradient(135deg, rgba(17, 82, 116, 0.08), rgba(42, 157, 143, 0.06));
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius-sm);
+    }
+    .subcategory-header:first-child {
+      margin-top: 0;
+    }
+    .subcategory-header h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin: 0;
+    }
+    .subcategory-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin: 0.25rem 0 0;
+      font-style: italic;
+    }
+    .tool-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform .2s var(--ease), box-shadow .2s var(--ease), border-color .2s var(--ease);
+    }
+    .tool-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-light);
+      background: var(--white);
+    }
+    .tool-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0 0 var(--space-2);
+      line-height: 1.4;
+    }
+    .tool-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin: 0 0 var(--space-4);
+      line-height: 1.55;
+      flex-grow: 1;
+    }
+    .tool-card .btn-tool, .tool-card .resource-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      background: var(--primary-soft);
+      color: var(--primary);
+      text-decoration: none;
+      transition: all .2s var(--ease);
+      border: 1px solid transparent;
+      align-self: flex-start;
+    }
+    .tool-card .btn-tool:hover, .tool-card .resource-link:hover {
+      background: var(--primary);
+      color: var(--white);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+    .resource-search-box {
+      margin-bottom: var(--space-4);
+      position: relative;
+    }
+    .resource-search-box input {
+      width: 100%;
+      padding: 0.65rem 0.85rem 0.65rem 2.2rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      background: var(--white);
+      transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+    }
+    .resource-search-box input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-soft);
+    }
+    .resource-search-box svg {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    .stat-pill-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .stat-pill {
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border-radius: 999px;
+    }
+    .protocol-sidebar .protocol-nav li a {
+      font-size: 0.86rem;
+      padding: 0.55rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .protocol-sidebar .protocol-nav li a i {
+      font-size: 0.8rem;
+      opacity: 0.75;
+      width: 14px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body class="resources-page">
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <!-- ============ HEADER ============ -->
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <a href="./index.html" class="logo" aria-label="CNAB home">
-        <span class="logo-mark" aria-hidden="true">CN</span>
-        <span class="logo-text"><strong>CNAB</strong><small>Centre for Nutraceutical &amp; Applied Biosciences</small></span>
+      <a href="./index.html" class="logo" aria-label="Laboratory of Food Science and Nutraceuticals home">
+        <span class="logo-mark" aria-hidden="true">LFSN</span>
+        <span class="logo-text">
+          <strong>LFSN</strong>
+          <small>Laboratory of Food Science &amp; Nutraceuticals</small>
+        </span>
       </a>
 
       <button type="button" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
@@ -28,43 +181,23 @@
 
       <nav class="primary-nav" id="primary-nav" aria-label="Primary">
         <ul class="nav-list">
-        <li class="nav-item"><a href="./index.html">Home</a></li>
-        <li class="nav-item"><a href="./about.html">About</a></li>
-        <li class="nav-item has-dropdown">
-          <button class="nav-link" aria-haspopup="true" aria-expanded="false">
-            Laboratories
-          </button>
-          <ul class="dropdown" role="menu">
-            <li>
-              <a href="./lab-food-nutraceutical.html" class="lab1" role="menuitem">
-                <span class="dot"></span>
-                <span>
-                  <strong>Food Science &amp; Nutraceutical</strong>
-                  <small>Prof. dr. Dwaipayan Sikdar</small>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="./lab-applied-biosciences.html" class="lab2" role="menuitem">
-                <span class="dot"></span>
-                <span>
-                  <strong>Applied Biosciences</strong>
-                  <small>Assoc. Prof. Dr. Suman Mojumder</small>
-                </span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item"><a href="./research.html">Research</a></li>
-        <li class="nav-item"><a href="./publications.html">Publications</a></li>
-        <li class="nav-item"><a href="./people.html">People</a></li>
-        <li class="nav-item"><a href="./lab-protocols.html">Lab Protocols</a></li>
-        <li class="nav-item"><a href="./resources.html">Resources</a></li>
-        <li class="nav-item"><a href="./facilities.html">Facilities</a></li>
-        <li class="nav-item"><a href="./gallery.html">Gallery</a></li>
-        <li class="nav-item"><a href="./collaborations.html">Collaborations</a></li>
-        <li class="nav-item"><a href="./join-us.html">Join Us</a></li>
-        <li class="nav-item"><a href="./contact.html">Contact</a></li>
+          <li class="nav-item"><a href="./index.html">Home</a></li>
+          <li class="nav-item"><a href="./about.html">About</a></li>
+          <li class="nav-item"><a href="./research.html">Research</a></li>
+          <li class="nav-item"><a href="./publications.html">Publications</a></li>
+          <li class="nav-item"><a href="./people.html">People</a></li>
+          <li class="nav-item"><a href="./lab-protocols.html">Lab Protocols</a></li>
+          <li class="nav-item"><a href="./resources.html" class="active">Resources</a></li>
+          <li class="nav-item has-dropdown">
+            <button type="button" class="nav-link" aria-haspopup="true" aria-expanded="false">More</button>
+            <ul class="dropdown" role="menu">
+              <li><a href="./facilities.html">Facilities</a></li>
+              <li><a href="./gallery.html">Gallery</a></li>
+              <li><a href="./collaborations.html">Collaborations</a></li>
+              <li><a href="./join-us.html">Join Us</a></li>
+              <li><a href="./contact.html">Contact</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <div class="nav-backdrop" aria-hidden="true"></div>
@@ -72,732 +205,902 @@
   </header>
 
   <main id="main">
-
-    <section class="page-banner" aria-labelledby="page-title" data-bg-url="https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    <!-- ============ PAGE BANNER ============ -->
+    <section class="page-banner" aria-labelledby="page-title" data-bg-url="https://images.unsplash.com/photo-1518152006812-edab29b069ac?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
       <div class="container">
-        <div class="breadcrumbs"><a href="./index.html">Home</a><span>/</span>Resources</div>
-        <h1 id="page-title">Resources &amp; Tools</h1>
-        <p>Curated selection of tools, databases, courses and illustration resources.</p>
+        <div class="breadcrumbs"><a href="./index.html">Home</a><span>/</span>Resources &amp; Tools</div>
+        <h1 id="page-title">Resources &amp; Research Tools</h1>
+        <p>Curated software, databases, scientific drawing platforms, and learning tutorials for molecular biology and computational bioscience.</p>
       </div>
     </section>
 
-    <!-- Resources Content -->
-    <section class="resources-content">
+    <!-- ============ MAIN CONTENT WITH PROTOCOL-LIKE SIDEBAR ============ -->
+    <section class="section">
       <div class="container">
-        <div class="resources-card card">
-          <div class="resources-intro">
-            <h2><i class="fas fa-toolbox"></i> Research Toolkit</h2>
-            <p>Explore a curated collection of resources and tools to enhance your research journey. From literature review aids to bioinformatics platforms, these resources are designed to support researchers in various stages of their work.</p>
-          </div>
-
-          <div class="protocol-grid">
-            <aside class="protocol-sidebar card reveal" aria-label="Resources overview">
-              <h3>Resources in this guide</h3>
-              <ul class="protocol-nav">
-                <li><a href="#literature">Literature Review Tools</a></li>
-                <li><a href="#journals">Journal Finder Tools</a></li>
-                <li><a href="#courses">Research & Publishing Courses</a></li>
-                <li><a href="#rcourses">R Programming Courses</a></li>
-                <li><a href="#python-courses">Python & Data Science Courses</a></li>
-                <li><a href="#bioinformatics">Bioinformatics Tools</a></li>
-                <li><a href="#bioinformatics-courses">Bioinformatics Courses</a></li>
-                <li><a href="#celegans">C. elegans Resources</a></li>
-                <li><a href="#illustrations">Illustration Tools</a></li>
-              </ul>
-              <div class="protocol-note">
-                <h4>Quick guide</h4>
-                <p>Use this sidebar to jump directly to each resource category while browsing.</p>
-              </div>
-            </aside>
-            <div class="protocol-content">
-              <div class="resources-list">
-        
-                <!-- Literature Review Tools -->
-                <section id="literature" class="section resource-group protocol-card card literature" aria-labelledby="literature-title">
-                    <h3 id="literature-title"><i class="fas fa-book-reader"></i> Literature Review Tools <i class="fas fa-chevron-up"></i></h3>
-                    <div class="resource-details">
-                        <div class="tool-item">
-                            <h4>Anara</h4>
-                            <p>An AI tool for literature reviews that simplifies reading, extracts key insights, enhances writing, and guides you through complex topics with ease.</p>
-                            <a href="https://anara.com/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>ScienceOpen</h4>
-                            <p>A free search engine for research papers with citation metrics, altmetrics, and a user-friendly design for exploring scholarly works.</p>
-                            <a href="https://www.scienceopen.com/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Semantic Scholar</h4>
-                            <p>An AI-powered platform for discovering and analyzing academic papers, offering deep insights into scholarly literature.</p>
-                            <a href="https://www.semanticscholar.org/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>SciSpace</h4>
-                            <p>A research tool with 270+ million papers and an AI assistant, Copilot, providing summaries, explanations, and answers to aid comprehension.</p>
-                            <a href="https://typeset.io/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>PICO Portal</h4>
-                            <p>An AI tool designed to streamline systematic reviews by predicting the most relevant articles based on your criteria, reducing the number of studies you need to screen.</p>
-                            <a href="https://picoportal.org/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Elicit</h4>
-                            <p>An AI research assistant that helps in literature review by finding relevant papers, summarizing findings, and extracting key information to answer specific research questions.</p>
-                            <a href="https://elicit.org/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Research Rabbit</h4>
-                            <p>A tool that allows researchers to create collections of papers and visualize the connections between them, aiding in the discovery of related work and the development of comprehensive literature reviews.</p>
-                            <a href="https://www.researchrabbit.ai/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Consensus</h4>
-                            <p>An AI-powered search engine that finds and summarizes research papers, helping users quickly understand the consensus in scientific literature on a given topic.</p>
-                            <a href="https://consensus.app/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Journal Tools -->
-                <section id="journals" class="section resource-group protocol-card card journals" aria-labelledby="journals-title">
-                    <h3 id="journals-title"><i class="fas fa-newspaper"></i> Journal Finder Tools <i class="fas fa-chevron-up"></i></h3>
-                    <div class="resource-details">
-                        <div class="tool-item">
-                            <h4>JANE (Journal/Article Name Estimator)</h4>
-                            <p>A tool that helps you find the most relevant journals for your research based on article titles or abstracts.</p>
-                            <a href="https://jane.biosemantics.org/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Clarivate Master Journal List</h4>
-                            <p>A comprehensive list of journals indexed by Clarivate, offering essential information for journal selection.</p>
-                            <a href="https://mjl.clarivate.com/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Scopus Journal Comparison</h4>
-                            <p>Allows you to compare journals indexed in Scopus based on various metrics like impact factor and citation counts.</p>
-                            <a href="https://www.scopus.com/sources.uri" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Jot (Journal Targeter)</h4>
-                            <p>A tool to help you identify the best journals for submitting your manuscript based on keywords or topics.</p>
-                            <a href="https://jot.publichealth.yale.edu/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Elsevier Journal Finder</h4>
-                            <p>Helps you find Elsevier journals that match your research topics and manuscript.</p>
-                            <a href="https://journalfinder.elsevier.com/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Taylor & Francis Journal Suggester</h4>
-                            <p>This tool suggests journals from Taylor & Francis based on the title and abstract of your manuscript.</p>
-                            <a href="https://authorservices.taylorandfrancis.com/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Think. Check. Submit</h4>
-                            <p>A resource to help you evaluate the trustworthiness of journals and avoid predatory publishers.</p>
-                            <a href="https://thinkchecksubmit.org/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Wiley Journal Finder</h4>
-                            <p>A tool that helps you find Wiley journals by matching your manuscript with relevant journals.</p>
-                            <a href="https://journalfinder.wiley.com/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Cabell's</h4>
-                            <p>Provides a directory of journals and their evaluation metrics, helping you find suitable journals for your research.</p>
-                            <a href="https://www.cabells.com/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Journal Evaluation Tool</h4>
-                            <p>A tool for evaluating journals based on multiple performance metrics and journal reputation.</p>
-                            <a href="https://instr.iastate.libguides.com/journaleval" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Sage Journal Recommender</h4>
-                            <p>Suggests Sage journals that are a good fit for your research topic using your manuscript title and abstract.</p>
-                            <a href="https://journals.sagepub.com/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Free Courses -->
-                <section id="courses" class="section resource-group protocol-card card courses" aria-labelledby="courses-title">
-                    <h3 id="courses-title"><i class="fas fa-graduation-cap"></i> Free Courses on Research Methods, Manuscript Writing, and Publishing <i class="fas fa-chevron-up"></i></h3>
-                    <div class="resource-details">
-                        <div class="tool-item">
-                            <h4>A Complete Guide to the Key Components of a Research Article</h4>
-                            <p class="provider">By Wiley Researcher Academy</p>
-                            <a href="https://www.wileyresearcheracademy.com/l/pdp/a-complete-guide-to-the-key-components-of-a-research-article" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Write and Publish a Research Paper: Complete Guide</h4>
-                            <p class="provider">By Adam Academy</p>
-                            <a href="https://adamsacademy.com/?s=Write+and+Publish+a+Research+Paper%3A+Complete+Guide&post_type=course" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Fundamentals of Manuscript Preparation</h4>
-                            <p class="provider">By Elsevier Research Academy</p>
-                            <a href="https://researcheracademy.elsevier.com/writing-research/fundamentals-manuscript-preparation" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Writing Skills</h4>
-                            <p class="provider">By Elsevier Research Academy</p>
-                            <a href="https://researcheracademy.elsevier.com/writing-research/writing-skills" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Fundamentals of Publishing</h4>
-                            <p class="provider">By Elsevier Research Academy</p>
-                            <a href="https://researcheracademy.elsevier.com/publication-process/fundamentals-publishing" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- R Programming Courses -->
-                <section id="rcourses" class="section resource-group protocol-card card courses" aria-labelledby="rcourses-title">
-                    <h3 id="rcourses-title"><i class="fab fa-r-project"></i> Free Courses and Tutorials for R Programming <i class="fas fa-chevron-up"></i></h3>
-                    <div class="resource-details">
-                        <div class="tool-item">
-                            <h4>Introduction to R for Life Scientist</h4>
-                            <p class="provider">By Proteintech</p>
-                            <a href="https://learn.ptglab.com/329e04b6-594e-44f7-8de1-07e751b4f293" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Introduction to Programming with R</h4>
-                            <p class="provider">By CodeSignal</p>
-                            <a href="https://codesignal.com/learn/courses/data-visualization-with-ggplot2" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>R Programming for Data Science</h4>
-                            <p class="provider">By Alison</p>
-                            <a href="https://alison.com/course/r-programming-for-data-science#google_vignette" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Regression Analysis Using R</h4>
-                            <p class="provider">By Great Learning</p>
-                            <a href="https://www.mygreatlearning.com/academy/learn-for-free/courses/predictive-modeling-and-analytics-regression" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Data Visualization with ggplot2</h4>
-                            <p class="provider">By CodeSignal</p>
-                            <a href="https://codesignal.com/learn/courses/data-visualization-with-ggplot2" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Python Courses -->
-                <section id="python-courses" class="section resource-group protocol-card card courses" aria-labelledby="python-courses-title">
-                    <h3 id="python-courses-title"><i class="fab fa-python"></i> Free Courses and Tutorials for Python and Data Science <i class="fas fa-chevron-up"></i></h3>
-                    <div class="resource-details">
-                        <div class="tool-item">
-                            <h4>Programming Foundations with Python</h4>
-                            <p class="provider">By CodeSignal</p>
-                            <a href="https://codesignal.com/learn/courses/programming-foundations-with-python" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Data Analysis with Python</h4>
-                            <p class="provider">By freeCodeCamp</p>
-                            <a href="https://www.freecodecamp.org/learn/data-analysis-with-python/" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Python</h4>
-                            <p class="provider">By Kaggle</p>
-                            <a href="https://www.kaggle.com/learn/python" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Machine Learning with Python</h4>
-                            <p class="provider">By freeCodeCamp</p>
-                            <a href="https://www.freecodecamp.org/learn/machine-learning-with-python/" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Bioinformatics Tools -->
-                <section class="section resource-group protocol-card card bioinformatics" id="bioinformatics" aria-labelledby="bioinformatics-title">
-                    <h3 id="bioinformatics-title"><i class="fas fa-dna"></i> Comprehensive Bioinformatics, Structural Biology, Drug Discovery & Vaccine Design Tools <i class="fas fa-chevron-up"></i></h3>
-                    <div class="resource-details">
-                        <h4>1. Sequence Retrieval, Alignment & Motif Analysis</h4>
-                        <p>Goal: Retrieve sequences, identify homologs, conserved motifs, and functional domains.</p>
-                        
-                        <div class="tool-item">
-                            <h4>NCBI Databases</h4>
-                            <p>Provides genomic, transcript, and protein sequences for multiple organisms.</p>
-                            <a href="https://www.ncbi.nlm.nih.gov" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>BLAST</h4>
-                            <p>Identifies similar DNA, RNA, or protein sequences to predict function and evolutionary relationships.</p>
-                            <a href="https://blast.ncbi.nlm.nih.gov" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>EMBOSS Stretcher</h4>
-                            <p>Performs pairwise sequence alignment using dynamic programming.</p>
-                            <a href="https://www.ebi.ac.uk/Tools/psa/emboss_stretcher/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Clustal Omega</h4>
-                            <p>Multiple sequence alignment for evolutionary and functional studies.</p>
-                            <a href="http://www.clustal.org/omega" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>MAFFT</h4>
-                            <p>High-speed, scalable multiple sequence alignment tool.</p>
-                            <a href="https://mafft.cbrc.jp/alignment/software" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>PROSITE</h4>
-                            <p>Identifies protein motifs and conserved functional domains.</p>
-                            <a href="https://prosite.expasy.org" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Pfam</h4>
-                            <p>Detects protein families and conserved domains using HMMs.</p>
-                            <a href="https://pfam.xfam.org" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        
-                        <h4>2. Genome Assembly, Mapping & Annotation</h4>
-                        <p>Goal: Build genomes from reads, align sequences, and identify genes.</p>
-                        
-                        <div class="tool-item">
-                            <h4>BWA</h4>
-                            <p>Aligns short DNA reads to a reference genome.</p>
-                            <a href="http://bio-bwa.sourceforge.net" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Bowtie2</h4>
-                            <p>High-speed short-read aligner for large genomes.</p>
-                            <a href="http://bowtie-bio.sourceforge.net" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>SPAdes</h4>
-                            <p>De novo genome assembler for bacteria and small eukaryotic genomes.</p>
-                            <a href="https://cab.spbu.ru/software/spades/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Velvet</h4>
-                            <p>De novo short-read genome assembler using de Bruijn graphs.</p>
-                            <a href="https://www.ebi.ac.uk/~zerbino/velvet/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Prokka</h4>
-                            <p>Automated prokaryotic genome annotation.</p>
-                            <a href="https://github.com/tseemann/prokka" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>AUGUSTUS</h4>
-                            <p>Gene prediction in eukaryotic genomes.</p>
-                            <a href="https://bioinf.uni-greifswald.de/augustus/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>OrthoFinder</h4>
-                            <p>Detects orthologous genes across multiple species.</p>
-                            <a href="https://github.com/davidemms/OrthoFinder" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        
-                        <h4>3. Genomics Visualization & Genome Browsers</h4>
-                        <p>Goal: Explore genomes, annotations, and sequencing data visually.</p>
-                        
-                        <div class="tool-item">
-                            <h4>UCSC Genome Browser</h4>
-                            <p>Interactive genome visualization with extensive annotation tracks.</p>
-                            <a href="https://genome.ucsc.edu" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Ensembl Genome Browser</h4>
-                            <p>Genome annotation, comparative genomics, and variation data.</p>
-                            <a href="https://www.ensembl.org" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>IGV (Integrative Genomics Viewer)</h4>
-                            <p>Desktop tool for inspecting alignments and variants.</p>
-                            <a href="https://igv.org" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>JBrowse</h4>
-                            <p>Web-based genome browser suitable for custom and local genomes.</p>
-                            <a href="https://jbrowse.org" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        
-                        <h4>4. Transcriptomics & RNA Analysis</h4>
-                        <p>Goal: Measure gene expression and analyze RNA structures.</p>
-                        
-                        <div class="tool-item">
-                            <h4>FastQC</h4>
-                            <p>Quality control of raw sequencing reads.</p>
-                            <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>featureCounts</h4>
-                            <p>Counts reads mapped to genes or genomic features.</p>
-                            <a href="https://subread.sourceforge.net" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>HTSeq</h4>
-                            <p>Generates gene-level read counts for RNA-seq.</p>
-                            <a href="https://htseq.readthedocs.io" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>DESeq2</h4>
-                            <p>Identifies differentially expressed genes between conditions.</p>
-                            <a href="https://bioconductor.org/packages/DESeq2" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>edgeR</h4>
-                            <p>Statistical analysis of RNA-seq count data.</p>
-                            <a href="https://bioconductor.org/packages/edgeR" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>RNAfold</h4>
-                            <p>Predicts RNA secondary structure using minimum free energy.</p>
-                            <a href="https://rna.tbi.univie.ac.at/cgi-bin/RNAWebSuite/RNAfold.cgi" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        
-                        <h4>5. Single-Cell & Spatial Transcriptomics</h4>
-                        <p>Goal: Analyze gene expression at single-cell or tissue resolution.</p>
-                        
-                        <div class="tool-item">
-                            <h4>Seurat</h4>
-                            <p>R toolkit for single-cell RNA-seq analysis and visualization.</p>
-                            <a href="https://satijalab.org/seurat" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Scanpy</h4>
-                            <p>Python framework for large-scale single-cell analysis.</p>
-                            <a href="https://scanpy.readthedocs.io" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Cell Ranger</h4>
-                            <p>Processes raw single-cell sequencing data from 10x Genomics.</p>
-                            <a href="https://www.10xgenomics.com" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Monocle</h4>
-                            <p>Infers differentiation trajectories and pseudotime.</p>
-                            <a href="https://cole-trapnell-lab.github.io/monocle3/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        
-                        <h4>6. Structural Biology, Homology Modeling & Visualization</h4>
-                        <p>Goal: Model, refine, and visualize protein 3D structures.</p>
-                        
-                        <div class="tool-item">
-                            <h4>MODELLER</h4>
-                            <p>Builds 3D protein structures using homologous templates.</p>
-                            <a href="https://salilab.org/modeller" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>SWISS-MODEL</h4>
-                            <p>Automated homology-based protein modeling.</p>
-                            <a href="https://swissmodel.expasy.org" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>AlphaFold DB</h4>
-                            <p>AI-predicted protein 3D structures.</p>
-                            <a href="https://alphafold.ebi.ac.uk" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>YASARA</h4>
-                            <p>Performs energy minimization and molecular simulations.</p>
-                            <a href="http://www.yasara.org" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>SAVES Server</h4>
-                            <p>Validates protein structure quality and stereochemistry.</p>
-                            <a href="https://saves.mbi.ucla.edu" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>SuperPose</h4>
-                            <p>Compares 3D structural alignments of proteins.</p>
-                            <a href="http://superpose.wishartlab.com" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>PyMOL</h4>
-                            <p>Visualizes, analyzes, and animates 3D molecular structures.</p>
-                            <a href="https://pymol.org" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>ChimeraX</h4>
-                            <p>Advanced visualization of proteins, complexes, and cryo-EM data.</p>
-                            <a href="https://www.cgl.ucsf.edu/chimerax" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>BIOVIA Discovery Studio Visualizer</h4>
-                            <p>Analyzes protein–ligand interactions.</p>
-                            <a href="https://discover.3ds.com/discovery-studio-visualizer-download" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        
-                        <h4>7. Active Site, Pocket Analysis & Ligand Design</h4>
-                        <p>Goal: Identify druggable sites and design small molecules.</p>
-                        
-                        <div class="tool-item">
-                            <h4>POCKDRUG</h4>
-                            <p>Predicts ligand-binding pockets and druggability.</p>
-                            <a href="http://pockdrug.rpbs.univ-paris-diderot.fr" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>fpocket</h4>
-                            <p>Detects potential binding pockets on proteins.</p>
-                            <a href="https://github.com/Discngine/fpocket" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>TRAPP Web Server</h4>
-                            <p>Analyzes pocket dynamics from simulations.</p>
-                            <a href="https://trapp.h-its.org" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Marvin JS</h4>
-                            <p>Chemical structure drawing and editing.</p>
-                            <a href="https://chemaxon.com/products/marvin" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>LigandScout</h4>
-                            <p>Generates pharmacophore models for drug discovery.</p>
-                            <a href="https://www.inteligand.com/ligandscout" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>ZINCPHARMER</h4>
-                            <p>Screens ligand libraries for pharmacophore matches.</p>
-                            <a href="http://zincpharmer.csb.pitt.edu" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        
-                        <h4>8. Molecular Docking, Virtual Screening & Dynamics</h4>
-                        <p>Goal: Predict ligand binding and study molecular interactions.</p>
-                        
-                        <div class="tool-item">
-                            <h4>AutoDock Vina</h4>
-                            <p>Performs ligand-protein docking simulations.</p>
-                            <a href="http://vina.scripps.edu" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>PyRx</h4>
-                            <p>Graphical interface for docking and virtual screening.</p>
-                            <a href="https://pyrx.sourceforge.io" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>PatchDock</h4>
-                            <p>Docking based on geometric complementarity.</p>
-                            <a href="https://bioinfo3d.cs.tau.ac.il/PatchDock/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>FireDock</h4>
-                            <p>Refines docking results using energy-based scoring.</p>
-                            <a href="https://bioinfo3d.cs.tau.ac.il/FireDock/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>GROMACS</h4>
-                            <p>High-performance molecular dynamics simulations.</p>
-                            <a href="https://www.gromacs.org" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>VMD</h4>
-                            <p>Visualizes and analyzes MD trajectories.</p>
-                            <a href="https://www.ks.uiuc.edu/Research/vmd" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Spartan</h4>
-                            <p>Performs quantum chemistry (DFT) calculations.</p>
-                            <a href="https://www.wavefun.com" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        
-                        <h4>9. Drug Discovery: Pharmacokinetics & ADMET</h4>
-                        <p>Goal: Evaluate drug-likeness, pharmacokinetics, and toxicity.</p>
-                        
-                        <div class="tool-item">
-                            <h4>SwissADME</h4>
-                            <p>Predicts pharmacokinetics, solubility, and drug-likeness.</p>
-                            <a href="https://www.swissadme.ch" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>ADMETsar 2.0</h4>
-                            <p>Evaluates ADMET properties computationally.</p>
-                            <a href="http://lmmd.ecust.edu.cn/admetsar2" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>RDKit</h4>
-                            <p>Cheminformatics toolkit for molecular modeling and drug design.</p>
-                            <a href="https://www.rdkit.org" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        
-                        <h4>10. Network Biology, Systems Biology & Pathway Analysis</h4>
-                        <p>Goal: Interpret molecular interactions and biological pathways.</p>
-                        
-                        <div class="tool-item">
-                            <h4>Cytoscape</h4>
-                            <p>Visualizes and analyzes biological networks such as protein–protein interactions.</p>
-                            <a href="https://cytoscape.org" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>STRING</h4>
-                            <p>Explores known and predicted protein–protein interactions.</p>
-                            <a href="https://string-db.org" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>KEGG</h4>
-                            <p>Links genes and proteins to metabolic and signaling pathways.</p>
-                            <a href="https://www.genome.jp/kegg" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Reactome</h4>
-                            <p>Curated database of human biological pathways.</p>
-                            <a href="https://reactome.org" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>DAVID</h4>
-                            <p>Functional annotation and enrichment analysis of gene lists.</p>
-                            <a href="https://david.ncifcrf.gov" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        
-                        <h4>11. Vaccine Design, Epitope Prediction & In-Silico Cloning</h4>
-                        <p>Goal: Predict immune epitopes and simulate vaccine constructs or cloning.</p>
-                        
-                        <div class="tool-item">
-                            <h4>IEDB Tools</h4>
-                            <p>Predicts T-cell and B-cell epitopes for vaccines.</p>
-                            <a href="https://www.iedb.org" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>NetMHCpan</h4>
-                            <p>Predicts peptide binding to MHC class I molecules.</p>
-                            <a href="https://services.healthtech.dtu.dk" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>BepiPred</h4>
-                            <p>Predicts linear B-cell epitopes.</p>
-                            <a href="https://services.healthtech.dtu.dk" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>VaxiJen</h4>
-                            <p>Predicts protein antigenicity for vaccines.</p>
-                            <a href="http://www.ddg-pharmfac.net/vaxijen" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>C-ImmSim</h4>
-                            <p>Simulates immune responses to vaccine constructs.</p>
-                            <a href="https://kraken.iac.rm.cnr.it/C-IMMSIM" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>SnapGene</h4>
-                            <p>Simulates DNA cloning, codon optimization, and plasmid construction.</p>
-                            <a href="https://www.snapgene.com" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>SignalP</h4>
-                            <p>Predicts signal peptides for protein secretion.</p>
-                            <a href="https://services.healthtech.dtu.dk/service.php?SignalP" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Bioinformatics Courses -->
-                <section id="bioinformatics-courses" class="section resource-group protocol-card card courses" aria-labelledby="bioinformatics-courses-title">
-                    <h3 id="bioinformatics-courses-title"><i class="fas fa-dna"></i> Free Courses and Tutorials for Bioinformatics <i class="fas fa-chevron-up"></i></h3>
-                    <div class="resource-details">
-                        <div class="tool-item">
-                            <h4>Python Scripting for Biochemistry & Molecular Biology</h4>
-                            <p class="provider">By 101 PDB</p>
-                            <a href="https://pdb101.rcsb.org/train/training-events/python" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Bioinformatics for Biologists: An Introduction to Linux, Bash Scripting, and R</h4>
-                            <p class="provider">By Wellcome Connecting Science and Future Learn</p>
-                            <a href="https://coursesandconferences.wellcomeconnectingscience.org/event/bioinformatics-for-biologists-an-introduction-to-linux-bash-scripting-and-r-20260323/" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Bioinformatics for Biologists: Analysing and Interpreting Genomics Datasets</h4>
-                            <p class="provider">By Wellcome Connecting Science and Future Learn</p>
-                            <a href="https://coursesandconferences.wellcomeconnectingscience.org/event/bioinformatics-for-biologists-analysing-and-interpreting-genomics-datasets-20260406/" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Diploma in Bioinformatics</h4>
-                            <p class="provider">By Alison</p>
-                            <a href="https://alison.com/course/diploma-in-bioinformatics" class="btn" target="_blank">Visit Course →</a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- C. elegans Resources -->
-                <section id="celegans" class="section resource-group protocol-card card c-elegans" aria-labelledby="celegans-title">
-                    <h3 id="celegans-title"><i class="fas fa-worm"></i> C. elegans Databases & Resources <i class="fas fa-chevron-up"></i></h3>
-                    <div class="resource-details">
-                        <div class="tool-item">
-                            <h4>WormBase</h4>
-                            <p>Central database for C. elegans genetics, genomics, phenotypes, and annotations.</p>
-                            <a href="https://wormbase.org/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>WormBook</h4>
-                            <p>Open-access, peer-reviewed resource on C. elegans biology and research methods.</p>
-                            <a href="https://www.wormbook.org/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>WormAtlas</h4>
-                            <p>Anatomical and structural reference with detailed imaging and connectivity maps.</p>
-                            <a href="https://www.wormatlas.org/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Caenorhabditis elegans Natural Diversity Resource (CeNDR / CaeNDR)</h4>
-                            <p>Repository for wild isolates, natural variation, and genome-wide association mapping.</p>
-                            <a href="https://caendr.org/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Caenorhabditis Genetics Center (CGC)</h4>
-                            <p>Provides C. elegans strains, stocks, and genetic resources.</p>
-                            <a href="https://cgc.umn.edu/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>OpenWorm</h4>
-                            <p>Computational project simulating C. elegans anatomy, connectome, and behavior.</p>
-                            <a href="https://openworm.org/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>C. elegans Connectome Datasets</h4>
-                            <p>Neural wiring and connectivity data for the full worm nervous system.</p>
-                            <a href="https://wormwiring.org/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Biological Illustration Tools -->
-                <section id="illustrations" class="section resource-group protocol-card card illustrations" aria-labelledby="illustrations-title">
-                      <h3 id="illustrations-title"><i class="fas fa-paint-brush"></i> Biological Illustration Tools <i class="fas fa-chevron-up"></i></h3>
-                    <div class="resource-details">
-                        <div class="tool-item">
-                            <h4>BioArt</h4>
-                            <p>Hosted by the National Institute of Allergy and Infectious Diseases (NIAID), BioArt provides over 2,000 science and medical visuals, including vectors, icons, and brushes, created by professional illustrators.</p>
-                            <a href="https://bioart.niaid.nih.gov/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Bioicon</h4>
-                            <p>Bioicon offers a collection of high-quality biological icons and illustrations to enhance scientific presentations and educational materials.</p>
-                            <a href="https://bioicons.com/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>BioRender</h4>
-                            <p>BioRender's scientific illustration software includes an activity sheet with editable lab icons, enabling users to create publication-quality figures using pre-made icons and templates.</p>
-                            <a href="https://biorender.com/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>SciDraw</h4>
-                            <p>SciDraw is a platform that offers a variety of scientific drawings, including vectors of cells, animals, and laboratory equipment, contributed by the scientific community.</p>
-                            <a href="https://scidraw.io/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>Servier Medical Art (SMART)</h4>
-                            <p>It offers over 3,000 free, high-quality medical illustrations suitable for publications and presentations. The collection encompasses various medical specialties, including anatomy, cellular biology, and general medical items.</p>
-                            <a href="https://smart.servier.com/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                        <div class="tool-item">
-                            <h4>LabIcons</h4>
-                            <p>LabIcons offers free drawings of laboratory objects to improve knowledge communication in science and education, including clip arts of microcentrifuge tubes, plasticware, instruments, equipment, and glassware.</p>
-                            <a href="https://www.labicons.net/" class="resource-link" target="_blank">Visit Website</a>
-                        </div>
-                    </div>
-                </section>
+        <!-- Hero Header Summary Card -->
+        <div class="protocol-hero card reveal">
+          <div class="protocol-hero-content">
+            <span class="eyebrow">Academic Research Toolkit</span>
+            <h2>Explore Tools, Databases &amp; Tutorials</h2>
+            <p>This comprehensive directory gathers specialized software, databases, literature search portals, and tutorials across molecular biology, bioinformatics, C. elegans genetics, and scientific illustration.</p>
+            <div class="stat-pill-group">
+              <span class="stat-pill"><strong>136</strong> Curated Tools</span>
+              <span class="stat-pill"><strong>11</strong> Thematic Sections</span>
+              <span class="stat-pill"><strong>100%</strong> Verified Links</span>
             </div>
+          </div>
+          <div class="progress-card" aria-live="polite">
+            <div class="progress-label">Resource Directory</div>
+            <div class="progress-meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+              <div class="progress-bar" style="width: 100%;"></div>
+            </div>
+            <div class="progress-text">Use the sidebar or search box to jump directly to any category.</div>
+          </div>
+        </div>
+
+        <!-- 2-Column Grid Synchronized with Lab Protocols -->
+        <div class="protocol-grid">
+          <!-- Sticky Sidebar -->
+          <aside class="protocol-sidebar card reveal" aria-label="Resource directory navigation">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: var(--space-3);">
+              <div class="icon-box icon-box-xs icon-box-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+              </div>
+              <h3 style="margin: 0; font-size: 1.1rem;">Directory Filter</h3>
+            </div>
+            
+            <!-- Real-time live search -->
+            <div class="resource-search-box">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="search" id="resource-search-box-input" placeholder="Search tools or keywords..." aria-label="Search resources" />
+            </div>
+
+            <!-- Jump Navigation -->
+            <ul class="protocol-nav" id="resource-sidebar-nav">
+              <li><a href="#literature-review"><i class="fas fa-book-reader"></i> 1. Literature Review Tools</a></li>
+              <li><a href="#research-courses"><i class="fas fa-graduation-cap"></i> 2. Research Methods &amp; Publishing</a></li>
+              <li><a href="#journal-finders"><i class="fas fa-newspaper"></i> 3. Journal Selection Tools</a></li>
+              <li><a href="#r-packages"><i class="fas fa-chart-bar"></i> 4. R Packages &amp; Visualization</a></li>
+              <li><a href="#r-courses"><i class="fas fa-laptop-code"></i> 5. R Tutorials &amp; Courses</a></li>
+              <li><a href="#data-science"><i class="fas fa-database"></i> 6. Computational Tools</a></li>
+              <li><a href="#python-courses"><i class="fab fa-python"></i> 7. Python &amp; Data Science</a></li>
+              <li><a href="#bioinformatics-tools"><i class="fas fa-dna"></i> 8. Bioinformatics &amp; Drug Discovery</a></li>
+              <li><a href="#bioinformatics-courses"><i class="fas fa-microscope"></i> 9. Bioinformatics Training</a></li>
+              <li><a href="#c-elegans-resources"><i class="fas fa-circle-nodes"></i> 10. C. elegans Databases</a></li>
+              <li><a href="#illustration-tools"><i class="fas fa-palette"></i> 11. Scientific Illustration</a></li>
+            </ul>
+
+            <!-- Helpful Tip Box -->
+            <div class="callout-box callout-tip" style="margin-top: var(--space-4);">
+              <div class="callout-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+              </div>
+              <div>
+                <strong style="display: block; margin-bottom: 0.2rem; color: #047857;">Instant Search Tip</strong>
+                <p style="margin: 0; font-size: 0.85rem; line-height: 1.5; color: #065f46;">Filter by typing terms like <em>"AutoDock"</em>, <em>"BLAST"</em>, <em>"PyMOL"</em>, or <em>"Cytoscape"</em>.</p>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Main Content Area -->
+          <div class="protocol-content" id="resource-content-area">
+            <article class="protocol-card card reveal" id="literature-review">
+              <div class="protocol-card-header">
+                <span class="badge">Section 1</span>
+                <h3><i class="fas fa-book-reader" style="color: var(--primary); margin-right: 0.4rem;"></i> Literature Review Tools</h3>
+                <p>AI search engines, systematic review platforms, and paper discovery assistants.</p>
+              </div>
+              <div class="tools-grid">
+                <div class="tool-card">
+                  <h4>Liner Scholar</h4>
+                <p>An AI-powered academic search and research assistant that helps users discover scholarly papers, summarize findings, and quickly understand complex research topics.</p>
+                <a href="https://scholar.liner.com/login?referralKey=7S2cLUKIrChZNKnG&utm_campaign=rac-13-referral-invite&utm_medium=referral&utm_source=product" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Anara</h4>
+                <p>An AI tool for literature reviews that simplifies reading, extracts key insights, enhances writing, and guides you through complex topics with ease.</p>
+                <a href="https://anara.com/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>ScienceOpen</h4>
+                <p>A free search engine for research papers with citation metrics, altmetrics, and a user-friendly design for exploring scholarly works.</p>
+                <a href="https://www.scienceopen.com/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Semantic Scholar</h4>
+                <p>An AI-powered platform for discovering and analyzing academic papers, offering deep insights into scholarly literature.</p>
+                <a href="https://www.semanticscholar.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>SciSpace</h4>
+                <p>A research tool with 270+ million papers and an AI assistant, Copilot, providing summaries, explanations, and answers to aid comprehension.</p>
+                <a href="https://typeset.io/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>PICO Portal</h4>
+                <p>An AI tool designed to streamline systematic reviews by predicting the most relevant articles based on your criteria, reducing the number of studies you need to screen.</p>
+                <a href="https://picoportal.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Elicit</h4>
+                <p>An AI research assistant that helps in literature review by finding relevant papers, summarizing findings, and extracting key information to answer specific research questions.</p>
+                <a href="https://elicit.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Research Rabbit</h4>
+                <p>A tool that allows researchers to create collections of papers and visualize the connections between them, aiding in the discovery of related work and the development of comprehensive literature reviews.</p>
+                <a href="https://www.researchrabbit.ai/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Consensus</h4>
+                <p>An AI-powered search engine that finds and summarizes research papers, helping users quickly understand the consensus in scientific literature on a given topic.</p>
+                <a href="https://consensus.app/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="research-courses">
+              <div class="protocol-card-header">
+                <span class="badge">Section 2</span>
+                <h3><i class="fas fa-graduation-cap" style="color: var(--primary); margin-right: 0.4rem;"></i> Research Methods, Writing & Publishing Courses</h3>
+                <p>Free verified courses from Wiley, Elsevier, and academic publishers.</p>
+              </div>
+              <div class="tools-grid">
+                <div class="tool-card">
+                  <h4><strong>A Complete Guide to the Key Components of a Research Article</strong> By Wiley Researcher Academy</h4>
+                            <a href="https://www.wileyresearcheracademy.com/l/pdp/a-complete-guide-to-the-key-components-of-a-research-article" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>Write and Publish a Research Paper: Complete Guide</strong> By Adam Academy</h4>
+                            <a href="https://adamsacademy.com/?s=Write+and+Publish+a+Research+Paper%3A+Complete+Guide&post_type=course" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>Fundamentals of Manuscript Preparation</strong> By Elsevier Research Academy</h4>
+                            <a href="https://researcheracademy.elsevier.com/writing-research/fundamentals-manuscript-preparation" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>Writing Skills</strong> By Elsevier Research Academy</h4>
+                            <a href="https://researcheracademy.elsevier.com/writing-research/writing-skills" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>Fundamentals of Publishing</strong> By Elsevier Research Academy</h4>
+                            <a href="https://researcheracademy.elsevier.com/publication-process/fundamentals-publishing" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="journal-finders">
+              <div class="protocol-card-header">
+                <span class="badge">Section 3</span>
+                <h3><i class="fas fa-newspaper" style="color: var(--primary); margin-right: 0.4rem;"></i> Journal Finder & Selection Tools</h3>
+                <p>Match your manuscript title and abstract to appropriate peer-reviewed journals.</p>
+              </div>
+              <div class="tools-grid">
+                <div class="tool-card">
+                  <h4>JANE (Journal/Article Name Estimator)</h4>
+                            <p>A tool that helps you find the most relevant journals for your research based on article titles or abstracts.</p>
+                            <a href="https://jane.biosemantics.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Clarivate Master Journal List</h4>
+                            <p>A comprehensive list of journals indexed by Clarivate, offering essential information for journal selection.</p>
+                            <a href="https://mjl.clarivate.com/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Scopus Journal Comparison</h4>
+                            <p>Allows you to compare journals indexed in Scopus based on various metrics like impact factor and citation counts.</p>
+                            <a href="https://www.scopus.com/sources.uri" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Jot (Journal Targeter)</h4>
+                            <p>A tool to help you identify the best journals for submitting your manuscript based on keywords or topics.</p>
+                            <a href="https://jot.publichealth.yale.edu/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Elsevier Journal Finder</h4>
+                            <p>Helps you find Elsevier journals that match your research topics and manuscript.</p>
+                            <a href="https://journalfinder.elsevier.com/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Taylor & Francis Journal Suggester</h4>
+                            <p>This tool suggests journals from Taylor & Francis based on the title and abstract of your manuscript.</p>
+                            <a href="https://authorservices.taylorandfrancis.com/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Think. Check. Submit</h4>
+                            <p>A resource to help you evaluate the trustworthiness of journals and avoid predatory publishers.</p>
+                            <a href="https://thinkchecksubmit.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Wiley Journal Finder</h4>
+                            <p>A tool that helps you find Wiley journals by matching your manuscript with relevant journals.</p>
+                            <a href="https://journalfinder.wiley.com/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Cabell's</h4>
+                            <p>Provides a directory of journals and their evaluation metrics, helping you find suitable journals for your research.</p>
+                            <a href="https://www.cabells.com/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Journal Evaluation Tool</h4>
+                            <p>A tool for evaluating journals based on multiple performance metrics and journal reputation.</p>
+                            <a href="https://instr.iastate.libguides.com/journaleval" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Sage Journal Recommender</h4>
+                            <p>Suggests Sage journals that are a good fit for your research topic using your manuscript title and abstract.</p>
+                            <a href="https://journals.sagepub.com/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="r-packages">
+              <div class="protocol-card-header">
+                <span class="badge">Section 4</span>
+                <h3><i class="fas fa-chart-bar" style="color: var(--primary); margin-right: 0.4rem;"></i> R Packages for Data Analysis & Visualization</h3>
+                <p>Essential R packages for statistical modeling, ggplot2 graphics, and omics data.</p>
+              </div>
+              <div class="tools-grid">
+                <div class="tool-card">
+                  <h4>dplyr</h4>
+                            <p>A package for data manipulation, offering functions like filtering, selecting, and summarizing data. Part of the tidyverse.</p>
+                            <a href="https://dplyr.tidyverse.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>tidyr</h4>
+                            <p>Focuses on tidying data, such as reshaping and separating columns. Works well with other tidyverse packages.</p>
+                            <a href="https://tidyr.tidyverse.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Tidyverse</h4>
+                            <p>A collection of R packages (e.g., ggplot2, dplyr, tidyr, purrr) for consistent data analysis and visualization.</p>
+                            <a href="https://www.tidyverse.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>gtsummary & gt</h4>
+                            <p>Used for creating customizable summary tables for data frames and statistical models.</p>
+                            <a href="https://www.danieldsjoberg.com/gtsummary/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>ggplot2</h4>
+                            <p>A powerful visualization package implementing the "grammar of graphics" to create complex plots.</p>
+                            <a href="https://ggplot2.tidyverse.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>hrbrthemes</h4>
+                            <p>Enhances ggplot2 plots with additional themes, color palettes, and customization options.</p>
+                            <a href="https://hrbrmstr.github.io/hrbrthemes/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>RColorBrewer & viridis</h4>
+                            <p>Provide color palettes for data visualization, ideal for maps and charts.</p>
+                            <a href="https://cran.r-project.org/web/packages/RColorBrewer/index.html" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Heatmaply</h4>
+                            <p>Creates interactive heatmaps with customization options.</p>
+                            <a href="https://cran.r-project.org/web/packages/heatmaply/index.html" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="r-courses">
+              <div class="protocol-card-header">
+                <span class="badge">Section 5</span>
+                <h3><i class="fas fa-laptop-code" style="color: var(--primary); margin-right: 0.4rem;"></i> R Programming Tutorials & Courses</h3>
+                <p>Free interactive guides and courses for learning R from scratch to advanced analytics.</p>
+              </div>
+              <div class="tools-grid">
+                <div class="tool-card">
+                  <h4><strong>Introduction to R for Life Scientist</strong> By Proteintech</h4>
+                            <a href="https://learn.ptglab.com/329e04b6-594e-44f7-8de1-07e751b4f293" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>Introduction to Programming with R</strong> By CodeSignal</h4>
+                            <a href="https://codesignal.com/learn/paths/introduction-to-programming-with-r" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>R Programming for Data Science</strong> By Alison</h4>
+                            <a href="https://alison.com/course/r-programming-for-data-science#google_vignette" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>Regression Analysis Using R</strong> By Great Learning</h4>
+                            <a href="https://www.mygreatlearning.com/academy/learn-for-free/courses/predictive-modeling-and-analytics-regression" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>Data Visualization with ggplot2</strong> By CodeSignal</h4>
+                            <a href="https://codesignal.com/learn/courses/data-visualization-with-ggplot2" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="data-science">
+              <div class="protocol-card-header">
+                <span class="badge">Section 6</span>
+                <h3><i class="fas fa-database" style="color: var(--primary); margin-right: 0.4rem;"></i> Data Science & Computational Tools</h3>
+                <p>Platforms for statistical exploration, machine learning, and data curation.</p>
+              </div>
+              <div class="tools-grid">
+                <div class="tool-card">
+                  <h4>NumPy</h4>
+                            <p>Foundation for scientific computing, offering support for multidimensional arrays and mathematical operations.</p>
+                            <a href="https://numpy.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Pandas</h4>
+                            <p>Simplifies data wrangling and analysis, providing powerful tools for handling structured data.</p>
+                            <a href="https://pandas.pydata.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Matplotlib</h4>
+                            <p>Used for creating static, basic data visualizations.</p>
+                            <a href="https://matplotlib.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Seaborn</h4>
+                            <p>Enhances Matplotlib with advanced statistical visualizations and attractive aesthetics.</p>
+                            <a href="https://seaborn.pydata.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Plotly</h4>
+                            <p>Enables interactive and dynamic data visualizations.</p>
+                            <a href="https://plotly.com/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>researchpy</h4>
+                            <p>Data and performs statistical tests efficiently.</p>
+                            <a href="https://researchpy.readthedocs.io/en/latest/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Dask</h4>
+                            <p>Handles big data analysis with parallel computing support.</p>
+                            <a href="https://dask.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>scikit-learn</h4>
+                            <p>A versatile library for machine learning, offering tools for classification, regression, and clustering.</p>
+                            <a href="https://scikit-learn.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>scikit-image</h4>
+                            <p>Provides tools for image manipulation, especially useful in life sciences.</p>
+                            <a href="https://scikit-image.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="python-courses">
+              <div class="protocol-card-header">
+                <span class="badge">Section 7</span>
+                <h3><i class="fab fa-python" style="color: var(--primary); margin-right: 0.4rem;"></i> Python & Data Science Tutorials</h3>
+                <p>Free Python resources for data science, bioinformatics, and machine learning.</p>
+              </div>
+              <div class="tools-grid">
+                <div class="tool-card">
+                  <h4><strong>Python</strong> By Kaggle</h4>
+                            <a href="https://www.kaggle.com/learn/python" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>Introduction to Python for Biologists</strong> By Proteintech</h4>
+                            <a href="https://learn.ptglab.com/python" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>Programming Foundations with Python</strong> By CodeSignal</h4>
+                            <a href="https://codesignal.com/learn/courses/programming-foundations-with-python" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>Machine Learning with Python</strong> By freeCodeCamp</h4>
+                            <a href="https://www.freecodecamp.org/learn/machine-learning-with-python/" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>AI for Medicine Specialization</strong> By DeepLearning.AI</h4>
+                            <a href="https://www.deeplearning.ai/courses/ai-for-medicine-specialization/" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="bioinformatics-tools">
+              <div class="protocol-card-header">
+                <span class="badge">Section 8</span>
+                <h3><i class="fas fa-dna" style="color: var(--primary); margin-right: 0.4rem;"></i> Comprehensive Bioinformatics, Structural Biology &amp; Drug Discovery</h3>
+                <p>Comprehensive tool suite covering sequence analysis, genome assembly, docking, ADMET, phylogenetics, systems biology, and vaccine design.</p>
+              </div>
+              <div class="tools-grid">
+                <div class="subcategory-header">
+                  <h4><i class="fas fa-folder-open" style="color: var(--primary); margin-right: 0.35rem;"></i> 1. Sequence Retrieval, Alignment & Motif Analysis</h4>
+                  <p class="subcategory-desc">Goal: Retrieve sequences, identify homologs, conserved motifs, and functional domains.</p>
+                </div>
+                <div class="tool-card">
+                  <h4>NCBI Databases</h4>
+                            <p>Provides genomic, transcript, and protein sequences for multiple organisms.</p>
+                            <a href="https://www.ncbi.nlm.nih.gov" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>BLAST</h4>
+                            <p>Identifies similar DNA, RNA, or protein sequences to predict function and evolutionary relationships.</p>
+                            <a href="https://blast.ncbi.nlm.nih.gov" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>EMBOSS Stretcher</h4>
+                            <p>Performs pairwise sequence alignment using dynamic programming.</p>
+                            <a href="https://www.ebi.ac.uk/Tools/psa/emboss_stretcher/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Clustal Omega</h4>
+                            <p>Multiple sequence alignment for evolutionary and functional studies.</p>
+                            <a href="http://www.clustal.org/omega" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>MAFFT</h4>
+                            <p>High-speed, scalable multiple sequence alignment tool.</p>
+                            <a href="https://mafft.cbrc.jp/alignment/software" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>PROSITE</h4>
+                            <p>Identifies protein motifs and conserved functional domains.</p>
+                            <a href="https://prosite.expasy.org" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Pfam</h4>
+                            <p>Detects protein families and conserved domains using HMMs.</p>
+                            <a href="https://pfam.xfam.org" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="subcategory-header">
+                  <h4><i class="fas fa-folder-open" style="color: var(--primary); margin-right: 0.35rem;"></i> 2. Genome Assembly, Mapping & Annotation</h4>
+                  <p class="subcategory-desc">Goal: Build genomes from reads, align sequences, and identify genes.</p>
+                </div>
+                <div class="tool-card">
+                  <h4>BWA</h4>
+                            <p>Aligns short DNA reads to a reference genome.</p>
+                            <a href="http://bio-bwa.sourceforge.net" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Bowtie2</h4>
+                            <p>High-speed short-read aligner for large genomes.</p>
+                            <a href="http://bowtie-bio.sourceforge.net" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>SPAdes</h4>
+                            <p>De novo genome assembler for bacteria and small eukaryotic genomes.</p>
+                            <a href="https://cab.spbu.ru/software/spades/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Velvet</h4>
+                            <p>De novo short-read genome assembler using de Bruijn graphs.</p>
+                            <a href="https://www.ebi.ac.uk/~zerbino/velvet/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Prokka</h4>
+                            <p>Automated prokaryotic genome annotation.</p>
+                            <a href="https://github.com/tseemann/prokka" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>AUGUSTUS</h4>
+                            <p>Gene prediction in eukaryotic genomes.</p>
+                            <a href="https://bioinf.uni-greifswald.de/augustus/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>OrthoFinder</h4>
+                            <p>Detects orthologous genes across multiple species.</p>
+                            <a href="https://github.com/davidemms/OrthoFinder" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="subcategory-header">
+                  <h4><i class="fas fa-folder-open" style="color: var(--primary); margin-right: 0.35rem;"></i> 3. Genomics Visualization & Genome Browsers</h4>
+                  <p class="subcategory-desc">Goal: Explore genomes, annotations, and sequencing data visually.</p>
+                </div>
+                <div class="tool-card">
+                  <h4>UCSC Genome Browser</h4>
+                            <p>Interactive genome visualization with extensive annotation tracks.</p>
+                            <a href="https://genome.ucsc.edu" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Ensembl Genome Browser</h4>
+                            <p>Genome annotation, comparative genomics, and variation data.</p>
+                            <a href="https://www.ensembl.org" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>IGV (Integrative Genomics Viewer)</h4>
+                            <p>Desktop tool for inspecting alignments and variants.</p>
+                            <a href="https://igv.org" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>JBrowse</h4>
+                            <p>Web-based genome browser suitable for custom and local genomes.</p>
+                            <a href="https://jbrowse.org" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="subcategory-header">
+                  <h4><i class="fas fa-folder-open" style="color: var(--primary); margin-right: 0.35rem;"></i> 4. Transcriptomics & RNA Analysis</h4>
+                  <p class="subcategory-desc">Goal: Measure gene expression and analyze RNA structures.</p>
+                </div>
+                <div class="tool-card">
+                  <h4>FastQC</h4>
+                            <p>Quality control of raw sequencing reads.</p>
+                            <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>featureCounts</h4>
+                            <p>Counts reads mapped to genes or genomic features.</p>
+                            <a href="https://subread.sourceforge.net" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>HTSeq</h4>
+                            <p>Generates gene-level read counts for RNA-seq.</p>
+                            <a href="https://htseq.readthedocs.io" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>DESeq2</h4>
+                            <p>Identifies differentially expressed genes between conditions.</p>
+                            <a href="https://bioconductor.org/packages/DESeq2" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>edgeR</h4>
+                            <p>Statistical analysis of RNA-seq count data.</p>
+                            <a href="https://bioconductor.org/packages/edgeR" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>RNAfold</h4>
+                            <p>Predicts RNA secondary structure using minimum free energy.</p>
+                            <a href="https://rna.tbi.univie.ac.at/cgi-bin/RNAWebSuite/RNAfold.cgi" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="subcategory-header">
+                  <h4><i class="fas fa-folder-open" style="color: var(--primary); margin-right: 0.35rem;"></i> 5. Single-Cell & Spatial Transcriptomics</h4>
+                  <p class="subcategory-desc">Goal: Analyze gene expression at single-cell or tissue resolution.</p>
+                </div>
+                <div class="tool-card">
+                  <h4>Seurat</h4>
+                            <p>R toolkit for single-cell RNA-seq analysis and visualization.</p>
+                            <a href="https://satijalab.org/seurat" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Scanpy</h4>
+                            <p>Python framework for large-scale single-cell analysis.</p>
+                            <a href="https://scanpy.readthedocs.io" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Cell Ranger</h4>
+                            <p>Processes raw single-cell sequencing data from 10x Genomics.</p>
+                            <a href="https://www.10xgenomics.com" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Monocle</h4>
+                            <p>Infers differentiation trajectories and pseudotime.</p>
+                            <a href="https://cole-trapnell-lab.github.io/monocle3/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="subcategory-header">
+                  <h4><i class="fas fa-folder-open" style="color: var(--primary); margin-right: 0.35rem;"></i> 6. Structural Biology, Homology Modeling & Visualization</h4>
+                  <p class="subcategory-desc">Goal: Model, refine, and visualize protein 3D structures.</p>
+                </div>
+                <div class="tool-card">
+                  <h4>MODELLER</h4>
+                            <p>Builds 3D protein structures using homologous templates.</p>
+                            <a href="https://salilab.org/modeller" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>SWISS-MODEL</h4>
+                            <p>Automated homology-based protein modeling.</p>
+                            <a href="https://swissmodel.expasy.org" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>AlphaFold DB</h4>
+                            <p>AI-predicted protein 3D structures.</p>
+                            <a href="https://alphafold.ebi.ac.uk" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>YASARA</h4>
+                            <p>Performs energy minimization and molecular simulations.</p>
+                            <a href="http://www.yasara.org" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>SAVES Server</h4>
+                            <p>Validates protein structure quality and stereochemistry.</p>
+                            <a href="https://saves.mbi.ucla.edu" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>SuperPose</h4>
+                            <p>Compares 3D structural alignments of proteins.</p>
+                            <a href="http://superpose.wishartlab.com" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>PyMOL</h4>
+                            <p>Visualizes, analyzes, and animates 3D molecular structures.</p>
+                            <a href="https://pymol.org" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>ChimeraX</h4>
+                            <p>Advanced visualization of proteins, complexes, and cryo-EM data.</p>
+                            <a href="https://www.cgl.ucsf.edu/chimerax" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>BIOVIA Discovery Studio Visualizer</h4>
+                            <p>Analyzes protein–ligand interactions.</p>
+                            <a href="https://discover.3ds.com/discovery-studio-visualizer-download" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="subcategory-header">
+                  <h4><i class="fas fa-folder-open" style="color: var(--primary); margin-right: 0.35rem;"></i> 7. Active Site, Pocket Analysis & Ligand Design</h4>
+                  <p class="subcategory-desc">Goal: Identify druggable sites and design small molecules.</p>
+                </div>
+                <div class="tool-card">
+                  <h4>POCKDRUG</h4>
+                            <p>Predicts ligand-binding pockets and druggability.</p>
+                            <a href="http://pockdrug.rpbs.univ-paris-diderot.fr" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>fpocket</h4>
+                            <p>Detects potential binding pockets on proteins.</p>
+                            <a href="https://github.com/Discngine/fpocket" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>TRAPP Web Server</h4>
+                            <p>Analyzes pocket dynamics from simulations.</p>
+                            <a href="https://trapp.h-its.org" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Marvin JS</h4>
+                            <p>Chemical structure drawing and editing.</p>
+                            <a href="https://chemaxon.com/products/marvin" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>LigandScout</h4>
+                            <p>Generates pharmacophore models for drug discovery.</p>
+                            <a href="https://www.inteligand.com/ligandscout" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>ZINCPHARMER</h4>
+                            <p>Screens ligand libraries for pharmacophore matches.</p>
+                            <a href="http://zincpharmer.csb.pitt.edu" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="subcategory-header">
+                  <h4><i class="fas fa-folder-open" style="color: var(--primary); margin-right: 0.35rem;"></i> 8. Molecular Docking, Virtual Screening & Dynamics</h4>
+                  <p class="subcategory-desc">Goal: Predict ligand binding and study molecular interactions.</p>
+                </div>
+                <div class="tool-card">
+                  <h4>AutoDock Vina</h4>
+                            <p>Performs ligand-protein docking simulations.</p>
+                            <a href="http://vina.scripps.edu" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>PyRx</h4>
+                            <p>Graphical interface for docking and virtual screening.</p>
+                            <a href="https://pyrx.sourceforge.io" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>PatchDock</h4>
+                            <p>Docking based on geometric complementarity.</p>
+                            <a href="https://bioinfo3d.cs.tau.ac.il/PatchDock/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>FireDock</h4>
+                            <p>Refines docking results using energy-based scoring.</p>
+                            <a href="https://bioinfo3d.cs.tau.ac.il/FireDock/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>GROMACS</h4>
+                            <p>High-performance molecular dynamics simulations.</p>
+                            <a href="https://www.gromacs.org" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>VMD</h4>
+                            <p>Visualizes and analyzes MD trajectories.</p>
+                            <a href="https://www.ks.uiuc.edu/Research/vmd" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Spartan</h4>
+                            <p>Performs quantum chemistry (DFT) calculations.</p>
+                            <a href="https://www.wavefun.com" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="subcategory-header">
+                  <h4><i class="fas fa-folder-open" style="color: var(--primary); margin-right: 0.35rem;"></i> 9. Drug Discovery: Pharmacokinetics & ADMET</h4>
+                  <p class="subcategory-desc">Goal: Evaluate drug-likeness, pharmacokinetics, and toxicity.</p>
+                </div>
+                <div class="tool-card">
+                  <h4>SwissADME</h4>
+                            <p>Predicts pharmacokinetics, solubility, and drug-likeness.</p>
+                            <a href="https://www.swissadme.ch" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>ADMETsar 2.0</h4>
+                            <p>Evaluates ADMET properties computationally.</p>
+                            <a href="http://lmmd.ecust.edu.cn/admetsar2" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>RDKit</h4>
+                            <p>Cheminformatics toolkit for molecular modeling and drug design.</p>
+                            <a href="https://www.rdkit.org" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="subcategory-header">
+                  <h4><i class="fas fa-folder-open" style="color: var(--primary); margin-right: 0.35rem;"></i> 10. Network Biology, Systems Biology & Pathway Analysis</h4>
+                  <p class="subcategory-desc">Goal: Interpret molecular interactions and biological pathways.</p>
+                </div>
+                <div class="tool-card">
+                  <h4>Cytoscape</h4>
+                            <p>Visualizes and analyzes biological networks such as protein–protein interactions.</p>
+                            <a href="https://cytoscape.org" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>STRING</h4>
+                            <p>Explores known and predicted protein–protein interactions.</p>
+                            <a href="https://string-db.org" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>KEGG</h4>
+                            <p>Links genes and proteins to metabolic and signaling pathways.</p>
+                            <a href="https://www.genome.jp/kegg" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Reactome</h4>
+                            <p>Curated database of human biological pathways.</p>
+                            <a href="https://reactome.org" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>DAVID</h4>
+                            <p>Functional annotation and enrichment analysis of gene lists.</p>
+                            <a href="https://david.ncifcrf.gov" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="subcategory-header">
+                  <h4><i class="fas fa-folder-open" style="color: var(--primary); margin-right: 0.35rem;"></i> 11. Vaccine Design, Epitope Prediction & In-Silico Cloning</h4>
+                  <p class="subcategory-desc">Goal: Predict immune epitopes and simulate vaccine constructs or cloning.</p>
+                </div>
+                <div class="tool-card">
+                  <h4>IEDB Tools</h4>
+                            <p>Predicts T-cell and B-cell epitopes for vaccines.</p>
+                            <a href="https://www.iedb.org" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>NetMHCpan</h4>
+                            <p>Predicts peptide binding to MHC class I molecules.</p>
+                            <a href="https://services.healthtech.dtu.dk" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>BepiPred</h4>
+                            <p>Predicts linear B-cell epitopes.</p>
+                            <a href="https://services.healthtech.dtu.dk" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>VaxiJen</h4>
+                            <p>Predicts protein antigenicity for vaccines.</p>
+                            <a href="http://www.ddg-pharmfac.net/vaxijen" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>C-ImmSim</h4>
+                            <p>Simulates immune responses to vaccine constructs.</p>
+                            <a href="https://kraken.iac.rm.cnr.it/C-IMMSIM" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>SnapGene</h4>
+                            <p>Simulates DNA cloning, codon optimization, and plasmid construction.</p>
+                            <a href="https://www.snapgene.com" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>SignalP</h4>
+                            <p>Predicts signal peptides for protein secretion.</p>
+                            <a href="https://services.healthtech.dtu.dk/service.php?SignalP" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="bioinformatics-courses">
+              <div class="protocol-card-header">
+                <span class="badge">Section 9</span>
+                <h3><i class="fas fa-microscope" style="color: var(--primary); margin-right: 0.4rem;"></i> Bioinformatics Tutorials & Training</h3>
+                <p>Educational portals, video lectures, and hands-on bioinformatics workflows.</p>
+              </div>
+              <div class="tools-grid">
+                <div class="tool-card">
+                  <h4><strong>How to analyze RNAseq Data for Absolute Beginners</strong> By NGS Learning Hub</h4>
+                            <a href="https://ngs101.com/tutorials/" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>Python Scripting for Biochemistry & Molecular Biology</strong> By 101 PDB</h4>
+                            <a href="https://pdb101.rcsb.org/train/training-events/python" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>Bioinformatics for Biologists: An Introduction to Linux, Bash Scripting, and R</strong> By Wellcome Connecting Science and Future Learn</h4>
+                            <a href="https://coursesandconferences.wellcomeconnectingscience.org/event/bioinformatics-for-biologists-an-introduction-to-linux-bash-scripting-and-r-20260323/" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>Bioinformatics for Biologists: Analysing and Interpreting Genomics Datasets</strong> By Wellcome Connecting Science and Future Learn</h4>
+                            <a href="https://coursesandconferences.wellcomeconnectingscience.org/event/bioinformatics-for-biologists-analysing-and-interpreting-genomics-datasets-20260406/" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+                <div class="tool-card">
+                  <h4><strong>Diploma in Bioinformatics</strong> By Alison</h4>
+                            <a href="https://alison.com/course/diploma-in-bioinformatics" class="resource-link btn-tool" target="_blank">Visit Course</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="c-elegans-resources">
+              <div class="protocol-card-header">
+                <span class="badge">Section 10</span>
+                <h3><i class="fas fa-circle-nodes" style="color: var(--primary); margin-right: 0.4rem;"></i> C. elegans Databases & Genetics Portals</h3>
+                <p>Curated databases, WormBase, and genetic repositories for nematode research.</p>
+              </div>
+              <div class="tools-grid">
+                <div class="tool-card">
+                  <h4>WormBase</h4>
+                            <p>Central database for C. elegans genetics, genomics, phenotypes, and annotations.</p>
+                            <a href="https://wormbase.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>WormBook</h4>
+                            <p>Open-access, peer-reviewed resource on C. elegans biology and research methods.</p>
+                            <a href="https://www.wormbook.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>WormAtlas</h4>
+                            <p>Anatomical and structural reference with detailed imaging and connectivity maps.</p>
+                            <a href="https://www.wormatlas.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Caenorhabditis elegans Natural Diversity Resource (CeNDR / CaeNDR)</h4>
+                            <p>Repository for wild isolates, natural variation, and genome-wide association mapping.</p>
+                            <a href="https://www.elegansvariation.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Caenorhabditis Genetics Center (CGC)</h4>
+                            <p>Provides C. elegans strains, stocks, and genetic resources.</p>
+                            <a href="https://cgc.umn.edu/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>OpenWorm</h4>
+                            <p>Computational project simulating C. elegans anatomy, connectome, and behavior.</p>
+                            <a href="https://openworm.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Textpresso for C. elegans</h4>
+                            <p>Literature search engine for full-text publications on C. elegans.</p>
+                            <a href="https://www.textpresso.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>C. elegans Connectome Datasets</h4>
+                            <p>Neural wiring and connectivity data for the full worm nervous system.</p>
+                            <a href="https://wormwiring.org/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="protocol-card card reveal" id="illustration-tools">
+              <div class="protocol-card-header">
+                <span class="badge">Section 11</span>
+                <h3><i class="fas fa-palette" style="color: var(--primary); margin-right: 0.4rem;"></i> Scientific Illustration & Figure Design</h3>
+                <p>Vector libraries, figure templates, and icon repositories including SciDraw and LabIcons.</p>
+              </div>
+              <div class="tools-grid">
+                <div class="tool-card">
+                  <h4>BioArt</h4>
+                            <p>Hosted by the National Institute of Allergy and Infectious Diseases (NIAID), BioArt provides over 2,000 science and medical visuals, including vectors, icons, and brushes, created by professional illustrators.</p>
+                            <a href="https://bioart.niaid.nih.gov/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Bioicon</h4>
+                            <p>Bioicon offers a collection of high-quality biological icons and illustrations to enhance scientific presentations and educational materials.</p>
+                            <a href="https://bioicons.com/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>BioRender</h4>
+                            <p>BioRender's scientific illustration software includes an activity sheet with editable lab icons, enabling users to create publication-quality figures using pre-made icons and templates.</p>
+                            <a href="https://biorender.com/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>SciDraw</h4>
+                            <p>SciDraw is a platform that offers a variety of scientific drawings, including vectors of cells, animals, and laboratory equipment, contributed by the scientific community.</p>
+                            <a href="https://scidraw.io/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>Servier Medical Art (SMART)</h4>
+                            <p>It offers over 3,000 free, high-quality medical illustrations suitable for publications and presentations. The collection encompasses various medical specialties, including anatomy, cellular biology, and general medical items.</p>
+                            <a href="https://smart.servier.com/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+                <div class="tool-card">
+                  <h4>LabIcons</h4>
+                            <p>LabIcons offers free drawings of laboratory objects to improve knowledge communication in science and education, including clip arts of microcentrifuge tubes, plasticware, instruments, equipment, and glassware.</p>
+                            <a href="https://www.labicons.net/" class="resource-link btn-tool" target="_blank">Visit Website</a>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- ============ FOOTER ============ -->
@@ -805,8 +1108,8 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h4>CNAB</h4>
-          <p>The Centre for Nutraceutical and Applied Biosciences (CNAB) is a joint academic research centre within the Department of Biochemistry and Molecular Biology, University of Chittagong, Bangladesh.</p>
+          <h4>Laboratory of Food Science and Nutraceuticals</h4>
+          <p>The Laboratory of Food Science and Nutraceuticals (LFSN) is an academic research laboratory within the Department of Biochemistry and Molecular Biology, University of Chittagong, Bangladesh, jointly led by Prof. Dr. Dwaipayan Sikdar and Assoc. Prof. Dr. Suman Mojumder.</p>
         </div>
         <div>
           <h4>Quick Links</h4>
@@ -815,6 +1118,8 @@
             <li><a href="./research.html">Research</a></li>
             <li><a href="./publications.html">Publications</a></li>
             <li><a href="./people.html">People</a></li>
+            <li><a href="./lab-protocols.html">Lab Protocols</a></li>
+            <li><a href="./facilities.html">Facilities</a></li>
             <li><a href="./join-us.html">Join Us</a></li>
             <li><a href="./contact.html">Contact</a></li>
           </ul>
@@ -824,11 +1129,11 @@
           <ul class="footer-links footer-contact">
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              <span><strong>Prof. Dr. Dwaipayan Sikdar</strong><br/>dsikdar@cu.ac.bd</span>
+              <span><strong>Prof. Dr. Dwaipayan Sikdar</strong><br/><a href="mailto:dsikdar@cu.ac.bd" style="color: rgba(255,255,255,0.85);">dsikdar@cu.ac.bd</a></span>
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              <span><strong>Assoc. Prof. Dr. Suman Mojumder</strong><br/>msumanbmb@cu.ac.bd</span>
+              <span><strong>Assoc. Prof. Dr. Suman Mojumder</strong><br/><a href="mailto:msumanbmb@cu.ac.bd" style="color: rgba(255,255,255,0.85);">msumanbmb@cu.ac.bd</a></span>
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s-8-7.58-8-13a8 8 0 1116 0c0 5.42-8 13-8 13z"/><circle cx="12" cy="9" r="3"/></svg>
@@ -838,15 +1143,44 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <div>© <span id="current-year"></span> Centre for Nutraceutical and Applied Biosciences (CNAB), University of Chittagong.</div>
+        <div>© <span id="current-year"></span> Laboratory of Food Science and Nutraceuticals, University of Chittagong.</div>
         <div class="footer-credit">Website design and development by <a href="https://md-mustak-khan.github.io/" target="_blank" rel="noopener noreferrer">Md. Mustak Khan</a>.</div>
       </div>
     </div>
   </footer>
 
-  <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
   <script src="./js/main.js"></script>
-  <script src="./js/resources-filter.js"></script>
+  <script>
+    // Real-time live search filter for tools, subheadings, and sections
+    document.addEventListener('DOMContentLoaded', function() {
+      var searchInput = document.getElementById('resource-search-box-input');
+      if (!searchInput) return;
 
+      searchInput.addEventListener('input', function(e) {
+        var query = e.target.value.toLowerCase().trim();
+        var cards = document.querySelectorAll('#resource-content-area .tool-card');
+        var sections = document.querySelectorAll('#resource-content-area .protocol-card');
+
+        cards.forEach(function(card) {
+          var text = card.textContent.toLowerCase();
+          if (!query || text.indexOf(query) !== -1) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Hide or show whole sections based on visible cards
+        sections.forEach(function(sec) {
+          var visibleCards = sec.querySelectorAll('.tool-card:not([style*="display: none"])');
+          if (!query || visibleCards.length > 0) {
+            sec.style.display = '';
+          } else {
+            sec.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

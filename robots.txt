@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lfsn-cu.edu.bd/sitemap.xml

@@ -262,62 +262,227 @@
     </section>
 
     <!-- ============ FUNDED GRANTS & PROJECTS ============ -->
-    <section class="section" aria-labelledby="grants-title">
+    <section class="section" aria-labelledby="grants-title" style="background: var(--bg-alt);">
       <div class="container">
-        <span class="eyebrow">Funded &amp; Ongoing</span>
+        <span class="eyebrow">Funded &amp; Ongoing Portfolio</span>
         <h2 id="grants-title">Research Projects &amp; Grants</h2>
-        <p style="color: var(--text-muted); margin-bottom: var(--space-5);">Overview of active and recently completed investigations in our laboratory.</p>
+        <p style="color: var(--text-muted); margin-bottom: var(--space-5);">Overview of active funded investigations, pandemic readiness initiatives, and completed biotechnology programs in our laboratory.</p>
 
-        <div class="grid grid-2">
-          <!-- Project 1 -->
-          <article class="card reveal">
-            <div class="card-meta" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-              <span class="badge badge-primary">Marine Macroalgae</span>
-              <span class="status-pill-pulse"><span class="status-dot-pulse"></span> Active Grant (2024–2026)</span>
+        <!-- Research Stats Grid -->
+        <div class="research-stats-grid reveal">
+          <div class="research-stat-card">
+            <div class="research-stat-icon blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
             </div>
-            <h3 style="margin-top: var(--space-2);">Nutritional and Antioxidant Evaluation of Marine Algae (<em>Ulva lactuca</em>) from Coastal Bangladesh</h3>
-            <p>Investigating post-harvest processing methods (sun-drying, oven drying, lyophilization) and solvent polarity on phenolic composition, antioxidant capacity, and proximate nutritional quality of marine macroalgae from St. Martin's Island.</p>
-            <div style="font-size: 0.85rem; color: var(--primary); font-weight: 600; margin-top: auto;">Principal Investigators: Prof. Dr. Dwaipayan Sikdar &amp; Assoc. Prof. Dr. Suman Mojumder</div>
+            <div class="research-stat-info">
+              <span class="research-stat-number" data-counter="8">8</span>
+              <span class="research-stat-label">Total Projects</span>
+            </div>
+          </div>
+
+          <div class="research-stat-card">
+            <div class="research-stat-icon green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="research-stat-info">
+              <span class="research-stat-number" data-counter="4">4</span>
+              <span class="research-stat-label">Ongoing / Active</span>
+            </div>
+          </div>
+
+          <div class="research-stat-card">
+            <div class="research-stat-icon slate">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="research-stat-info">
+              <span class="research-stat-number" data-counter="4">4</span>
+              <span class="research-stat-label">Completed Studies</span>
+            </div>
+          </div>
+
+          <div class="research-stat-card">
+            <div class="research-stat-icon amber">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="research-stat-info">
+              <span class="research-stat-number">2010–Pres.</span>
+              <span class="research-stat-label">Research Span</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Research Toolbar (Search & Filter Pills) -->
+        <div class="research-toolbar reveal">
+          <div class="research-search-row">
+            <div class="research-search-wrapper">
+              <svg class="research-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="search" id="research-search" class="research-search-input" placeholder="Search projects by title, organism, keyword, or year (e.g. C. elegans, algae, 2025)..." aria-label="Search research projects" />
+            </div>
+            <span id="project-count" class="research-count-badge">Showing 8 projects</span>
+          </div>
+
+          <div class="research-filter-pills">
+            <button type="button" class="research-filter-btn active" data-filter="all">All Projects (8)</button>
+            <button type="button" class="research-filter-btn" data-filter="ongoing">Ongoing (4)</button>
+            <button type="button" class="research-filter-btn" data-filter="completed">Completed (4)</button>
+            <button type="button" class="research-filter-btn" data-filter="algae">Marine &amp; Algae</button>
+            <button type="button" class="research-filter-btn" data-filter="celegans">C. elegans &amp; Genetics</button>
+            <button type="button" class="research-filter-btn" data-filter="biofuel">Biofuels &amp; Enzymology</button>
+            <button type="button" class="research-filter-btn" data-filter="pandemic">Pandemic &amp; Bio-Induction</button>
+          </div>
+        </div>
+
+        <!-- Projects Grid (All 8 Research Projects) -->
+        <div class="grid grid-2" id="research-projects-grid">
+          
+          <!-- Project 1 -->
+          <article class="project-card reveal" data-category="algae phytonutrients ongoing" data-status="ongoing">
+            <div class="project-card-header">
+              <span class="badge badge-primary">Marine Macroalgae</span>
+              <span class="status-pill-pulse"><span class="status-dot-pulse"></span> Ongoing (2025–Present)</span>
+            </div>
+            <h3 class="project-card-title">Comparison of phytonutrient content among red, green and brown algae originating from Bangladesh</h3>
+            <p class="project-card-desc">Comparative profiling and quantification of bioactive secondary metabolites, polyphenols, lipids, carotenoids, and proximate nutritional quality across red (<em>Rhodophyta</em>), green (<em>Chlorophyta</em>), and brown (<em>Phaeophyceae</em>) macroalgae native to coastal Bangladesh.</p>
+            <div class="project-card-footer">
+              <span class="project-card-timeline">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Project Timeline
+              </span>
+              <span class="project-card-year">2025–Present</span>
+            </div>
           </article>
 
           <!-- Project 2 -->
-          <article class="card reveal">
-            <div class="card-meta" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-              <span class="badge badge-primary">In-Vivo Stress &amp; Longevity</span>
-              <span class="status-pill-pulse"><span class="status-dot-pulse"></span> Active Grant (2024–2026)</span>
+          <article class="project-card reveal" data-category="pandemic therapeutics ongoing" data-status="ongoing">
+            <div class="project-card-header">
+              <span class="badge badge-primary">Pandemic Readiness &amp; Virology</span>
+              <span class="status-pill-pulse"><span class="status-dot-pulse"></span> Ongoing (2025–2028)</span>
             </div>
-            <h3 style="margin-top: var(--space-2);">In-Vivo Evaluation of Dietary Polyphenols on Oxidative Stress Resistance and Longevity in <em>C. elegans</em></h3>
-            <p>Assessing the cytoprotective mechanisms of fruit and botanical extracts against thermal, chemical (juglone/paraquat), and age-dependent oxidative degradation in wild-type and mutant <em>Caenorhabditis elegans</em>.</p>
-            <div style="font-size: 0.85rem; color: var(--primary); font-weight: 600; margin-top: auto;">Principal Investigator: Assoc. Prof. Dr. Suman Mojumder</div>
+            <h3 class="project-card-title">Institutional readiness for emerging-reemerging pandemic diseases: exploration of disease etiology at molecular level, evaluation of treatment in practice and development of novel antiviral strategies</h3>
+            <p class="project-card-desc">Strategic multi-year institutional investigation focusing on molecular etiology of infectious pathogens, assessing clinical therapeutics in practice, and engineering novel candidate antiviral formulations and translational intervention strategies.</p>
+            <div class="project-card-footer">
+              <span class="project-card-timeline">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Project Timeline
+              </span>
+              <span class="project-card-year">2025–2028</span>
+            </div>
           </article>
 
           <!-- Project 3 -->
-          <article class="card reveal">
-            <div class="card-meta" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-              <span class="badge badge-primary">Wild Botanical Screening</span>
-              <span class="badge" style="background: #F1F5F9; color: #475569;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
-                Completed
-              </span>
+          <article class="project-card reveal" data-category="pandemic biotechnology ongoing" data-status="ongoing">
+            <div class="project-card-header">
+              <span class="badge badge-primary">Applied Biotechnology</span>
+              <span class="status-pill-pulse"><span class="status-dot-pulse"></span> Ongoing (2024–2026)</span>
             </div>
-            <h3 style="margin-top: var(--space-2);">Phytochemical Profiling and Anti-Amylase Activity of Underutilized Bangladeshi Wild Fruits</h3>
-            <p>Comprehensive extraction and solvent-partitioning of wild date palm (<em>Phoenix sylvestris</em>), <em>Artocarpus chaplasha</em>, and <em>Carissa carandas</em> to evaluate antioxidant capacities and enzyme inhibition related to postprandial glucose control.</p>
-            <div style="font-size: 0.85rem; color: var(--primary); font-weight: 600; margin-top: auto;">Principal Investigator: Prof. Dr. Dwaipayan Sikdar</div>
+            <h3 class="project-card-title">Formulation of a novel alternative <em>Fusarium</em> spp.-cellulase-free metal ion combined approach for shortening agarwood resin induction time in <em>Aquilaria malaccensis</em></h3>
+            <p class="project-card-desc">Developing an eco-friendly elicitation strategy using enzyme-free metal ion synergies in lieu of live fungal inoculants (<em>Fusarium spp.</em>) to accelerate oleoresin synthesis and substantially shorten agarwood resin induction time.</p>
+            <div class="project-card-footer">
+              <span class="project-card-timeline">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Project Timeline
+              </span>
+              <span class="project-card-year">2024–2026</span>
+            </div>
           </article>
 
           <!-- Project 4 -->
-          <article class="card reveal">
-            <div class="card-meta" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+          <article class="project-card reveal" data-category="algae phytonutrients completed" data-status="completed">
+            <div class="project-card-header">
+              <span class="badge badge-primary">Seaweed Nutraceuticals</span>
+              <span class="badge" style="background: #F1F5F9; color: #475569;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
+                Completed (2022–2024)
+              </span>
+            </div>
+            <h3 class="project-card-title">Phytonutrient contents and antioxidant activities of seaweeds commercially grown in Bangladesh</h3>
+            <p class="project-card-desc">Quantitative evaluation of proximate nutritional constituents, total phenolic and flavonoid contents, DPPH/FRAP radical scavenging capabilities, and storage stability in commercially farmed seaweeds across the Bay of Bengal coastline.</p>
+            <div class="project-card-footer">
+              <span class="project-card-timeline">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Project Timeline
+              </span>
+              <span class="project-card-year">2022–2024</span>
+            </div>
+          </article>
+
+          <!-- Project 5 -->
+          <article class="project-card reveal" data-category="phytonutrients completed" data-status="completed">
+            <div class="project-card-header">
+              <span class="badge badge-primary">Indigenous Flora</span>
+              <span class="badge" style="background: #F1F5F9; color: #475569;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
+                Completed (2022–2023)
+              </span>
+            </div>
+            <h3 class="project-card-title">Comparison of nutrient content and antioxidant potential of locally grown indigenous and exotic dates</h3>
+            <p class="project-card-desc">Biochemical profiling and antioxidant evaluation comparing indigenous wild date palm fruits (<em>Phoenix sylvestris</em>) with imported exotic varieties (<em>Phoenix dactylifera</em>), assessing carbohydrates, amino acids, minerals, and polyphenols.</p>
+            <div class="project-card-footer">
+              <span class="project-card-timeline">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Project Timeline
+              </span>
+              <span class="project-card-year">2022–2023</span>
+            </div>
+          </article>
+
+          <!-- Project 6 -->
+          <article class="project-card reveal" data-category="celegans phytonutrients ongoing" data-status="ongoing">
+            <div class="project-card-header">
+              <span class="badge badge-primary">In-Vivo Aging &amp; C. elegans</span>
+              <span class="status-pill-pulse"><span class="status-dot-pulse"></span> Ongoing (2021–Present)</span>
+            </div>
+            <h3 class="project-card-title">Evaluation of in vitro antioxidant activities of different <em>Curcuma</em> species and study of their effect on aging in <em>C. elegans</em></h3>
+            <p class="project-card-desc">In-vitro phytochemical and antioxidant assessment of diverse native <em>Curcuma</em> rhizome extracts coupled with in-vivo lifespan longevity assays, locomotion preservation, and heat/oxidative stress resistance assays in synchronized <em>Caenorhabditis elegans</em>.</p>
+            <div class="project-card-footer">
+              <span class="project-card-timeline">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Project Timeline
+              </span>
+              <span class="project-card-year">2021–Present</span>
+            </div>
+          </article>
+
+          <!-- Project 7 -->
+          <article class="project-card reveal" data-category="biofuel completed" data-status="completed">
+            <div class="project-card-header">
               <span class="badge badge-primary">Microbial Enzymology</span>
               <span class="badge" style="background: #F1F5F9; color: #475569;">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
-                Completed
+                Completed (2013–2014)
               </span>
             </div>
-            <h3 style="margin-top: var(--space-2);">Isolation and Characterization of Novel Cellulolytic Gut Bacteria from Phytophagous Insects</h3>
-            <p>Screening and identifying gut-associated microorganisms from <em>Oxya velox</em> and defoliating beetles capable of producing endo-β-1,4-glucanases for biomass conversion and industrial biotechnology applications.</p>
-            <div style="font-size: 0.85rem; color: var(--primary); font-weight: 600; margin-top: auto;">Principal Investigators: Assoc. Prof. Dr. Suman Mojumder &amp; Prof. Dr. Dwaipayan Sikdar</div>
+            <h3 class="project-card-title">Isolation and identification of potential cellulolytic microbes from insect guts for biofuel production</h3>
+            <p class="project-card-desc">Culture-dependent isolation, biochemical screening, and 16S rRNA gene sequencing of endosymbiotic cellulolytic bacteria residing in phytophagous insect digestive tracts, evaluating their catalytic capacity for lignocellulosic biomass bioconversion into fermentable sugars.</p>
+            <div class="project-card-footer">
+              <span class="project-card-timeline">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Project Timeline
+              </span>
+              <span class="project-card-year">2013–2014</span>
+            </div>
           </article>
+
+          <!-- Project 8 -->
+          <article class="project-card reveal" data-category="biofuel completed" data-status="completed">
+            <div class="project-card-header">
+              <span class="badge badge-primary">Bioenergy &amp; Biocatalysis</span>
+              <span class="badge" style="background: #F1F5F9; color: #475569;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
+                Completed (2010–2011)
+              </span>
+            </div>
+            <h3 class="project-card-title">Screening for high levels of cellulolytic activity in the phytophagous insects of Bangladesh for biofuel production and characterization of its cellulases</h3>
+            <p class="project-card-desc">Biodiversity screening of indigenous defoliating beetles, grasshoppers, and phytophagous larvae across Bangladesh to quantify crude endoglucanase, exoglucanase, and β-glucosidase titers and optimize biochemical reaction kinetics for biofuel production.</p>
+            <div class="project-card-footer">
+              <span class="project-card-timeline">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Project Timeline
+              </span>
+              <span class="project-card-year">2010–2011</span>
+            </div>
+          </article>
+
         </div>
 
         <!-- Illustrated Research Pipeline Flow -->

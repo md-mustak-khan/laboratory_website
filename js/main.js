@@ -37,6 +37,7 @@
     initResourceFilter();
     initAlumniFeatures();
     initFacilitiesFilter();
+    initResearchProjectsFilter();
   }
 
   /* ---------- Background images from HTML ---------- */
@@ -800,6 +801,61 @@
             card.style.opacity = '0';
           }
         });
+      });
+    });
+  }
+
+  /* ---------- Research Projects Filter & Search ---------- */
+  function initResearchProjectsFilter() {
+    const searchInput = document.getElementById('research-search');
+    const filterBtns = document.querySelectorAll('.research-filter-btn');
+    const cards = document.querySelectorAll('.project-card');
+    const countDisplay = document.getElementById('project-count');
+    if (!cards.length) return;
+
+    let activeFilter = 'all';
+    let searchQuery = '';
+
+    function filterProjects() {
+      let visibleCount = 0;
+      cards.forEach(function (card) {
+        const categories = (card.getAttribute('data-category') || '').toLowerCase();
+        const status = (card.getAttribute('data-status') || '').toLowerCase();
+        const textContent = card.textContent.toLowerCase();
+
+        const matchesFilter = activeFilter === 'all' || 
+          categories.includes(activeFilter) || 
+          status.includes(activeFilter);
+        const matchesSearch = !searchQuery || textContent.includes(searchQuery);
+
+        if (matchesFilter && matchesSearch) {
+          card.style.display = 'flex';
+          card.style.opacity = '1';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+          card.style.opacity = '0';
+        }
+      });
+
+      if (countDisplay) {
+        countDisplay.textContent = visibleCount + (visibleCount === 1 ? ' project' : ' projects');
+      }
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', function (e) {
+        searchQuery = e.target.value.trim().toLowerCase();
+        filterProjects();
+      });
+    }
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        filterBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        activeFilter = (btn.getAttribute('data-filter') || 'all').toLowerCase();
+        filterProjects();
       });
     });
   }

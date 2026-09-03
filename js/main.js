@@ -38,6 +38,7 @@
     initAlumniFeatures();
     initFacilitiesFilter();
     initResearchProjectsFilter();
+    initPeopleRoleFilter();
   }
 
   /* ---------- Background images from HTML ---------- */
@@ -858,6 +859,203 @@
         filterProjects();
       });
     });
+  }
+
+  /* ---------- People Directory Role Filter & Global Search ---------- */
+  function initPeopleRoleFilter() {
+    const filterBar = document.getElementById('people-filter-bar');
+    if (!filterBar) return;
+
+    const filterBtns = filterBar.querySelectorAll('.people-filter-btn');
+    const searchInput = document.getElementById('people-global-search');
+    const clearBtn = document.getElementById('people-search-clear-btn');
+    const statusBar = document.getElementById('people-filter-status');
+    const statusText = document.getElementById('people-status-text');
+    const statusReset = document.getElementById('people-status-reset');
+    const noResults = document.getElementById('people-no-results');
+    const resetFilterBtn = document.getElementById('people-reset-filter-btn');
+
+    // Parent sections & groups
+    const piSection = document.getElementById('pis-section');
+    const managerSection = document.getElementById('manager-section');
+    const studentsSection = document.getElementById('students-section');
+    const msGroup = document.getElementById('ms-student-group');
+    const ugGroup = document.getElementById('ug-student-group');
+    const alumniSection = document.getElementById('alumni-section');
+
+    const memberCards = document.querySelectorAll('.people-member-card');
+    if (!memberCards.length) return;
+
+    let currentFilter = 'all';
+    let currentSearch = '';
+
+    function applyPeopleFilters(shouldScroll) {
+      let totalVisible = 0;
+
+      // Filter each card
+      memberCards.forEach(function (card) {
+        const role = (card.getAttribute('data-people-role') || '').toLowerCase();
+        const text = card.textContent.toLowerCase();
+
+        const matchesRole = (currentFilter === 'all') || (role === currentFilter);
+        const matchesSearch = !currentSearch || text.includes(currentSearch);
+
+        if (matchesRole && matchesSearch) {
+          card.style.display = '';
+          card.classList.add('people-fade-in');
+          totalVisible++;
+        } else {
+          card.style.display = 'none';
+          card.classList.remove('people-fade-in');
+        }
+      });
+
+      // Update Section Visibility
+      function updateSectionDisplay(elem, cardSelector) {
+        if (!elem) return false;
+        const hasVisibleCard = Array.from(elem.querySelectorAll(cardSelector)).some(function (c) {
+          return c.style.display !== 'none';
+        });
+        if (hasVisibleCard) {
+          elem.style.display = '';
+          return true;
+        } else {
+          elem.style.display = 'none';
+          return false;
+        }
+      }
+
+      updateSectionDisplay(piSection, '.pi-spotlight-card');
+      updateSectionDisplay(managerSection, '.people-member-card');
+      const msVisible = updateSectionDisplay(msGroup, '.student-ms-card');
+      const ugVisible = updateSectionDisplay(ugGroup, '.student-ug-card');
+      updateSectionDisplay(alumniSection, '.alumni-card');
+
+      if (studentsSection) {
+        if (msVisible || ugVisible) {
+          studentsSection.style.display = '';
+        } else {
+          studentsSection.style.display = 'none';
+        }
+      }
+
+      // No results state
+      if (noResults) {
+        noResults.style.display = (totalVisible === 0) ? 'block' : 'none';
+      }
+
+      // Status Bar
+      if (statusBar && statusText) {
+        if (currentFilter !== 'all' || currentSearch !== '') {
+          statusBar.style.display = 'flex';
+          let roleLabel = 'All Members';
+          const activeBtn = filterBar.querySelector('.people-filter-btn.active span');
+          if (activeBtn) roleLabel = activeBtn.textContent;
+
+          let queryMsg = currentSearch ? ' matching "' + currentSearch + '"' : '';
+          statusText.textContent = 'Showing ' + totalVisible + (totalVisible === 1 ? ' member' : ' members') + ' in ' + roleLabel + queryMsg;
+        } else {
+          statusBar.style.display = 'none';
+        }
+      }
+
+      // Clear button in search input
+      if (clearBtn) {
+        clearBtn.style.display = currentSearch ? 'flex' : 'none';
+      }
+
+      // Smooth scroll if triggered by user click on filter pills
+      if (shouldScroll) {
+        const anchor = document.getElementById('people-content-anchor');
+        if (anchor) {
+          const navBarHeight = filterBar.offsetHeight + 75;
+          const rect = anchor.getBoundingClientRect();
+          const targetY = window.pageYOffset + rect.top - navBarHeight;
+          if (Math.abs(window.pageYOffset - targetY) > 60) {
+            window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+          }
+        }
+      }
+    }
+
+    // Filter pill click listeners
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        filterBtns.forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        currentFilter = (btn.getAttribute('data-filter') || 'all').toLowerCase();
+
+        if (history.replaceState) {
+          const hashVal = currentFilter === 'all' ? window.location.pathname + window.location.search : '#' + currentFilter;
+          history.replaceState(null, null, hashVal);
+        }
+
+        applyPeopleFilters(true);
+      });
+    });
+
+    // Global search input
+    if (searchInput) {
+      searchInput.addEventListener('input', function (e) {
+        currentSearch = e.target.value.trim().toLowerCase();
+        applyPeopleFilters(false);
+      });
+    }
+
+    // Clear search button
+    if (clearBtn) {
+      clearBtn.addEventListener('click', function () {
+        if (searchInput) searchInput.value = '';
+        currentSearch = '';
+        applyPeopleFilters(false);
+        if (searchInput) searchInput.focus();
+      });
+    }
+
+    // Reset handlers
+    function resetAllPeopleFilters() {
+      if (searchInput) searchInput.value = '';
+      currentSearch = '';
+      currentFilter = 'all';
+      filterBtns.forEach(function (b) {
+        const isAll = (b.getAttribute('data-filter') || '') === 'all';
+        b.classList.toggle('active', isAll);
+        b.setAttribute('aria-selected', isAll ? 'true' : 'false');
+      });
+      if (history.replaceState) {
+        history.replaceState(null, null, window.location.pathname + window.location.search);
+      }
+      applyPeopleFilters(true);
+    }
+
+    if (statusReset) statusReset.addEventListener('click', resetAllPeopleFilters);
+    if (resetFilterBtn) resetFilterBtn.addEventListener('click', resetAllPeopleFilters);
+
+    // URL Hash handling
+    const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+    if (hash) {
+      let matchedBtn = null;
+      if (hash === 'pi' || hash === 'pis') matchedBtn = filterBar.querySelector('[data-filter="pi"]');
+      else if (hash === 'manager' || hash === 'management') matchedBtn = filterBar.querySelector('[data-filter="manager"]');
+      else if (hash === 'ms' || hash === 'ms-student' || hash === 'masters') matchedBtn = filterBar.querySelector('[data-filter="ms"]');
+      else if (hash === 'ug' || hash === '4th-year' || hash === 'undergraduates' || hash === 'undergraduate') matchedBtn = filterBar.querySelector('[data-filter="ug"]');
+      else if (hash === 'alumni') matchedBtn = filterBar.querySelector('[data-filter="alumni"]');
+
+      if (matchedBtn) {
+        filterBtns.forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        matchedBtn.classList.add('active');
+        matchedBtn.setAttribute('aria-selected', 'true');
+        currentFilter = (matchedBtn.getAttribute('data-filter') || 'all').toLowerCase();
+        applyPeopleFilters(false);
+      }
+    }
   }
 
   /* ---------- Custom pointer (desktop only) ---------- */

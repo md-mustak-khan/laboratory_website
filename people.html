@@ -77,14 +77,102 @@
       </div>
     </section>
 
+    <!-- ============ PEOPLE ROLE FILTER & QUICK NAVIGATION ============ -->
+    <nav class="people-filter-sticky-bar" id="people-filter-bar" aria-label="People Category Filter">
+      <div class="container">
+        <div class="people-filter-bar-inner">
+          <div class="people-filter-pills-scroll">
+            <div class="people-filter-pills" role="tablist" aria-label="Filter people by academic role">
+              <button type="button" class="people-filter-btn active" data-filter="all" role="tab" aria-selected="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                  <rect x="14" y="14" width="7" height="7" />
+                  <rect x="3" y="14" width="7" height="7" />
+                </svg>
+                <span>All Members</span>
+                <span class="filter-count-badge">17</span>
+              </button>
+              <button type="button" class="people-filter-btn" data-filter="pi" role="tab" aria-selected="false">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                <span>PI (Principal Investigators)</span>
+                <span class="filter-count-badge">2</span>
+              </button>
+              <button type="button" class="people-filter-btn" data-filter="manager" role="tab" aria-selected="false">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <line x1="8" y1="21" x2="16" y2="21" />
+                  <line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+                <span>Lab Management</span>
+                <span class="filter-count-badge">1</span>
+              </button>
+              <button type="button" class="people-filter-btn" data-filter="ms" role="tab" aria-selected="false">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+                <span>MS Student</span>
+                <span class="filter-count-badge">1</span>
+              </button>
+              <button type="button" class="people-filter-btn" data-filter="ug" role="tab" aria-selected="false">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+                  <path d="M6 6h10M6 10h10" />
+                </svg>
+                <span>4th Year</span>
+                <span class="filter-count-badge">4</span>
+              </button>
+              <button type="button" class="people-filter-btn" data-filter="alumni" role="tab" aria-selected="false">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+                <span>Alumni</span>
+                <span class="filter-count-badge">9</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Real-Time Search Box -->
+          <div class="people-search-wrap">
+            <div class="people-search-input-box">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="people-search-icon">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <input type="text" id="people-global-search" placeholder="Search team by name, role, research..." aria-label="Search all lab members" />
+              <button type="button" id="people-search-clear-btn" class="people-search-clear" aria-label="Clear search" style="display: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Status Bar -->
+        <div id="people-filter-status" class="people-filter-status" style="display: none;">
+          <span id="people-status-text">Showing 17 members</span>
+          <button type="button" id="people-status-reset" class="people-status-reset-link">Show All Members</button>
+        </div>
+      </div>
+    </nav>
+
+    <div id="people-content-anchor" style="scroll-margin-top: 130px;"></div>
+
     <!-- ============ PRINCIPAL INVESTIGATORS ============ -->
-    <section class="section" aria-labelledby="pis-title">
+    <section class="section people-section" id="pis-section" data-people-role="pi" aria-labelledby="pis-title">
       <div class="container">
         <span class="eyebrow">Leadership</span>
         <h2 id="pis-title">Principal Investigators</h2>
         <div class="pi-spotlight-grid">
           <!-- PI 1 -->
-          <article class="pi-spotlight-card reveal">
+          <article class="pi-spotlight-card reveal people-member-card" data-people-role="pi">
             <div class="pi-spotlight-media-col">
               <div class="pi-spotlight-media-wrapper">
                 <img class="pi-spotlight-media" src="Team/Dr. Dwaipayan Sikdar.png" alt="Prof. Dr. Dwaipayan Sikdar" />
@@ -142,7 +230,7 @@
           </article>
 
           <!-- PI 2 -->
-          <article class="pi-spotlight-card reveal">
+          <article class="pi-spotlight-card reveal people-member-card" data-people-role="pi">
             <div class="pi-spotlight-media-col">
               <div class="pi-spotlight-media-wrapper">
                 <img class="pi-spotlight-media" src="Team/Dr. Suman Mojumder.png" alt="Assoc. Prof. Dr. Suman Mojumder" />
@@ -204,12 +292,12 @@
     </section>
 
     <!-- ============ LAB MANAGEMENT ============ -->
-    <section class="section" style="background: var(--bg-alt);" aria-labelledby="management-title">
+    <section class="section people-section" id="manager-section" data-people-role="manager" style="background: var(--bg-alt);" aria-labelledby="management-title">
       <div class="container" style="max-width: 860px;">
         <span class="eyebrow">Operations &amp; Research Support</span>
         <h2 id="management-title">Laboratory Management</h2>
 
-        <article class="card reveal" style="padding: var(--space-6); background: var(--white);">
+        <article class="card reveal people-member-card" data-people-role="manager" style="padding: var(--space-6); background: var(--white);">
           <div style="display: grid; grid-template-columns: 140px 1fr; gap: var(--space-5); align-items: center;">
             <img src="Team/Md. Mustak Khan.png" alt="Md. Mustak Khan"
               style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin: 0; box-shadow: var(--shadow-md);" />
@@ -237,7 +325,7 @@
     </section>
 
     <!-- ============ RESEARCH FELLOWS & STUDENTS ============ -->
-    <section class="section" aria-labelledby="students-title" id="students-section">
+    <section class="section people-section" aria-labelledby="students-title" id="students-section" data-people-role="students">
       <div class="container">
         <span class="eyebrow">Student Researchers</span>
         <h2 id="students-title">Current Graduate &amp; Undergraduate Scholars</h2>
@@ -245,205 +333,209 @@
           scholars engaged in active wet-bench and computational projects.</p>
 
         <!-- Category 1: Master's Research Fellow -->
-        <div class="student-category-header reveal">
-          <h3>Master’s Research Fellow</h3>
-          <span class="student-category-badge gold">Postgraduate Scholar</span>
-        </div>
+        <div class="student-category-group people-group" id="ms-student-group" data-people-role="ms">
+          <div class="student-category-header reveal">
+            <h3>Master’s Research Fellow</h3>
+            <span class="student-category-badge gold">Postgraduate Scholar</span>
+          </div>
 
-        <article class="student-ms-card reveal">
-          <div class="student-photo-wrap">
-            <img src="./Team/students/Dipika Chanda.jpg" alt="Dipika Chanda" class="student-ms-photo"
-              loading="lazy" />
-          </div>
-          <div>
-            <h4 class="student-name" style="font-size: 1.3rem; margin-top: 0; margin-bottom: 0.25rem;">Dipika Chanda
-            </h4>
-            <div class="card-meta" style="margin-bottom: var(--space-3);">
-              <span class="student-role">M.S. Thesis Student</span> · Dept. of Biochemistry &amp; Molecular Biology,
-              University of Chittagong
+          <article class="student-ms-card reveal people-member-card" data-people-role="ms">
+            <div class="student-photo-wrap">
+              <img src="./Team/students/Dipika Chanda.jpg" alt="Dipika Chanda" class="student-ms-photo"
+                loading="lazy" />
             </div>
-            <div class="student-session-tag" style="justify-content: flex-start; margin-bottom: var(--space-3);">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-              <span><strong>Academic Session:</strong> 2020–2021</span>
-            </div>
-            <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center;">
-              <a href="mailto:dcchanda004@gmail.com" class="student-social-link student-email-link" title="Email: dcchanda004@gmail.com">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
+            <div>
+              <h4 class="student-name" style="font-size: 1.3rem; margin-top: 0; margin-bottom: 0.25rem;">Dipika Chanda
+              </h4>
+              <div class="card-meta" style="margin-bottom: var(--space-3);">
+                <span class="student-role">M.S. Thesis Student</span> · Dept. of Biochemistry &amp; Molecular Biology,
+                University of Chittagong
+              </div>
+              <div class="student-session-tag" style="justify-content: flex-start; margin-bottom: var(--space-3);">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
                 </svg>
-                Email
-              </a>
-              <a href="https://www.linkedin.com/in/dipika-chanda-6172a6431?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="student-social-link student-linkedin-link" title="LinkedIn Profile">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-                LinkedIn
-              </a>
+                <span><strong>Academic Session:</strong> 2020–2021</span>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center;">
+                <a href="mailto:dcchanda004@gmail.com" class="student-social-link student-email-link" title="Email: dcchanda004@gmail.com">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  Email
+                </a>
+                <a href="https://www.linkedin.com/in/dipika-chanda-6172a6431?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="student-social-link student-linkedin-link" title="LinkedIn Profile">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                  LinkedIn
+                </a>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
+        </div>
 
         <!-- Category 2: 4th Year Undergraduate Thesis Researchers -->
-        <div class="student-category-header reveal" style="margin-top: var(--space-8);">
-          <h3>4th Year Undergraduate Thesis Researchers</h3>
-          <span class="student-category-badge teal">B.Sc. (Honors) Final Year</span>
-        </div>
+        <div class="student-category-group people-group" id="ug-student-group" data-people-role="ug" style="margin-top: var(--space-8);">
+          <div class="student-category-header reveal">
+            <h3>4th Year Undergraduate Thesis Researchers</h3>
+            <span class="student-category-badge teal">B.Sc. (Honors) Final Year</span>
+          </div>
 
-        <div class="student-ug-grid">
+          <div class="student-ug-grid">
 
-          <!-- Undergraduate Student 1 -->
-          <article class="student-ug-card reveal">
-            <div class="student-ug-photo-wrap">
-              <img src="./Team/students/Priyanti Saha.jpg" alt="Priyanti Saha" class="student-ug-photo"
-                loading="lazy" />
-            </div>
-            <h4 class="student-name">Priyanti Saha</h4>
-            <span class="student-role">4th Year B.Sc. Honors</span>
-            <div class="student-session-tag">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-              <span>Session: 2021–2022</span>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: var(--space-3); line-height: 1.45;">
-              Dept. of Biochemistry &amp; Molecular Biology, University of Chittagong
-            </p>
-            <div class="student-links-wrap">
-              <a href="mailto:priyantisaha9@gmail.com" class="student-social-link student-email-link" title="Email: priyantisaha9@gmail.com">
+            <!-- Undergraduate Student 1 -->
+            <article class="student-ug-card reveal people-member-card" data-people-role="ug">
+              <div class="student-ug-photo-wrap">
+                <img src="./Team/students/Priyanti Saha.jpg" alt="Priyanti Saha" class="student-ug-photo"
+                  loading="lazy" />
+              </div>
+              <h4 class="student-name">Priyanti Saha</h4>
+              <span class="student-role">4th Year B.Sc. Honors</span>
+              <div class="student-session-tag">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
                 </svg>
-                Email
-              </a>
-              <a href="https://www.linkedin.com/in/priyanti-saha-6823bb354?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="student-social-link student-linkedin-link" title="LinkedIn Profile">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </article>
+                <span>Session: 2021–2022</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: var(--space-3); line-height: 1.45;">
+                Dept. of Biochemistry &amp; Molecular Biology, University of Chittagong
+              </p>
+              <div class="student-links-wrap">
+                <a href="mailto:priyantisaha9@gmail.com" class="student-social-link student-email-link" title="Email: priyantisaha9@gmail.com">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  Email
+                </a>
+                <a href="https://www.linkedin.com/in/priyanti-saha-6823bb354?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="student-social-link student-linkedin-link" title="LinkedIn Profile">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                  LinkedIn
+                </a>
+              </div>
+            </article>
 
-          <!-- Undergraduate Student 2 -->
-          <article class="student-ug-card reveal">
-            <div class="student-ug-photo-wrap">
-              <img src="./Team/students/Fariha Jannat.jpg" alt="Fariha Jannat" class="student-ug-photo"
-                loading="lazy" />
-            </div>
-            <h4 class="student-name">Fariha Jannat</h4>
-            <span class="student-role">4th Year B.Sc. Honors</span>
-            <div class="student-session-tag">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-              <span>Session: 2021–2022</span>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: var(--space-3); line-height: 1.45;">
-              Dept. of Biochemistry &amp; Molecular Biology, University of Chittagong
-            </p>
-            <div class="student-links-wrap">
-              <a href="mailto:farihajannat9.06@gmail.com" class="student-social-link student-email-link" title="Email: farihajannat9.06@gmail.com">
+            <!-- Undergraduate Student 2 -->
+            <article class="student-ug-card reveal people-member-card" data-people-role="ug">
+              <div class="student-ug-photo-wrap">
+                <img src="./Team/students/Fariha Jannat.jpg" alt="Fariha Jannat" class="student-ug-photo"
+                  loading="lazy" />
+              </div>
+              <h4 class="student-name">Fariha Jannat</h4>
+              <span class="student-role">4th Year B.Sc. Honors</span>
+              <div class="student-session-tag">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
                 </svg>
-                Email
-              </a>
-              <a href="https://www.linkedin.com/in/fariha-jannat-966a18393" target="_blank" rel="noopener noreferrer" class="student-social-link student-linkedin-link" title="LinkedIn Profile">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </article>
+                <span>Session: 2021–2022</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: var(--space-3); line-height: 1.45;">
+                Dept. of Biochemistry &amp; Molecular Biology, University of Chittagong
+              </p>
+              <div class="student-links-wrap">
+                <a href="mailto:farihajannat9.06@gmail.com" class="student-social-link student-email-link" title="Email: farihajannat9.06@gmail.com">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  Email
+                </a>
+                <a href="https://www.linkedin.com/in/fariha-jannat-966a18393" target="_blank" rel="noopener noreferrer" class="student-social-link student-linkedin-link" title="LinkedIn Profile">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                  LinkedIn
+                </a>
+              </div>
+            </article>
 
-          <!-- Undergraduate Student 3 -->
-          <article class="student-ug-card reveal">
-            <div class="student-ug-photo-wrap">
-              <img src="./Team/students/Aniruddha Srabon.jpg" alt="Nirban Chowdhury" class="student-ug-photo"
-                loading="lazy" />
-            </div>
-            <h4 class="student-name">Nirban Chowdhury</h4>
-            <span class="student-role">4th Year B.Sc. Honors</span>
-            <div class="student-session-tag">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-              <span>Session: 2021–2022</span>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: var(--space-3); line-height: 1.45;">
-              Dept. of Biochemistry &amp; Molecular Biology, University of Chittagong
-            </p>
-            <div class="student-links-wrap">
-              <a href="mailto:nirbanchowdhury6@gmail.com" class="student-social-link student-email-link" title="Email: nirbanchowdhury6@gmail.com">
+            <!-- Undergraduate Student 3 -->
+            <article class="student-ug-card reveal people-member-card" data-people-role="ug">
+              <div class="student-ug-photo-wrap">
+                <img src="./Team/students/Aniruddha Srabon.jpg" alt="Nirban Chowdhury" class="student-ug-photo"
+                  loading="lazy" />
+              </div>
+              <h4 class="student-name">Nirban Chowdhury</h4>
+              <span class="student-role">4th Year B.Sc. Honors</span>
+              <div class="student-session-tag">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
                 </svg>
-                Email
-              </a>
-            </div>
-          </article>
+                <span>Session: 2021–2022</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: var(--space-3); line-height: 1.45;">
+                Dept. of Biochemistry &amp; Molecular Biology, University of Chittagong
+              </p>
+              <div class="student-links-wrap">
+                <a href="mailto:nirbanchowdhury6@gmail.com" class="student-social-link student-email-link" title="Email: nirbanchowdhury6@gmail.com">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  Email
+                </a>
+              </div>
+            </article>
 
-          <!-- Undergraduate Student 4 -->
-          <article class="student-ug-card reveal">
-            <div class="student-ug-photo-wrap">
-              <img src="./Team/students/HT Arif.jpg" alt="Hasan Tarek Arif" class="student-ug-photo" loading="lazy" />
-            </div>
-            <h4 class="student-name">Hasan Tarek Arif</h4>
-            <span class="student-role">4th Year B.Sc. Honors</span>
-            <div class="student-session-tag">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-              <span>Session: 2021–2022</span>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: var(--space-3); line-height: 1.45;">
-              Dept. of Biochemistry &amp; Molecular Biology, University of Chittagong
-            </p>
-            <div class="student-links-wrap">
-              <a href="mailto:htarif190271@gmail.com" class="student-social-link student-email-link" title="Email: htarif190271@gmail.com">
+            <!-- Undergraduate Student 4 -->
+            <article class="student-ug-card reveal people-member-card" data-people-role="ug">
+              <div class="student-ug-photo-wrap">
+                <img src="./Team/students/HT Arif.jpg" alt="Hasan Tarek Arif" class="student-ug-photo" loading="lazy" />
+              </div>
+              <h4 class="student-name">Hasan Tarek Arif</h4>
+              <span class="student-role">4th Year B.Sc. Honors</span>
+              <div class="student-session-tag">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
                 </svg>
-                Email
-              </a>
-              <a href="https://www.linkedin.com/in/ht-arif-94a0573a0?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="student-social-link student-linkedin-link" title="LinkedIn Profile">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-                LinkedIn
-              </a>
-            </div>
-          </article>
+                <span>Session: 2021–2022</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: var(--space-3); line-height: 1.45;">
+                Dept. of Biochemistry &amp; Molecular Biology, University of Chittagong
+              </p>
+              <div class="student-links-wrap">
+                <a href="mailto:htarif190271@gmail.com" class="student-social-link student-email-link" title="Email: htarif190271@gmail.com">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  Email
+                </a>
+                <a href="https://www.linkedin.com/in/ht-arif-94a0573a0?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="student-social-link student-linkedin-link" title="LinkedIn Profile">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                  LinkedIn
+                </a>
+              </div>
+            </article>
 
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ============ ALUMNI DIRECTORY & REFLECTIONS ============ -->
-    <section class="section" style="background: var(--bg-alt);" aria-labelledby="alumni-title" id="alumni-section">
+    <section class="section people-section" style="background: var(--bg-alt);" aria-labelledby="alumni-title" id="alumni-section" data-people-role="alumni">
       <div class="container">
         <div style="text-align: center; max-width: 780px; margin: 0 auto var(--space-6);">
           <span class="eyebrow">Alumni Network &amp; Voices</span>
@@ -462,7 +554,7 @@
               </svg>
             </div>
             <div>
-              <div class="alumni-stat-number">7+</div>
+              <div class="alumni-stat-number">9+</div>
               <div class="alumni-stat-label">Distinguished Alumni</div>
             </div>
           </div>
@@ -517,7 +609,7 @@
         <div class="alumni-cards-container" id="alumni-cards-wrapper">
 
           <!-- 1. Dr. Abhijit Chowdhury -->
-          <article class="alumni-card reveal" data-category="faculty bangladesh">
+          <article class="alumni-card reveal people-member-card" data-people-role="alumni" data-category="faculty bangladesh">
             <div class="alumni-card-left">
               <div class="alumni-photo-wrap">
                 <img src="./Team/alumni/Abhijit%20Chowdhury.jpeg" alt="Abhijit Chowdhury, Ph.D." class="alumni-photo"
@@ -549,7 +641,6 @@
               </div>
               <div class="alumni-academic-meta">
                 <span class="alumni-meta-pill">Session: 1999–2000</span>
-                <span class="alumni-meta-pill">M.S. Exam 2008</span>
               </div>
               <div class="alumni-social-links">
                 <a href="mailto:abhibcsir@gmail.com" class="alumni-social-btn email"
@@ -631,7 +722,7 @@
           </article>
 
           <!-- 2. Dr. Md Harunur Rashid -->
-          <article class="alumni-card reveal" data-category="international canada academia">
+          <article class="alumni-card reveal people-member-card" data-people-role="alumni" data-category="international canada academia">
             <div class="alumni-card-left">
               <div class="alumni-photo-wrap">
                 <img src="./Team/alumni/Md%20Harunur%20Rashid.jpg" alt="Md Harunur Rashid" class="alumni-photo"
@@ -656,7 +747,6 @@
               </div>
               <div class="alumni-academic-meta">
                 <span class="alumni-meta-pill">Session: 2000–2001</span>
-                <span class="alumni-meta-pill">MS Year: 2009</span>
               </div>
               <div class="alumni-social-links">
                 <a href="mailto:mdharunu@ualberta.ca" class="alumni-social-btn email" title="Email Md Harunur Rashid">
@@ -720,8 +810,158 @@
             </div>
           </article>
 
-          <!-- 3. Dr. Suman Dash -->
-          <article class="alumni-card reveal" data-category="international usa academia">
+          <!-- 3. Rajib Kumar Shil -->
+          <article class="alumni-card reveal people-member-card" data-people-role="alumni" data-category="international usa academia">
+            <div class="alumni-card-left">
+              <div class="alumni-photo-wrap">
+                <img src="./Team/alumni/Rajib%20Kumar%20Shil.jpg" alt="Rajib Kumar Shil" class="alumni-photo"
+                  style="object-position: center 20%;" loading="lazy" />
+                <div class="alumni-badge-icon" title="PhD Candidate, Florida International University">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="alumni-name">Rajib Kumar Shil</h3>
+              <span class="alumni-current-role">PhD Candidate</span>
+              <div class="alumni-institution">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+                <span>Herbert Wertheim College of Medicine, FIU, Miami, FL, USA</span>
+              </div>
+              <div class="alumni-academic-meta">
+                <span class="alumni-meta-pill">Session: 2005–2006</span>
+              </div>
+              <div class="alumni-social-links">
+                <a href="mailto:rajibbmb@cu.ac.bd" class="alumni-social-btn email" title="Email Rajib Kumar Shil">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  Email
+                </a>
+                <a href="https://scholar.google.com/citations?hl=en&amp;user=i1i9gxYAAAAJ&amp;view_op=list_works&amp;sortby=pubdate"
+                  target="_blank" rel="noopener noreferrer" class="alumni-social-btn scholar"
+                  title="Google Scholar Profile">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                  </svg>
+                  Scholar
+                </a>
+              </div>
+            </div>
+
+            <div class="alumni-card-right">
+              <svg class="alumni-bg-quote-mark" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+              <div>
+                <div class="alumni-quote-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                  Alumni Memory &amp; Reflection
+                </div>
+                <div class="alumni-opinion-body">
+                  <div class="alumni-opinion-text">
+                    <p>“This lab shaped me as a researcher I am today.”</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="alumni-thesis-highlight">
+                <div class="alumni-thesis-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                    <polyline points="14 2 14 8 20 8" />
+                  </svg>
+                </div>
+                <div class="alumni-thesis-info">
+                  <span class="alumni-thesis-label">MS Thesis Research Topic</span>
+                  <span class="alumni-thesis-title">Isolation of Potential Cellulolytic Microorganisms from the gut of three different Insect species.</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Bristy Barua -->
+          <article class="alumni-card reveal people-member-card" data-people-role="alumni" data-category="research bangladesh">
+            <div class="alumni-card-left">
+              <div class="alumni-photo-wrap">
+                <img src="./Team/alumni/Bristy%20Barua.jpeg" alt="Bristy Barua" class="alumni-photo"
+                  style="object-position: center 15%;" loading="lazy" />
+                <div class="alumni-badge-icon" title="Graduate Researcher">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="alumni-name">Bristy Barua</h3>
+              <span class="alumni-current-role">MS Graduate Researcher</span>
+              <div class="alumni-institution">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+                </svg>
+                <span>Dept. of BMB, University of Chittagong</span>
+              </div>
+              <div class="alumni-academic-meta">
+                <span class="alumni-meta-pill">Session: 2009–2010</span>
+              </div>
+              <div class="alumni-social-links">
+                <a href="mailto:bristybmb@gmail.com" class="alumni-social-btn email" title="Email Bristy Barua">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  Email
+                </a>
+              </div>
+            </div>
+
+            <div class="alumni-card-right">
+              <svg class="alumni-bg-quote-mark" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+              <div>
+                <div class="alumni-quote-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                  Alumni Memory &amp; Reflection
+                </div>
+                <div class="alumni-opinion-body">
+                  <div class="alumni-opinion-text">
+                    <p>“As I wrap up my time here, I would like to thank this incredible team for the shared discoveries, resilience, and curiosity that made our lab feel like home. Keep pushing the boundaries of research with same dedication and achieving all breakthroughs.”</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="alumni-thesis-highlight">
+                <div class="alumni-thesis-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                    <polyline points="14 2 14 8 20 8" />
+                  </svg>
+                </div>
+                <div class="alumni-thesis-info">
+                  <span class="alumni-thesis-label">MS Thesis Research Topic</span>
+                  <span class="alumni-thesis-title">Effects of extraction solvents on the phenolic content and antioxidant activity of Bangladeshi wild date fruit (<em>Phoenix sylvestris</em> Roxb).</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Dr. Suman Dash -->
+          <article class="alumni-card reveal people-member-card" data-people-role="alumni" data-category="international usa academia">
             <div class="alumni-card-left">
               <div class="alumni-photo-wrap">
                 <img src="./Team/alumni/Suman%20dash.jpg" alt="Suman Dash" class="alumni-photo"
@@ -746,7 +986,6 @@
               </div>
               <div class="alumni-academic-meta">
                 <span class="alumni-meta-pill">Session: 2013–2014</span>
-                <span class="alumni-meta-pill">MS Year: 2016</span>
               </div>
               <div class="alumni-social-links">
                 <a href="mailto:sd3849@cumc.columbia.edu" class="alumni-social-btn email" title="Email Suman Dash">
@@ -807,8 +1046,116 @@
             </div>
           </article>
 
-          <!-- 4. Ayan Das -->
-          <article class="alumni-card reveal" data-category="international usa academia">
+          <!-- 6. Ovi Sikder -->
+          <article class="alumni-card reveal people-member-card" data-people-role="alumni" data-category="faculty bangladesh academia">
+            <div class="alumni-card-left">
+              <div class="alumni-photo-wrap">
+                <img src="./Team/alumni/Ovi%20Sikder.jpeg" alt="Ovi Sikder" class="alumni-photo"
+                  style="object-position: center 15%;" loading="lazy" />
+                <div class="alumni-badge-icon" title="University Faculty Member">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+                    <path d="M6 6h10M6 10h10" />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="alumni-name">Ovi Sikder</h3>
+              <span class="alumni-current-role">Lecturer (Biochemistry &amp; Molecular Biology)</span>
+              <div class="alumni-institution">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+                  <line x1="9" y1="22" x2="9" y2="22.01" />
+                  <line x1="15" y1="22" x2="15" y2="22.01" />
+                  <line x1="9" y1="6" x2="9" y2="6.01" />
+                  <line x1="15" y1="6" x2="15" y2="6.01" />
+                  <line x1="9" y1="10" x2="9" y2="10.01" />
+                  <line x1="15" y1="10" x2="15" y2="10.01" />
+                  <line x1="9" y1="14" x2="9" y2="14.01" />
+                  <line x1="15" y1="14" x2="15" y2="14.01" />
+                  <line x1="9" y1="18" x2="9" y2="18.01" />
+                  <line x1="15" y1="18" x2="15" y2="18.01" />
+                </svg>
+                <span>Dhaka International University, Bangladesh</span>
+              </div>
+              <div class="alumni-academic-meta">
+                <span class="alumni-meta-pill">Session: 2014–2015</span>
+              </div>
+              <div class="alumni-social-links">
+                <a href="mailto:ovi.bmb.cu@gmail.com" class="alumni-social-btn email" title="Email Ovi Sikder">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  Email
+                </a>
+                <a href="https://scholar.google.com/citations?user=eDD7ixEAAAAJ&hl=en" target="_blank"
+                  rel="noopener noreferrer" class="alumni-social-btn scholar" title="Google Scholar Profile">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                  </svg>
+                  Scholar
+                </a>
+                <a href="https://www.researchgate.net/profile/Ovi-Sikder?ev=hdr_xprf" target="_blank"
+                  rel="noopener noreferrer" class="alumni-social-btn researchgate" title="ResearchGate Profile">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.121 31.123 0 0 0 .014 1.017 9 9 0 0 0 .05.727 7.946 7.946 0 0 0 .077.53h-.005a3.334 3.334 0 0 0 .113.438c.245.743.65 1.303 1.214 1.68.565.376 1.256.564 2.075.564.8 0 1.536-.213 2.105-.603.57-.39.94-.916 1.175-1.65.076-.235.135-.558.177-.93a10.9 10.9 0 0 0 .043-1.207v-.82c0-.095-.047-.142-.14-.142h-3.064c-.094 0-.14.047-.14.141v.956c0 .094.046.14.14.14h1.666c.056 0 .084.03.084.086 0 .36 0 .62-.036.865-.038.244-.1.447-.147.606-.108.385-.348.664-.638.876-.29.212-.738.35-1.227.35-.545 0-.901-.15-1.21-.353-.306-.203-.517-.454-.67-.915a3.136 3.136 0 0 1-.147-.762 17.366 17.367 0 0 1-.034-.656c-.01-.26-.014-.572-.014-.939a26.401 26.403 0 0 1 .014-.938 15.821 15.822 0 0 1 .035-.656 3.19 3.19 0 0 1 .148-.76 1.89 1.89 0 0 1 .742-1.01c.344-.244.593-.352 1.137-.352.508 0 .815.096 1.144.303.33.207.528.492.764.925.047.094.111.118.198.07l1.044-.43c.075-.048.09-.115.042-.199a3.549 3.549 0 0 0-.466-.742 3 3 0 0 0-.679-.607 3.313 3.313 0 0 0-.903-.41A4.068 4.068 0 0 0 19.586 0zM8.217 5.836c-1.69 0-3.036.086-4.297.086-1.146 0-2.291 0-3.007-.029v.831l1.088.2c.744.144 1.174.488 1.174 2.264v11.288c0 1.777-.43 2.12-1.174 2.263l-1.088.2v.832c.773-.029 2.12-.086 3.465-.086 1.29 0 2.951.057 3.667.086v-.831l-1.49-.2c-.773-.115-1.174-.487-1.174-2.264v-4.784c.688.057 1.29.057 2.206.057 1.748 3.123 3.41 5.472 4.355 6.56.86 1.032 2.177 1.691 3.839 1.691.487 0 1.003-.086 1.318-.23v-.744c-1.031 0-2.063-.716-2.808-1.518-1.26-1.376-2.95-3.582-4.355-6.074 2.32-.545 4.04-2.722 4.04-4.9 0-3.208-2.492-4.698-5.758-4.698zm-.515 1.29c2.406 0 3.839 1.26 3.839 3.552 0 2.263-1.547 3.782-4.097 3.782-.974 0-1.404-.03-2.063-.086v-7.19c.66-.059 1.547-.059 2.32-.059z" />
+                  </svg>
+                  RG
+                </a>
+                <a href="https://orcid.org/0000-0002-4217-7440" target="_blank" rel="noopener noreferrer"
+                  class="alumni-social-btn orcid" title="ORCID iD">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12s12-5.372 12-12S18.628 0 12 0M7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947m-.722 3.038h1.444v10.041H6.647zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025c0 2.578-2.016 5.025-5.325 5.025h-3.919zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722c0-1.238-.75-3.722-4.022-3.722z" />
+                  </svg>
+                  ORCID
+                </a>
+              </div>
+            </div>
+
+            <div class="alumni-card-right">
+              <svg class="alumni-bg-quote-mark" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+              <div>
+                <div class="alumni-quote-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                  Alumni Memory &amp; Reflection
+                </div>
+                <div class="alumni-opinion-body">
+                  <div class="alumni-opinion-text">
+                    <p>“The Food Science and Nutraceuticals (FSN) laboratory built the strong cornerstone and foundation
+                      for my career.</p>
+                    <p>From my very first role in the pharmaceutical industry to university-level academic teaching and
+                      my prospective PhD journey, the mentorship, guidance, and continuous encouragement from the lab
+                      was immense and inspiring.”</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="alumni-thesis-highlight">
+                <div class="alumni-thesis-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                    <polyline points="14 2 14 8 20 8" />
+                  </svg>
+                </div>
+                <div class="alumni-thesis-info">
+                  <span class="alumni-thesis-label">Research Specialization</span>
+                  <span class="alumni-thesis-title">Nutraceutical Bioactives &amp; Applied Enzymatic Characterization in
+                    the Food Science Laboratory.</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. Ayan Das -->
+          <article class="alumni-card reveal people-member-card" data-people-role="alumni" data-category="international usa academia">
             <div class="alumni-card-left">
               <div class="alumni-photo-wrap">
                 <img src="./Team/alumni/Ayan%20Das.jpg" alt="Ayan Das" class="alumni-photo"
@@ -832,7 +1179,6 @@
               </div>
               <div class="alumni-academic-meta">
                 <span class="alumni-meta-pill">Session: 2018–2019</span>
-                <span class="alumni-meta-pill">MS Year: 2025</span>
               </div>
               <div class="alumni-social-links">
                 <a href="mailto:ayan.ae7788@gmail.com" class="alumni-social-btn email" title="Email Ayan Das">
@@ -910,117 +1256,8 @@
             </div>
           </article>
 
-          <!-- 5. Ovi Sikder -->
-          <article class="alumni-card reveal" data-category="faculty bangladesh academia">
-            <div class="alumni-card-left">
-              <div class="alumni-photo-wrap">
-                <img src="./Team/alumni/Ovi%20Sikder.jpeg" alt="Ovi Sikder" class="alumni-photo"
-                  style="object-position: center 15%;" loading="lazy" />
-                <div class="alumni-badge-icon" title="University Faculty Member">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
-                    <path d="M6 6h10M6 10h10" />
-                  </svg>
-                </div>
-              </div>
-              <h3 class="alumni-name">Ovi Sikder</h3>
-              <span class="alumni-current-role">Lecturer (Biochemistry &amp; Molecular Biology)</span>
-              <div class="alumni-institution">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
-                  <line x1="9" y1="22" x2="9" y2="22.01" />
-                  <line x1="15" y1="22" x2="15" y2="22.01" />
-                  <line x1="9" y1="6" x2="9" y2="6.01" />
-                  <line x1="15" y1="6" x2="15" y2="6.01" />
-                  <line x1="9" y1="10" x2="9" y2="10.01" />
-                  <line x1="15" y1="10" x2="15" y2="10.01" />
-                  <line x1="9" y1="14" x2="9" y2="14.01" />
-                  <line x1="15" y1="14" x2="15" y2="14.01" />
-                  <line x1="9" y1="18" x2="9" y2="18.01" />
-                  <line x1="15" y1="18" x2="15" y2="18.01" />
-                </svg>
-                <span>Dhaka International University, Bangladesh</span>
-              </div>
-              <div class="alumni-academic-meta">
-                <span class="alumni-meta-pill">Session: 2014–2015</span>
-                <span class="alumni-meta-pill">MS Year: 2019</span>
-              </div>
-              <div class="alumni-social-links">
-                <a href="mailto:ovi.bmb.cu@gmail.com" class="alumni-social-btn email" title="Email Ovi Sikder">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                    <polyline points="22,6 12,13 2,6" />
-                  </svg>
-                  Email
-                </a>
-                <a href="https://scholar.google.com/citations?user=eDD7ixEAAAAJ&hl=en" target="_blank"
-                  rel="noopener noreferrer" class="alumni-social-btn scholar" title="Google Scholar Profile">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                  </svg>
-                  Scholar
-                </a>
-                <a href="https://www.researchgate.net/profile/Ovi-Sikder?ev=hdr_xprf" target="_blank"
-                  rel="noopener noreferrer" class="alumni-social-btn researchgate" title="ResearchGate Profile">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                      d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.121 31.123 0 0 0 .014 1.017 9 9 0 0 0 .05.727 7.946 7.946 0 0 0 .077.53h-.005a3.334 3.334 0 0 0 .113.438c.245.743.65 1.303 1.214 1.68.565.376 1.256.564 2.075.564.8 0 1.536-.213 2.105-.603.57-.39.94-.916 1.175-1.65.076-.235.135-.558.177-.93a10.9 10.9 0 0 0 .043-1.207v-.82c0-.095-.047-.142-.14-.142h-3.064c-.094 0-.14.047-.14.141v.956c0 .094.046.14.14.14h1.666c.056 0 .084.03.084.086 0 .36 0 .62-.036.865-.038.244-.1.447-.147.606-.108.385-.348.664-.638.876-.29.212-.738.35-1.227.35-.545 0-.901-.15-1.21-.353-.306-.203-.517-.454-.67-.915a3.136 3.136 0 0 1-.147-.762 17.366 17.367 0 0 1-.034-.656c-.01-.26-.014-.572-.014-.939a26.401 26.403 0 0 1 .014-.938 15.821 15.822 0 0 1 .035-.656 3.19 3.19 0 0 1 .148-.76 1.89 1.89 0 0 1 .742-1.01c.344-.244.593-.352 1.137-.352.508 0 .815.096 1.144.303.33.207.528.492.764.925.047.094.111.118.198.07l1.044-.43c.075-.048.09-.115.042-.199a3.549 3.549 0 0 0-.466-.742 3 3 0 0 0-.679-.607 3.313 3.313 0 0 0-.903-.41A4.068 4.068 0 0 0 19.586 0zM8.217 5.836c-1.69 0-3.036.086-4.297.086-1.146 0-2.291 0-3.007-.029v.831l1.088.2c.744.144 1.174.488 1.174 2.264v11.288c0 1.777-.43 2.12-1.174 2.263l-1.088.2v.832c.773-.029 2.12-.086 3.465-.086 1.29 0 2.951.057 3.667.086v-.831l-1.49-.2c-.773-.115-1.174-.487-1.174-2.264v-4.784c.688.057 1.29.057 2.206.057 1.748 3.123 3.41 5.472 4.355 6.56.86 1.032 2.177 1.691 3.839 1.691.487 0 1.003-.086 1.318-.23v-.744c-1.031 0-2.063-.716-2.808-1.518-1.26-1.376-2.95-3.582-4.355-6.074 2.32-.545 4.04-2.722 4.04-4.9 0-3.208-2.492-4.698-5.758-4.698zm-.515 1.29c2.406 0 3.839 1.26 3.839 3.552 0 2.263-1.547 3.782-4.097 3.782-.974 0-1.404-.03-2.063-.086v-7.19c.66-.059 1.547-.059 2.32-.059z" />
-                  </svg>
-                  RG
-                </a>
-                <a href="https://orcid.org/0000-0002-4217-7440" target="_blank" rel="noopener noreferrer"
-                  class="alumni-social-btn orcid" title="ORCID iD">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                      d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12s12-5.372 12-12S18.628 0 12 0M7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947m-.722 3.038h1.444v10.041H6.647zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025c0 2.578-2.016 5.025-5.325 5.025h-3.919zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722c0-1.238-.75-3.722-4.022-3.722z" />
-                  </svg>
-                  ORCID
-                </a>
-              </div>
-            </div>
-
-            <div class="alumni-card-right">
-              <svg class="alumni-bg-quote-mark" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-              <div>
-                <div class="alumni-quote-badge">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                  </svg>
-                  Alumni Memory &amp; Reflection
-                </div>
-                <div class="alumni-opinion-body">
-                  <div class="alumni-opinion-text">
-                    <p>“The Food Science and Nutraceuticals (FSN) laboratory built the strong cornerstone and foundation
-                      for my career.</p>
-                    <p>From my very first role in the pharmaceutical industry to university-level academic teaching and
-                      my prospective PhD journey, the mentorship, guidance, and continuous encouragement from the lab
-                      was immense and inspiring.”</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="alumni-thesis-highlight">
-                <div class="alumni-thesis-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                    <polyline points="14 2 14 8 20 8" />
-                  </svg>
-                </div>
-                <div class="alumni-thesis-info">
-                  <span class="alumni-thesis-label">Research Specialization</span>
-                  <span class="alumni-thesis-title">Nutraceutical Bioactives &amp; Applied Enzymatic Characterization in
-                    the Food Science Laboratory.</span>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 6. Mumtaza Mumu -->
-          <article class="alumni-card reveal" data-category="research bangladesh">
+          <!-- 8. Mumtaza Mumu -->
+          <article class="alumni-card reveal people-member-card" data-people-role="alumni" data-category="research bangladesh">
             <div class="alumni-card-left">
               <div class="alumni-photo-wrap">
                 <img src="./Team/alumni/Mumtaza%20Mumu.png" alt="Mumtaza Mumu" class="alumni-photo"
@@ -1043,7 +1280,6 @@
               </div>
               <div class="alumni-academic-meta">
                 <span class="alumni-meta-pill">Session: 2018–2019</span>
-                <span class="alumni-meta-pill">MS Year: 2025</span>
               </div>
               <div class="alumni-social-links">
                 <a href="mailto:mumtazamumu@gmail.com" class="alumni-social-btn email" title="Email Mumtaza Mumu">
@@ -1121,8 +1357,8 @@
             </div>
           </article>
 
-          <!-- 7. Mita Nur Akter -->
-          <article class="alumni-card reveal" data-category="research bangladesh">
+          <!-- 9. Mita Nur Akter -->
+          <article class="alumni-card reveal people-member-card" data-people-role="alumni" data-category="research bangladesh">
             <div class="alumni-card-left">
               <div class="alumni-photo-wrap">
                 <img src="./Team/alumni/Mita%20Nur.jpg" alt="Mita Nur Akter" class="alumni-photo"
@@ -1145,7 +1381,6 @@
               </div>
               <div class="alumni-academic-meta">
                 <span class="alumni-meta-pill">Session: 2018–2019</span>
-                <span class="alumni-meta-pill">MS Year: 2023</span>
               </div>
               <div class="alumni-social-links">
                 <a href="mailto:mitanur4003@gmail.com" class="alumni-social-btn email" title="Email Mita Nur Akter">
@@ -1221,7 +1456,7 @@
               <thead>
                 <tr>
                   <th>Alumnus / Researcher</th>
-                  <th>Academic Session &amp; Degree</th>
+                  <th>Academic Session</th>
                   <th>Research Topic / Publication</th>
                   <th>Current Designation &amp; Organization</th>
                 </tr>
@@ -1229,43 +1464,55 @@
               <tbody>
                 <tr>
                   <td><strong>Abhijit Chowdhury, Ph.D.</strong></td>
-                  <td>Session: 1999–2000 (M.S. 2008)</td>
+                  <td>Session: 1999–2000</td>
                   <td>Digestive enzymes in larvae of <em>Diaphania indica</em></td>
                   <td>Senior Scientific Officer &amp; Lab In-charge, IFST, BCSIR</td>
                 </tr>
                 <tr>
                   <td><strong>Md Harunur Rashid</strong></td>
-                  <td>Session: 2000–2001 (M.S. 2009)</td>
+                  <td>Session: 2000–2001</td>
                   <td>Digestive enzyme biochemistry in insect larvae</td>
                   <td>Postdoctoral Researcher, Univ. of Alberta, Canada</td>
                 </tr>
                 <tr>
+                  <td><strong>Rajib Kumar Shil</strong></td>
+                  <td>Session: 2005–2006</td>
+                  <td>Cellulolytic microorganisms from gut of three insect species</td>
+                  <td>PhD Candidate, Herbert Wertheim College of Medicine, FIU, USA</td>
+                </tr>
+                <tr>
+                  <td><strong>Bristy Barua</strong></td>
+                  <td>Session: 2009–2010</td>
+                  <td>Phenolic content &amp; antioxidant activity of Bangladeshi wild date fruit (<em>Phoenix sylvestris</em> Roxb)</td>
+                  <td>MS Graduate Researcher, Dept. of BMB, University of Chittagong</td>
+                </tr>
+                <tr>
                   <td><strong>Suman Dash</strong></td>
-                  <td>Session: 2013–2014 (M.S. 2016)</td>
+                  <td>Session: 2013–2014</td>
                   <td>Cellulolytic and xylanolytic activities in <em>Oxya velox</em></td>
                   <td>Postdoctoral Scientist, Columbia University, USA</td>
                 </tr>
                 <tr>
-                  <td><strong>Ayan Das</strong></td>
-                  <td>Session: 2018–2019 (M.S. 2025)</td>
-                  <td>Xylanase enzyme purification from <em>Podontia</em> sp. gut microbiota</td>
-                  <td>PhD Student &amp; Fellow, Penn State University, USA</td>
-                </tr>
-                <tr>
                   <td><strong>Ovi Sikder</strong></td>
-                  <td>Session: 2014–2015 (M.S. 2019)</td>
+                  <td>Session: 2014–2015</td>
                   <td>Food Science &amp; Nutraceuticals bioactive profiling</td>
                   <td>Lecturer, Department of BMB, Dhaka International Univ.</td>
                 </tr>
                 <tr>
+                  <td><strong>Ayan Das</strong></td>
+                  <td>Session: 2018–2019</td>
+                  <td>Xylanase enzyme purification from <em>Podontia</em> sp. gut microbiota</td>
+                  <td>PhD Student &amp; Fellow, Penn State University, USA</td>
+                </tr>
+                <tr>
                   <td><strong>Mumtaza Mumu</strong></td>
-                  <td>Session: 2018–2019 (M.S. 2025)</td>
+                  <td>Session: 2018–2019</td>
                   <td>Xylanolytic potential in <em>Podontia quatuordecimpunctata</em></td>
                   <td>Graduate Research Scholar, BMB CU</td>
                 </tr>
                 <tr>
                   <td><strong>Mita Nur Akter</strong></td>
-                  <td>Session: 2018–2019 (M.S. 2023)</td>
+                  <td>Session: 2018–2019</td>
                   <td>Nutritional &amp; antioxidant activities of <em>Ulva lactuca</em></td>
                   <td>MS Graduate; Co-author, <em>J. Appl. Phycology</em> (2026)</td>
                 </tr>
@@ -1276,6 +1523,22 @@
 
       </div>
     </section>
+
+    <!-- Empty Search / Filter Results State -->
+    <div id="people-no-results" class="people-no-results" style="display: none;">
+      <div class="people-no-results-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          <line x1="8" y1="11" x2="14" y2="11" />
+        </svg>
+      </div>
+      <h3>No matching lab members found</h3>
+      <p>We could not find anyone matching your current search or role filter.</p>
+      <button type="button" class="btn btn-primary" id="people-reset-filter-btn" style="font-size: 0.85rem;">
+        Reset Filter &amp; Show All Members
+      </button>
+    </div>
 
     <!-- ============ CTA BANNER ============ -->
     <section class="cta-banner" aria-labelledby="cta-title">

@@ -6497,3 +6497,275 @@ body.protocols-page .page-banner {
     align-items: stretch;
   }
 }
+
+/* ==========================================================================
+   PEOPLE DIRECTORY ROLE FILTER BAR (Sticky, Interactive & Responsive)
+   ========================================================================== */
+.people-filter-sticky-bar {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 68px;
+  z-index: 85;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme="dark"] .people-filter-sticky-bar {
+  background: rgba(15, 23, 42, 0.94);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.people-filter-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.people-filter-pills-scroll {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 2px 0;
+  scrollbar-width: none;
+  max-width: 100%;
+}
+
+.people-filter-pills-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.people-filter-pills {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  white-space: nowrap;
+}
+
+.people-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--bg-alt);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  line-height: 1.2;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.people-filter-btn svg {
+  flex-shrink: 0;
+  color: currentColor;
+  transition: transform 0.2s ease;
+}
+
+.people-filter-btn .filter-count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.06);
+  color: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: 10px;
+  min-width: 18px;
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .people-filter-btn .filter-count-badge {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.people-filter-btn:hover {
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-color: rgba(37, 99, 235, 0.35);
+  transform: translateY(-1px);
+}
+
+.people-filter-btn:hover svg {
+  transform: scale(1.1);
+}
+
+.people-filter-btn.active {
+  background: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28);
+}
+
+.people-filter-btn.active .filter-count-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--white);
+}
+
+/* Global Search Box in Sticky Bar */
+.people-search-wrap {
+  flex-shrink: 0;
+}
+
+.people-search-input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 280px;
+}
+
+.people-search-icon {
+  position: absolute;
+  left: 0.85rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.people-search-input-box input {
+  width: 100%;
+  background: var(--white);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  padding: 0.45rem 2.2rem 0.45rem 2.25rem;
+  font-size: 0.84rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .people-search-input-box input {
+  background: rgba(30, 41, 59, 0.85);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.people-search-input-box input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+  width: 310px;
+}
+
+.people-search-clear {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 0.15s ease;
+}
+
+.people-search-clear:hover {
+  color: var(--danger, #ef4444);
+}
+
+/* Status Bar */
+.people-filter-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.45rem;
+  padding-top: 0.35rem;
+  border-top: 1px dashed var(--border);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.people-status-reset-link {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+/* Empty search results state */
+.people-no-results {
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+  max-width: 520px;
+  margin: var(--space-6) auto;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--border);
+  box-shadow: var(--shadow-sm);
+  animation: peopleFadeIn 0.3s ease-out;
+}
+
+[data-theme="dark"] .people-no-results {
+  background: var(--bg-alt);
+}
+
+.people-no-results-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-3);
+  border-radius: 50%;
+  background: var(--bg-alt);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.people-no-results h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.people-no-results p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-4);
+}
+
+/* Animation */
+@keyframes peopleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.people-fade-in {
+  animation: peopleFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (max-width: 991px) {
+  .people-filter-sticky-bar {
+    top: 60px;
+  }
+  .people-filter-bar-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+  .people-search-input-box {
+    width: 100%;
+  }
+  .people-search-input-box input:focus {
+    width: 100%;
+  }
+}

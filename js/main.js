@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Laboratory of Food Science and Nutraceuticals (LFSN) main.js
+   Laboratory of Food Bioactives and Molecular Health (LFBMH) main.js
    - Mobile nav toggle (with backdrop)
    - Sticky header scroll effect
    - Active nav link highlighting (based on current filename)
@@ -116,7 +116,7 @@
         if (nav.querySelector('.nav-header-bar')) return;
         const bar = document.createElement('div');
         bar.className = 'nav-header-bar';
-        bar.innerHTML = '<div class="nav-header-title"><span>LFSN</span> Navigation</div>' +
+        bar.innerHTML = '<div class="nav-header-title"><span>LFBMH</span> Navigation</div>' +
           '<button type="button" class="nav-close" aria-label="Close navigation">&times;</button>';
         const closeBtn = bar.querySelector('.nav-close');
         if (closeBtn) closeBtn.addEventListener('click', closeNav);
@@ -431,7 +431,7 @@
           return;
         }
 
-        const mailtoUrl = 'mailto:dsikdar@cu.ac.bd?subject=' + encodeURIComponent('LFSN Website Contact Inquiry') +
+        const mailtoUrl = 'mailto:dsikdar@cu.ac.bd?subject=' + encodeURIComponent('LFBMH Website Contact Inquiry') +
           '&body=' + encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + msg);
 
         if (status) {
@@ -610,7 +610,7 @@
 
   /* ---------- Dark Theme Toggle ---------- */
   function initThemeToggle() {
-    const savedTheme = localStorage.getItem('lfsn-theme');
+    const savedTheme = localStorage.getItem('lfbmh-theme') || localStorage.getItem('lfsn-theme');
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
@@ -640,10 +640,10 @@
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       if (isDark) {
         document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('lfsn-theme', 'light');
+        localStorage.setItem('lfbmh-theme', 'light'); localStorage.setItem('lfsn-theme', 'light');
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('lfsn-theme', 'dark');
+        localStorage.setItem('lfbmh-theme', 'dark'); localStorage.setItem('lfsn-theme', 'dark');
       }
       updateThemeIcon(toggleBtn);
     });
@@ -1057,60 +1057,4 @@
       }
     }
   }
-
-  /* ---------- Custom pointer (desktop only) ---------- */
-  function initCustomCursor() {
-    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-    try {
-      document.body.classList.add('custom-cursor-enabled');
-      const cursor = document.createElement('div');
-      cursor.className = 'custom-cursor';
-      cursor.style.pointerEvents = 'none';
-      cursor.style.opacity = '0';
-
-      const ring = document.createElement('div');
-      ring.className = 'ring';
-      const dot = document.createElement('div');
-      dot.className = 'dot';
-
-      cursor.appendChild(ring);
-      cursor.appendChild(dot);
-      document.body.appendChild(cursor);
-
-      let mouseX = window.innerWidth / 2;
-      let mouseY = window.innerHeight / 2;
-      let posX = mouseX;
-      let posY = mouseY;
-
-      function update() {
-        posX += (mouseX - posX) * 0.18;
-        posY += (mouseY - posY) * 0.18;
-        cursor.style.left = posX + 'px';
-        cursor.style.top = posY + 'px';
-        requestAnimationFrame(update);
-      }
-      requestAnimationFrame(update);
-
-      document.addEventListener('mousemove', function (e) {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursor.style.opacity = '1';
-      }, { passive: true });
-
-      document.addEventListener('mouseleave', function () { cursor.classList.add('hidden'); });
-      document.addEventListener('mouseenter', function () { cursor.classList.remove('hidden'); cursor.style.opacity = ''; });
-
-      const interactiveSelector = 'a, button, input, textarea, select, .btn, .gallery-item, .faq-trigger';
-      document.addEventListener('mouseover', function (e) {
-        if (e.target.closest(interactiveSelector)) cursor.classList.add('interact');
-      });
-      document.addEventListener('mouseout', function (e) {
-        if (e.target.closest(interactiveSelector)) cursor.classList.remove('interact');
-      });
-    } catch (err) {
-      console.error('Custom cursor init failed', err);
-    }
-  }
-
-  if (typeof initCustomCursor === 'function') initCustomCursor();
 })();

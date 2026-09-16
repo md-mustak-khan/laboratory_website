@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Laboratory of Food Science and Nutraceuticals (LFSN)
+   Laboratory of Food Bioactives and Molecular Health (LFBMH)
    Department of Biochemistry and Molecular Biology, University of Chittagong
    ========================================================================== */
 
@@ -929,7 +929,8 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--space-6) 0; }
 }
 .logo:hover { text-decoration: none; color: var(--primary); }
 .logo-mark {
-  width: 44px;
+  width: 50px;
+  min-width: 50px;
   height: 44px;
   border-radius: 10px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
@@ -939,8 +940,8 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--space-6) 0; }
   justify-content: center;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
   position: relative;
   overflow: hidden;
 }
@@ -1006,6 +1007,60 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--space-6) 0; }
 .nav-list a.active, .nav-list button.nav-link.active {
   background: var(--primary);
   color: var(--white);
+}
+
+/* Navigation Login Button */
+.nav-login-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.38rem !important;
+  padding: 0.38rem 0.82rem !important;
+  margin-left: 0.4rem !important;
+  background: linear-gradient(135deg, var(--primary) 0%, #1e3a8a 100%) !important;
+  color: #ffffff !important;
+  border-radius: 9999px !important;
+  font-weight: 600 !important;
+  font-size: 0.82rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 2px 6px rgba(10, 37, 64, 0.18) !important;
+  transition: all 0.2s var(--ease) !important;
+  text-decoration: none !important;
+}
+.nav-login-link:hover, .nav-login-link:focus {
+  background: linear-gradient(135deg, #1e3a8a 0%, var(--teal) 100%) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(10, 37, 64, 0.28) !important;
+}
+.nav-login-link svg {
+  color: #6ee7b7;
+  transition: transform 0.2s ease;
+}
+.nav-login-link:hover svg {
+  transform: scale(1.1);
+  color: #ffffff;
+}
+[data-theme="dark"] .nav-login-link {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+@media (max-width: 959px) {
+  .nav-item-login {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(10, 37, 64, 0.08);
+    width: 100%;
+  }
+  .nav-login-link {
+    margin-left: 0 !important;
+    justify-content: center !important;
+    padding: 0.65rem 1rem !important;
+    width: 100% !important;
+    font-size: 0.9rem !important;
+    border-radius: var(--radius-md) !important;
+  }
 }
 
 /* Dropdown */
@@ -2337,88 +2392,6 @@ body.protocols-page .page-banner {
 .lightbox-prev:hover { transform: translateY(-50%) scale(1.08); }
 .lightbox-next:hover { transform: translateY(-50%) scale(1.08); }
 
-/* ---------- Custom pointer (desktop only) ---------- */
-@media (hover: hover) and (pointer: fine) {
-  body.custom-cursor-enabled { cursor: none; }
-
-  .custom-cursor {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 40px;
-    height: 40px;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 2147483647;
-    will-change: transform, opacity;
-    display: grid;
-    place-items: center;
-    transition: transform .12s var(--ease), opacity .12s linear;
-    opacity: 1;
-  }
-
-  .custom-cursor .ring {
-    position: absolute;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    /* semi-transparent ring so underlying text remains visible while the cursor stays legible */
-    background: conic-gradient(from 0deg, rgba(255,255,255,0.72) 0deg 140deg, rgba(0,0,0,0.56) 140deg 320deg, rgba(255,255,255,0.72) 320deg 360deg);
-    border: 2px solid rgba(255,255,255,0.9);
-    box-shadow: 0 16px 32px rgba(0,0,0,0.25), 0 2px 0 rgba(255,255,255,0.06) inset;
-    transition: transform .12s var(--ease), background .18s var(--ease), border-color .18s var(--ease), box-shadow .18s var(--ease), opacity .18s var(--ease);
-    animation: cursor-rotate 3.6s linear infinite;
-    mix-blend-mode: normal;
-    opacity: 0.88;
-  }
-
-  .custom-cursor .ring::before {
-    /* small inner highlight to add contrast on dark areas */
-    content: '';
-    position: absolute;
-    inset: 6px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.14), transparent 38%);
-    pointer-events: none;
-  }
-
-  .custom-cursor .dot {
-    position: relative;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    /* bright neutral accent that's legible on light/dark: vivid yellow */
-    background: linear-gradient(135deg, #FFD166, #FDAE3B);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.12) inset;
-    transition: transform .12s var(--ease), background .12s var(--ease), box-shadow .12s var(--ease);
-    border: 2px solid rgba(0,0,0,0.85);
-    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.32));
-  }
-
-  /* when over interactive elements, make the ring shrink and accent the dot */
-  .custom-cursor.interact .ring {
-    transform: scale(0.58);
-    border-color: rgba(0,0,0,0.9);
-    /* keep the ring readable while still letting the page text show through */
-    background: conic-gradient(from 0deg, rgba(0,0,0,0.52) 0deg 140deg, rgba(255,255,255,0.78) 140deg 320deg, rgba(0,0,0,0.52) 320deg 360deg);
-    box-shadow: 0 10px 22px rgba(0,0,0,0.24), 0 1px 0 rgba(255,255,255,0.04) inset;
-    opacity: 0.95;
-  }
-  .custom-cursor.interact .dot {
-    transform: scale(1.05);
-    background: linear-gradient(135deg, #FFF7CC, #FFD166);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.36);
-    border-color: rgba(0,0,0,0.9);
-  }
-
-  .custom-cursor.hidden { opacity: 0; }
-  .custom-cursor.shrink { transform: translate(-50%, -50%) scale(0.6); }
-}
-
-@keyframes cursor-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
 
 /* ---------- Forms ---------- */
 .form-group { margin-bottom: var(--space-4); }
@@ -3021,7 +2994,7 @@ body.protocols-page .page-banner {
 }
 
 /* ==========================================================================
-   LFSN ENHANCED COMPONENTS & INTERACTIVE STYLES
+   LFBMH ENHANCED COMPONENTS & INTERACTIVE STYLES
    ========================================================================== */
 
 /* ---------- Hero Metric Counters ---------- */
@@ -5704,7 +5677,7 @@ body.protocols-page .page-banner {
   height: 4px;
 }
 
-.grant-pillar-card.pillar-lfsn::before { background: #0A2540; }
+.grant-pillar-card.pillar-lfbmh::before, .grant-pillar-card.pillar-lfsn::before { background: #0A2540; }
 .grant-pillar-card.pillar-heat::before { background: #2563EB; }
 .grant-pillar-card.pillar-heqep::before { background: #0D9488; }
 .grant-pillar-card.pillar-cre::before { background: #7C3AED; }
@@ -5724,7 +5697,7 @@ body.protocols-page .page-banner {
   margin-bottom: var(--space-3);
 }
 
-.pillar-lfsn .grant-pillar-icon { background: rgba(10, 37, 64, 0.1); color: #0A2540; }
+.pillar-lfbmh .grant-pillar-icon, .pillar-lfsn .grant-pillar-icon { background: rgba(10, 37, 64, 0.1); color: #0A2540; }
 .pillar-heat .grant-pillar-icon { background: rgba(37, 99, 235, 0.1); color: #2563EB; }
 .pillar-heqep .grant-pillar-icon { background: rgba(13, 148, 136, 0.1); color: #0D9488; }
 .pillar-cre .grant-pillar-icon { background: rgba(124, 58, 237, 0.1); color: #7C3AED; }
@@ -5863,7 +5836,7 @@ body.protocols-page .page-banner {
   color: #F8FAFC;
 }
 
-[data-theme="dark"] .pillar-lfsn .grant-pillar-icon { background: rgba(96, 165, 250, 0.15); color: #60A5FA; }
+[data-theme="dark"] .pillar-lfbmh .grant-pillar-icon, [data-theme="dark"] .pillar-lfsn .grant-pillar-icon { background: rgba(96, 165, 250, 0.15); color: #60A5FA; }
 [data-theme="dark"] .pillar-heat .grant-pillar-icon { background: rgba(59, 130, 246, 0.15); color: #60A5FA; }
 [data-theme="dark"] .pillar-heqep .grant-pillar-icon { background: rgba(20, 184, 166, 0.15); color: #2DD4BF; }
 [data-theme="dark"] .pillar-cre .grant-pillar-icon { background: rgba(168, 85, 247, 0.15); color: #C084FC; }

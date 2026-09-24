@@ -1,4 +1,4 @@
-# Laboratory of Food Bioactives & Molecular Health (LFBMH)
+# Laboratory of Food Bioactives & Molecular Health (FBMH)
 
 [![Website Status](https://img.shields.io/badge/status-active-success.svg)](#)
 [![Institution](https://img.shields.io/badge/University-University%20of%20Chittagong-003366.svg)](https://cu.ac.bd)
@@ -7,13 +7,13 @@
 [![Backend](https://img.shields.io/badge/Backend-Google%20Apps%20Script-4285F4.svg)](#google-apps-script-integration)
 [![License](https://img.shields.io/badge/License-Academic%20%2F%20MIT-blue.svg)](LICENSE)
 
-Official website and administrative web application for the **Laboratory of Food Bioactives & Molecular Health (LFBMH)**, Department of Biochemistry and Molecular Biology, University of Chittagong, Bangladesh.
+Official website and administrative web application for the **Laboratory of Food Bioactives & Molecular Health (FBMH)**, Department of Biochemistry and Molecular Biology, University of Chittagong, Bangladesh.
 
 ---
 
 ## 🔬 About the Laboratory
 
-Established in 2006, the **Laboratory of Food Bioactives & Molecular Health (LFBMH)** is an academic research group bridging natural product biochemistry, molecular biology, and *in-vivo* pharmacology.
+Established in 2006, the **Laboratory of Food Bioactives & Molecular Health (FBMH)** is an academic research group bridging natural product biochemistry, molecular biology, and *in-vivo* pharmacology.
 
 The laboratory is led jointly by:
 - **Prof. Dr. Dwaipayan Sikdar** — Principal Investigator
@@ -164,7 +164,7 @@ The student intake form on `join-us.html` integrates with a Google Apps Script W
 3. Set your Google Sheet ID (`SHEET_ID`) and Google Drive folder name (`DRIVE_FOLDER_NAME`) at the top of the file:
    ```javascript
    const SHEET_ID = 'YOUR_GOOGLE_SHEET_ID';
-   const DRIVE_FOLDER_NAME = 'LFBMH Undergraduate Applications';
+   const DRIVE_FOLDER_NAME = 'FBMH Undergraduate Applications';
    ```
 4. Run `testSubmission()` in the Apps Script editor to authorize permissions.
 5. Click **Deploy > New Deployment > Web app**:
@@ -182,7 +182,7 @@ To host this website for free using **GitHub Pages**:
    ```bash
    git init
    git add .
-   git commit -m "Initial commit of LFBMH website"
+   git commit -m "Initial commit of FBMH website"
    git branch -M main
    git remote add origin https://github.com/<your-username>/<repo-name>.git
    git push -u origin main
@@ -197,7 +197,7 @@ To host this website for free using **GitHub Pages**:
 
 ## 👥 Laboratory Leadership & Contact
 
-**Laboratory of Food Bioactives and Molecular Health (LFBMH)**  
+**Laboratory of Food Bioactives and Molecular Health (FBMH)**  
 Department of Biochemistry and Molecular Biology  
 Faculty of Biological Sciences, University of Chittagong  
 Chattogram-4331, Bangladesh  
@@ -209,5 +209,5 @@ Chattogram-4331, Bangladesh
 
 ## 📄 License & Attribution
 
-All research data, publications, logos, and laboratory photography are copyright © Laboratory of Food Bioactives and Molecular Health (LFBMH), University of Chittagong.  
+All research data, publications, logos, and laboratory photography are copyright © Laboratory of Food Bioactives and Molecular Health (FBMH), University of Chittagong.  
 The source code layout and scripts are made available for academic and educational usage under the [MIT License](LICENSE).

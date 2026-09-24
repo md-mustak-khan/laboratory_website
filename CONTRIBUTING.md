@@ -1,6 +1,6 @@
-# Contributing to the LFBMH Website & Portal
+# Contributing to the FBMH Website & Portal
 
-Thank you for your interest in contributing to the **Laboratory of Food Bioactives & Molecular Health (LFBMH)** web platform!
+Thank you for your interest in contributing to the **Laboratory of Food Bioactives & Molecular Health (FBMH)** web platform!
 
 Whether you are a lab member updating publications and protocols, or an open-source contributor helping with accessibility and features, this document outlines the workflow and guidelines.
 
@@ -48,7 +48,7 @@ Whether you are a lab member updating publications and protocols, or an open-sou
 1. Open [`publications.html`](./publications.html).
 2. Locate the appropriate category and year container.
 3. Duplicate an existing publication card and update:
-   - Paper title, author list (highlighting LFBMH members), journal name, volume, pages, and year.
+   - Paper title, author list (highlighting FBMH members), journal name, volume, pages, and year.
    - DOI link and citation badges.
    - Pertinent search filter tags (`data-year`, `data-topic`).
 

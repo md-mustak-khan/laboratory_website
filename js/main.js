@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Laboratory of Food Bioactives and Molecular Health (LFBMH) main.js
+   Laboratory of Food Bioactives and Molecular Health (FBMH) main.js
    - Mobile nav toggle (with backdrop)
    - Sticky header scroll effect
    - Active nav link highlighting (based on current filename)
@@ -116,7 +116,7 @@
         if (nav.querySelector('.nav-header-bar')) return;
         const bar = document.createElement('div');
         bar.className = 'nav-header-bar';
-        bar.innerHTML = '<div class="nav-header-title"><span>LFBMH</span> Navigation</div>' +
+        bar.innerHTML = '<div class="nav-header-title"><span>FBMH</span> Navigation</div>' +
           '<button type="button" class="nav-close" aria-label="Close navigation">&times;</button>';
         const closeBtn = bar.querySelector('.nav-close');
         if (closeBtn) closeBtn.addEventListener('click', closeNav);
@@ -431,7 +431,7 @@
           return;
         }
 
-        const mailtoUrl = 'mailto:dsikdar@cu.ac.bd?subject=' + encodeURIComponent('LFBMH Website Contact Inquiry') +
+        const mailtoUrl = 'mailto:dsikdar@cu.ac.bd?subject=' + encodeURIComponent('FBMH Website Contact Inquiry') +
           '&body=' + encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + msg);
 
         if (status) {
@@ -610,7 +610,7 @@
 
   /* ---------- Dark Theme Toggle ---------- */
   function initThemeToggle() {
-    const savedTheme = localStorage.getItem('lfbmh-theme') || localStorage.getItem('lfsn-theme');
+    const savedTheme = localStorage.getItem('fbmh-theme') || localStorage.getItem('lfbmh-theme') || localStorage.getItem('lfsn-theme');
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
@@ -640,10 +640,10 @@
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       if (isDark) {
         document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('lfbmh-theme', 'light'); localStorage.setItem('lfsn-theme', 'light');
+        localStorage.setItem('fbmh-theme', 'light'); localStorage.setItem('lfbmh-theme', 'light'); localStorage.setItem('lfsn-theme', 'light');
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('lfbmh-theme', 'dark'); localStorage.setItem('lfsn-theme', 'dark');
+        localStorage.setItem('fbmh-theme', 'dark'); localStorage.setItem('lfbmh-theme', 'dark'); localStorage.setItem('lfsn-theme', 'dark');
       }
       updateThemeIcon(toggleBtn);
     });

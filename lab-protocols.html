@@ -9,7 +9,17 @@
   <meta property="og:description" content="Step-by-step benchtop procedures for maintaining C. elegans, preparing sterile NGM growth media, synchronization, and bioactivity assays." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="./Gallery/C%20elegans%20under%20Fluorescent%20Microscope.jpg" />
+  <!-- Favicons & Search Engine Branding (Official FBMH Logo) -->
+  <link rel="shortcut icon" href="./favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./favicon-192x192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+  <link rel="icon" type="image/png" href="./FBMH%20logo.png" />
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <meta property="og:image" content="./FBMH%20logo.png" />
+  <meta name="twitter:image" content="./FBMH%20logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
@@ -22,7 +32,7 @@
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <a href="./index.html" class="logo" aria-label="Laboratory of Food Bioactives and Molecular Health home">
-        <span class="logo-mark" aria-hidden="true">FBMH</span>
+        <span class="logo-mark" aria-hidden="true"><img src="./FBMH%20logo.png" alt="FBMH Logo" class="logo-mark-img" /></span>
         <span class="logo-text">
           <strong>FBMH</strong>
           <small>Laboratory of Food Bioactives &amp; Molecular Health</small>
@@ -66,12 +76,7 @@
         <div class="breadcrumbs"><a href="./index.html">Home</a><span>/</span>Lab Protocols</div>
         <h1 id="page-title">Laboratory Protocols &amp; Standard Methods</h1>
         <p>Step-by-step benchtop procedures for maintaining C. elegans, preparing sterile NGM growth media, synchronization, and bioactivity assays.</p>
-        <div style="margin-top: var(--space-4);">
-          <button type="button" class="btn btn-primary btn-print-protocol" onclick="window.print()" style="font-size: 0.88rem; display: inline-flex; align-items: center; gap: 0.4rem;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-            Print Protocols for Bench Use (PDF)
-          </button>
-        </div>
+        
       </div>
     </section>
 
@@ -101,15 +106,15 @@
               <h3 style="margin: 0; font-size: 1.1rem;">Protocols in this guide</h3>
             </div>
             <ul class="protocol-nav">
-              <li><a href="#growth-media"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>1. Growth Media Preparation</a></li>
-              <li><a href="#ngm-plates"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>2. NGM Petri Plates</a></li>
-              <li><a href="#seed-plates"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>3. Seeding NGM Plates</a></li>
-              <li><a href="#culturing-c-elegans"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>4. Culturing C. elegans on Petri Plates</a></li>
-              <li><a href="#bleach-sync"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>5. Bleach Synchronization</a></li>
-              <li><a href="#egg-hatching"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>6. Egg Hatching Assay</a></li>
-              <li><a href="#lifespan-assay"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>7. Lifespan Assay</a></li>
-              <li><a href="#cadd"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>8. Computer-Aided Drug Design</a></li>
-              <li><a href="#network-pharma"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>9. Network Pharmacology</a></li>
+              <li><a href="#growth-media" title="1. Growth Media Preparation"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>1. Growth Media Preparation</span></a></li>
+              <li><a href="#ngm-plates" title="2. NGM Petri Plates"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>2. NGM Petri Plates</span></a></li>
+              <li><a href="#seed-plates" title="3. Seeding NGM Plates"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>3. Seeding NGM Plates</span></a></li>
+              <li><a href="#culturing-c-elegans" title="4. Culturing C. elegans on Petri Plates"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>4. Culturing C. elegans on Petri Plates</span></a></li>
+              <li><a href="#bleach-sync" title="5. Bleach Synchronization"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>5. Bleach Synchronization</span></a></li>
+              <li><a href="#egg-hatching" title="6. Egg Hatching Assay"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>6. Egg Hatching Assay</span></a></li>
+              <li><a href="#lifespan-assay" title="7. Lifespan Assay"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>7. Lifespan Assay</span></a></li>
+              <li><a href="#cadd" title="8. Computer-Aided Drug Design"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>8. Computer-Aided Drug Design</span></a></li>
+              <li><a href="#network-pharma" title="9. Network Pharmacology"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>9. Network Pharmacology</span></a></li>
             </ul>
             <div class="callout-box callout-tip" style="margin-top: var(--space-4);">
               <div class="callout-icon">
@@ -981,8 +986,16 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h4>Laboratory of Food Bioactives and Molecular Health</h4>
-          <p>The Laboratory of Food Bioactives and Molecular Health (FBMH) is an academic research laboratory within the Department of Biochemistry and Molecular Biology, University of Chittagong, Bangladesh, jointly led by Prof. Dr. Dwaipayan Sikdar and Prof. Dr. Suman Mojumder.</p>
+          <div class="footer-brand-header">
+            <img src="./FBMH%20logo.png" alt="FBMH Logo" class="footer-logo" />
+            <div class="footer-brand-title">
+              <h4>Laboratory of Food Bioactives and Molecular Health</h4>
+              <span class="footer-affiliation-note">Dept. of Biochemistry &amp; Molecular Biology · University of Chittagong</span>
+            </div>
+          </div>
+          <p>The Laboratory of Food Bioactives and Molecular Health (FBMH) is an academic research laboratory within the
+            Department of Biochemistry and Molecular Biology, University of Chittagong, Bangladesh, jointly led by Prof.
+            Dr. Dwaipayan Sikdar and Prof. Dr. Suman Mojumder.</p>
         </div>
         <div>
           <h4>Quick Links</h4>
